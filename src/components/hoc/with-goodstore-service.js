@@ -1,10 +1,10 @@
 import React from 'react';
-import { GoodstoreServiceConsumer } from '../goodstore-sevices-contex';
+import { GoodServiceConsumer } from '../goodstore-sevices-contex';
 
 const withGoodstoreService = () => (Wrapped) => {
     return (props) => {
         return (
-            <GoodstoreServiceConsumer>
+            <GoodServiceConsumer>
                 {
                     (goodstoreService) =>{
                         return(
@@ -12,7 +12,7 @@ const withGoodstoreService = () => (Wrapped) => {
                         )
                     }
                 }
-            </GoodstoreServiceConsumer>
+            </GoodServiceConsumer>
         );
     }
 };
