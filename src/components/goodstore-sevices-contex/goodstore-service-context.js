@@ -1,10 +1,8 @@
 import React from 'react';
+
 const {
-    Provider: GoodstoreServiceProvider,
-    Consumer: GoodstoreServiceConsumer
+    Provider: GoodServiceProvider,
+    Consumer: GoodServiceConsumer
 } = React.createContext();
 
-export {
-    GoodstoreServiceConsumer,
-    GoodstoreServiceProvider
-};
+export { GoodServiceConsumer, GoodServiceProvider };

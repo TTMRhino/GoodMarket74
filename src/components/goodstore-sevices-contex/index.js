@@ -1,6 +1,6 @@
-import { GoodserviceProvider, GoodserviceConsumer } from './GoodserviceContext';
+import { GoodServiceConsumer, GoodServiceProvider } from './goodstore-service-context';
 
 export {
-    GoodserviceConsumer,
-    GoodserviceProvider
+    GoodServiceConsumer,
+    GoodServiceProvider
 };
