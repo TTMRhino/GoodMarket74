@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { HomePage, CartPage, CatalogPage } from '../pages';
+import { HomePage, CartPage, CatalogPage, ContactPage } from '../pages';
 
 import './app.css';
 
@@ -13,6 +13,8 @@ const App = () =>{
             <Route path="/cart" component={ CartPage } />
 
             <Route path="/catalog" component={ CatalogPage } />
+
+            <Route path="/contact" component={ ContactPage } />
         </Switch>
     );
 };
