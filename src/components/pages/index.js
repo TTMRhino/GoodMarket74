@@ -1,6 +1,6 @@
-import HomePage from './home-page';
-import CartPage from './cart-page';
-import CatalogPage from './catalog-page';
-import ContactPage from './contact-page';
+import HomePage from './home/home-page';
+import CartPage from './cart/cart-page';
+import CatalogPage from './catalog/catalog-page';
+import ContactPage from './contact/contact-page';
 
 export { HomePage, CartPage, CatalogPage, ContactPage }
