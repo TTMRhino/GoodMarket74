@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {CaruselPage} from '../';
 
 const CatalogPage = () => {
     return (
     <div> 
-
+	<div className="body-content outer-top-xs" id="top-banner-and-menu">
+        <div className="container">
+            <div className="row">
 
 <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
 
@@ -171,7 +174,14 @@ const CatalogPage = () => {
 				</div>
     </div>
     </div>
+
+	
+
     </div>
+	<CaruselPage />
+	</div>
+	</div>
+	</div>
    
     );
 };

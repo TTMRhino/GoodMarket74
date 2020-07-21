@@ -1,13 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { CaruselPage } from '../index';
+import { Link, withRouter } from 'react-router-dom';
 
 const HomePage = () => {
 	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
 	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
     return (
 		<div>
-        <div class="col-xs-12 col-sm-12 col-md-3 sidebar">
+			
+			<div className="body-content outer-top-xs" id="top-banner-and-menu">
+        <div className="container">
+            <div className="row">
+				
 
+        <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
+			
 			<div className="side-menu animate-dropdown outer-bottom-xs">
     			<div className="head">
 					<i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
@@ -16,7 +23,7 @@ const HomePage = () => {
         			<ul className="nav">
            				 <li className="dropdown menu-item">
                 			<Link to="#" className="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon fa fa-shopping-bag" aria-hidden="true"></i>
+								<i className="icon fa fa-shopping-bag" aria-hidden="true"></i>
 								ГРУППАОСНОВНАЯ
 							</Link>
                 	 			<ul className="dropdown-menu mega-menu">
@@ -59,7 +66,7 @@ const HomePage = () => {
 
 					</div>
 					<div className="button-holder fadeInDown-3">
-						<Link to="index.php?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
+						<Link to="index.php?page=single-product" className="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
 					</div>
 				</div>
 			</div>
@@ -70,7 +77,7 @@ const HomePage = () => {
 				<div className="caption bg-color vertical-center text-left">
                  <div className="slider-header fadeInDown-1">Акция</div>
 					<div className="big-text fadeInDown-1">
-						Лестница <span class="highlight">Залеська </span>
+						Лестница <span className="highlight">Залеська </span>
 					</div>
 
 					<div className="excerpt fadeInDown-2 hidden-xs">
@@ -106,7 +113,7 @@ const HomePage = () => {
 
 			<div className="hidden-md col-sm-4 col-lg-4">
 				<div className="info-box">
-					<div class="row">
+					<div className="row">
 						
 						<div className="col-xs-12">
 							<h4 className="info-box-heading green">Доставка*</h4>
@@ -156,7 +163,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Стул детский</a></h3>
+				<h3 className="name"><Link to="#">Стул детский</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -186,7 +193,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -220,7 +227,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -251,7 +258,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -286,7 +293,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -351,7 +358,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -381,7 +388,7 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><a href="#">Floral Print Buttoned</a></h3>
+				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -399,6 +406,12 @@ const HomePage = () => {
 
 
 	</div>
+	</div>
+	<CaruselPage />
+				</div>
+				
+				</div>
+				
 
 	</div>
 
@@ -406,4 +419,4 @@ const HomePage = () => {
     
 };
 
-export default HomePage;
+export default withRouter(HomePage);
