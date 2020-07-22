@@ -2,9 +2,13 @@ import React from 'react';
 import { CaruselPage } from '../index';
 import { Link, withRouter } from 'react-router-dom';
 
+import OwlCarousel from 'react-owl-carousel';
+
+
+
 const HomePage = () => {
-	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
-	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
+	const style1 ={'backgroundImage': 'url(assets/images/sliders/01.jpg)'}
+	const style2 ={'backgroundImage': 'url(assets/images/sliders/02.jpg)'}
     return (
 		<div>
 			
@@ -49,29 +53,29 @@ const HomePage = () => {
 	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
 
 		
-	<div id="hero">
-	<div id="owl-main" className="owl-carousel owl-inner-nav owl-ui-sm">
-		
-		<div className="item" style = {style1}>
+	<div id="hero">	
+
+	<OwlCarousel   className="owl-carousel  owl-theme" items="1" autoplay loop   nav>
+
+    	<div className="item" style = {style1}>
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
-                    <div className="slider-header fadeInDown-1">Новинка</div>
-					<div className="big-text fadeInDown-1">
-						Гладильная Доска Ника 3+
-					</div>
+					<div className="slider-header fadeInDown-1">Новинка</div>
+						<div className="big-text fadeInDown-1">
+							Гладильная Доска Ника 3+
+						</div>
 
-					<div className="excerpt fadeInDown-2 hidden-xs">
-					
-					<span>Гладить одно удовольствие</span>
-
-					</div>
-					<div className="button-holder fadeInDown-3">
-						<Link to="index.php?page=single-product" className="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
+						<div className="excerpt fadeInDown-2 hidden-xs">					
+							<span>Гладить одно удовольствие</span>
+						</div>
+						<div className="button-holder fadeInDown-3">
+							<Link to="index.php?page=single-product" className="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
+    	<div className="item">
 		<div className="item" style = {style2}>
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
@@ -91,11 +95,13 @@ const HomePage = () => {
 				</div>
 			</div>
 		</div>
-		
-		
+		</div>
+    	 
+	</OwlCarousel>
 
 	</div>
-</div>
+
+
 <div className="info-boxes wow fadeInUp">
 	<div className="info-boxes-inner">
 		<div className="row">
@@ -144,51 +150,45 @@ const HomePage = () => {
 	<h3 className="section-title">ТОП продаж</h3>
 	<div className="sidebar-widget-body outer-top-xs">
 		<div className="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
-	        	        <div className="item">
+	        <div className="item">
 	        	<div className="products best-product">
-		        							<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p20.jpg" alt="" />
-					</Link>					
-				</div>
-					
-											
-					
+		        	<div className="product">
+						<div className="product-micro">
+							<div className="row product-micro-row">
+								<div className="col col-xs-5">
+									<div className="product-image">
+										<div className="image">
+											<Link to="#">
+												<img src="assets/images/products/p20.jpg" alt="" />
+											</Link>					
+										</div>				
+									</div>
 								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Стул детский</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					325.00 руб.				</span>
-				
-			</div>
-			
-			</div>
-		</div>
-	</div>
-</div>
-      
+								<div className="col2 col-xs-7">
+									<div className="product-info">
+										<h3 className="name"><Link to="#">Стул детский</Link></h3>
+										<div className="rating rateit-small"></div>
+										<div className="product-price">	
+											<span className="price">
+												325.00 руб.
+											</span>				
+										</div>			
+									</div>
+								</div>
+							</div>
 						</div>
-		        							<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p21.jpg" alt=""/>
-					</Link>					
-				</div>
-					
-					
+      
+					</div>
+		        	<div className="product">
+						<div className="product-micro">
+							<div className="row product-micro-row">
+								<div className="col col-xs-5">
+									<div className="product-image">
+										<div className="image">
+											<Link to="#">
+												<img src="assets/images/products/p21.jpg" alt=""/>
+											</Link>					
+										</div>					
 								</div>
 		</div>
 		<div className="col2 col-xs-7">
@@ -217,7 +217,7 @@ const HomePage = () => {
 		<div className="col col-xs-5">
 			<div className="product-image">
 				<div className="image">
-					<Link href="#">
+					<Link to="#">
 						<img src="assets/images/products/p22.jpg" alt=""/>
 					</Link>					
 				</div>
@@ -247,7 +247,7 @@ const HomePage = () => {
 		<div className="col col-xs-5">
 			<div className="product-image">
 				<div className="image">
-					<Link href="#">
+					<Link to="#">
 						<img src="assets/images/products/p23.jpg" alt=""/>
 						</Link>					
 				</div>
@@ -282,7 +282,7 @@ const HomePage = () => {
 		<div className="col col-xs-5">
 			<div className="product-image">
 				<div className="image">
-					<Link href="#">
+					<Link to="#">
 						<img src="assets/images/products/p24.jpg" alt=""/>
 					</Link>					
 				</div>

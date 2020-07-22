@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { HomePage, CartPage, CatalogPage, ContactPage, HeaderPage, CaruselPage} from '../pages';
+import { HomePage, CartPage, CatalogPage, ContactPage, HeaderPage} from '../pages';
 
 import './app.css';
 
