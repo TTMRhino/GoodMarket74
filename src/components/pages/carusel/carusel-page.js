@@ -1,87 +1,67 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OwlCarousel from 'react-owl-carousel';
 
 
 const CaruselPage = () => {
+    const style_width = {'width': '100px'};
     return (
+        <div className="row">
        <div id="brands-carousel" className="logo-slider wow fadeInUp">
 
     <div className="logo-slider-inner">
-        <div id="brand-slider" className="owl-carousel brand-slider custom-carousel owl-theme">
-            <div className="item m-t-15">
+
+
+    <OwlCarousel id="brand-slider" className="owl-carousel brand-slider custom-carousel owl-theme" autoplay loop>
+
+
+            <div className="item  center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""/>
+                    <img  src="assets/images/brands/brand1.png" alt=""/>
                 </Link>
             </div>
            
 
-            <div className="item m-t-10">
+            <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""/>
+                    <img src="assets/images/brands/brand2.png" alt=""/>
                 </Link>
             </div>
           
 
-            <div className="item">
+            <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt=""/>
+                    <img  src="assets/images/brands/brand3.png" alt=""/>
                 </Link>
             </div>
            
 
-            <div className="item">
+            <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""/>
+                    <img  src="assets/images/brands/brand4.png" alt=""/>
                 </Link>
             </div>
           
 
-            <div className="item">
+            <div className="item center-block"  style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""/>
+                    <img  src="assets/images/brands/brand5.png" alt=""/>
                 </Link>
             </div>
           
 
-            <div className="item">
+            <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt=""/>
+                    <img  src="assets/images/brands/brand6.png" alt=""/>
                 </Link>
-            </div>
+            </div>           
             
-
-            <div className="item">
-                <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""/>
-                </Link>
-            </div>
-            
-
-            <div className="item">
-                <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""/>
-                </Link>
-            </div>
-            
-
-            <div className="item">
-                <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""/>
-                </Link>
-            </div>
-            
-
-            <div className="item">
-                <Link to="#" className="image">
-                    <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""/>
-                </Link>
-            </div>
-            
-        </div>
+        </OwlCarousel>
         
     </div>
     
 
+</div>
 </div>
     );
 }

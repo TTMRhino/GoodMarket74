@@ -7,8 +7,8 @@ import OwlCarousel from 'react-owl-carousel';
 
 
 const HomePage = () => {
-	const style1 ={'backgroundImage': 'url(assets/images/sliders/01.jpg)'}
-	const style2 ={'backgroundImage': 'url(assets/images/sliders/02.jpg)'}
+	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
+	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
     return (
 		<div>
 			
@@ -19,13 +19,14 @@ const HomePage = () => {
 
         <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
 			
-			<div className="side-menu animate-dropdown outer-bottom-xs">
+		
+			<div className="side-menu animate-dropdown outer-bottom-xs ">
     			<div className="head">
 					<i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
 				</div>        
     				<nav className="yamm megamenu-horizontal" role="navigation">
-        			<ul className="nav">
-           				 <li className="dropdown menu-item">
+        			<ul className="nav ">
+           				 <li className="dropdown menu-item " >
                 			<Link to="#" className="dropdown-toggle" data-toggle="dropdown">
 								<i className="icon fa fa-shopping-bag" aria-hidden="true"></i>
 								ГРУППАОСНОВНАЯ
@@ -55,9 +56,9 @@ const HomePage = () => {
 		
 	<div id="hero">	
 
-	<OwlCarousel   className="owl-carousel  owl-theme" items="1" autoplay loop   nav>
+	<OwlCarousel  id="owl-main" className="owl-carousel  owl-theme" items="1" autoplay loop   >
 
-    	<div className="item" style = {style1}>
+    	<div className="item" style = {style1} >
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
 					<div className="slider-header fadeInDown-1">Новинка</div>
@@ -75,7 +76,7 @@ const HomePage = () => {
 				</div>
 			</div>
 
-    	<div className="item">
+    
 		<div className="item" style = {style2}>
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
@@ -95,7 +96,7 @@ const HomePage = () => {
 				</div>
 			</div>
 		</div>
-		</div>
+		
     	 
 	</OwlCarousel>
 
@@ -149,7 +150,10 @@ const HomePage = () => {
 <div className="best-deal wow fadeInUp outer-bottom-xs">
 	<h3 className="section-title">ТОП продаж</h3>
 	<div className="sidebar-widget-body outer-top-xs">
-		<div className="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
+
+	<OwlCarousel className="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
+
+
 	        <div className="item">
 	        	<div className="products best-product">
 		        	<div className="product">
@@ -167,7 +171,8 @@ const HomePage = () => {
 								<div className="col2 col-xs-7">
 									<div className="product-info">
 										<h3 className="name"><Link to="#">Стул детский</Link></h3>
-										<div className="rating rateit-small"></div>
+										<div className="rating rateit-small">											
+										</div>
 										<div className="product-price">	
 											<span className="price">
 												325.00 руб.
@@ -189,26 +194,28 @@ const HomePage = () => {
 												<img src="assets/images/products/p21.jpg" alt=""/>
 											</Link>					
 										</div>					
+									</div>
 								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
+								<div className="col2 col-xs-7">
+									<div className="product-info">
+										<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
+										<div className="rating rateit-small"></div>
+											<div className="product-price">	
+												<span className="price">
+													$450.99				
+												</span>
 				
-			</div>
-			
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		        		        	</div>
+											</div>			
+										</div>
+									</div>
+								</div>
+						</div>      
+					</div>
+		        </div>
 	        </div>
+
+
+
 	    		        <div className="item">
 	        	<div className="products best-product">
 		        							<div className="product">
@@ -388,7 +395,9 @@ const HomePage = () => {
 		</div>
 		<div className="col2 col-xs-7">
 			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
+				<h3 className="name">
+					<Link to="#">Floral Print Buttoned</Link>
+				</h3>
 				<div className="rating rateit-small"></div>
 				<div className="product-price">	
 				<span className="price">
@@ -400,13 +409,16 @@ const HomePage = () => {
 		</div>
 	</div>
 </div>
-</div></div></div></div></div></div>
-						
-	 
+</div>
+</div>
+</div>
+</OwlCarousel>
 
-
+</div>
+</div>	 
 	</div>
 	</div>
+	
 	<CaruselPage />
 				</div>
 				

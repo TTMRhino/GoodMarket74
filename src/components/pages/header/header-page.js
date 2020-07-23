@@ -37,8 +37,8 @@ const HeaderPage = () => {
             
             
                             <div className="col-xs-12 col-sm-12 col-md-2 animate-dropdown top-cart-row">   
-                                <div className="dropdown dropdown-cart">
-                                    <Link to="/cart" className="dropdown-toggle lnk-cart" data-toggle="dropdown">
+                                <div className=" dropdown-cart">
+                                    <Link to="/cart" className=" lnk-cart">
                                         <div className="items-cart-inner">
                                             <div className="basket">
                                                 <i className="glyphicon glyphicon-shopping-cart"></i>
