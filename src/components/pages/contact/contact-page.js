@@ -5,6 +5,11 @@ import Iframe from 'react-iframe';
 const ContactPage = () => {
     return (
         <div>
+
+<div className="body-content outer-top-xs" id="top-banner-and-menu">
+        <div className="container">
+            <div className="row">
+
             <div className="contact-page">
 		<div className="row">
 			
@@ -68,6 +73,9 @@ const ContactPage = () => {
 		<span className="contact-span"><Link to="#">GoodMarket74@mail.ru</Link></span>
 	</div>
 </div>			</div>
+		</div>
+		</div>
+		</div>
 		</div>
             </div>
     );

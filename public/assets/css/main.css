@@ -2099,9 +2099,9 @@ header {
 .sidebar .side-menu nav .nav>li>.mega-menu {
     padding: 3px 0;
     top: 0 !important;
-    left: 100%;
+    left: 200%;
     margin: 0;
-    min-width: 330%;
+    min-width: 130%;
     /*338%;*/
     position: absolute;
     top: 0px;

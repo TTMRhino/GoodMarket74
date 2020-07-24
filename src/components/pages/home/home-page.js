@@ -25,28 +25,29 @@ const HomePage = () => {
 					<i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
 				</div>        
     				<nav className="yamm megamenu-horizontal" role="navigation">
-        			<ul className="nav ">
-           				 <li className="dropdown menu-item " >
-                			<Link to="#" className="dropdown-toggle" data-toggle="dropdown">
-								<i className="icon fa fa-shopping-bag" aria-hidden="true"></i>
-								ГРУППАОСНОВНАЯ
-							</Link>
-                	 			<ul className="dropdown-menu mega-menu">
-    								<li className="yamm-content">
-        								<div className="row">
-            								<div className="col-sm-12 col-md-3">
-                								<ul className="links list-unstyled">  
-                     								<li>
-														 <Link to="#">Подгруппа</Link>
-													</li>
-                								</ul>
 
-        									</div>
-										</div>
-    								</li>                   
-								</ul>           
+
+					<ul class="dropright nav"> 
+						<li  class=" dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+								
+								<Link> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> ГРУППАОСНОВНАЯ </Link>
+							
 						</li>
-        			</ul>
+								<ul className="dropdown-menu mega-menu">
+									<li className=" ">
+										<div className="row ">
+											<div className="col-sm-12 col-md-3">
+												<ul className="links list-unstyled ">  
+													<li>
+														<Link class="" to="#">Подгруппа</Link>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</li>		
+								</ul>
+					</ul>        			
     				</nav>
 				</div>
 		</div>
@@ -56,7 +57,7 @@ const HomePage = () => {
 		
 	<div id="hero">	
 
-	<OwlCarousel  id="owl-main" className="owl-carousel  owl-theme" items="1" autoplay loop   >
+	<OwlCarousel  id="owl-main" className="owl-carousel  " items="1" autoplay loop   >
 
     	<div className="item" style = {style1} >
 			<div className="container-fluid">
@@ -151,7 +152,7 @@ const HomePage = () => {
 	<h3 className="section-title">ТОП продаж</h3>
 	<div className="sidebar-widget-body outer-top-xs">
 
-	<OwlCarousel className="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
+	<OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
 
 	        <div className="item">

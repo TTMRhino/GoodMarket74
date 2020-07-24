@@ -182,6 +182,7 @@
                 itemsDesktop: [1199, 2],
                 navigation: true,
                 pagination: false,
+                dots: false,
 
                 navigationText: ["", ""]
             });

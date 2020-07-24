@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 const CartPage = () => {
     return (
         <div>
+			<div className="body-content outer-top-xs" id="top-banner-and-menu">
+        <div className="container">
+            <div className="row">
+
+
+
          <div className="shopping-cart">
 				<div className="shopping-cart-table ">
 	                <div className="table-responsive">
@@ -21,18 +27,7 @@ const CartPage = () => {
                             </tr>
 			            </thead>
 
-                        <tfoot>
-                            <tr>
-                                <td colspan="7">
-                                    <div className="shopping-cart-btn">
-                                        <span className="">
-                                            <Link to="#" className="btn btn-upper btn-primary outer-left-xs">Продолжить покупки</Link>
-                                            <Link to="#" className="btn btn-upper btn-primary pull-right outer-right-xs">Обновить Корзину</Link>
-                                        </span>
-                                    </div>
-                                </td>
-                            </tr>
-			            </tfoot>
+                       
 
                         <tbody>
 
@@ -96,9 +91,9 @@ const CartPage = () => {
 	                    </table>
                     </div> 
                 </div> 
+				<hr/>
 
-
-                <div className="col-md-4 col-sm-12 estimate-ship-tax">
+                <div className="col-md-8 col-sm-12 estimate-ship-tax">
 	<table className="table">
 		<thead>
 			<tr>
@@ -133,13 +128,8 @@ const CartPage = () => {
 								<option>Madhya Pradesh</option>
 							</select>
 						</div>
-						<div className="form-group">
-							<label className="info-title control-label">Zip/Postal Code</label>
-							<input type="text" className="form-control unicase-form-control text-input" placeholder=""/>
-						</div>
-						<div className="pull-right">
-							<button type="submit" className="btn-upper btn btn-primary">GET A QOUTE</button>
-						</div>
+						
+						
 					</td>
 				</tr>
 		</tbody>
@@ -149,30 +139,7 @@ const CartPage = () => {
 
 
 
-<div className="col-md-4 col-sm-12 estimate-ship-tax">
-	<table className="table">
-		<thead>
-			<tr>
-				<th>
-					<span className="estimate-title">Купон на скидку</span>
-					<p>Введите номер купона чтобы получить скидку.</p>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-				<tr>
-					<td>
-						<div className="form-group">
-							<input type="text" className="form-control unicase-form-control text-input" placeholder="You Coupon.."/>
-						</div>
-						<div className="clearfix pull-right">
-							<button type="submit" className="btn-upper btn btn-primary">Применить купон</button>
-						</div>
-					</td>
-				</tr>
-		</tbody>
-	</table>
-</div>
+
 
 
 <div className="col-md-4 col-sm-12 cart-shopping-total">
@@ -194,7 +161,7 @@ const CartPage = () => {
 					<td>
 						<div className="cart-checkout-btn pull-right">
 							<button type="submit" className="btn btn-primary checkout-btn">Оформить заказ</button>
-							<span className="">Checkout with multiples address!</span>
+							
 						</div>
 					</td>
 				</tr>
@@ -210,6 +177,9 @@ const CartPage = () => {
 
             </div> 
         </div> 
+		</div>
+		</div>
+		</div>
     
     );
 };
