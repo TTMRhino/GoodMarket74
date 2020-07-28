@@ -1,6 +1,7 @@
 import React from 'react';
 import { CaruselPage } from '../index';
 import { Link, withRouter } from 'react-router-dom';
+import MenuCatalog from './menu-catalog';
 
 import OwlCarousel from 'react-owl-carousel';
 
@@ -16,41 +17,8 @@ const HomePage = () => {
         <div className="container">
             <div className="row">
 				
-
-        <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
-			
+		<MenuCatalog/>
 		
-			<div className="side-menu animate-dropdown outer-bottom-xs ">
-    			<div className="head">
-					<i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
-				</div>        
-    				<nav className="yamm megamenu-horizontal" role="navigation">
-
-
-					<ul class="dropright nav"> 
-						<li  class=" dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-								
-								<Link> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> ГРУППАОСНОВНАЯ </Link>
-							
-						</li>
-								<ul className="dropdown-menu mega-menu">
-									<li className=" ">
-										<div className="row ">
-											<div className="col-sm-12 col-md-3">
-												<ul className="links list-unstyled ">  
-													<li>
-														<Link class="" to="#">Подгруппа</Link>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</li>		
-								</ul>
-					</ul>        			
-    				</nav>
-				</div>
-		</div>
 
 	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
 

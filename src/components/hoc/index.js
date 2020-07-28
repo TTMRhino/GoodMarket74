@@ -1,5 +1,5 @@
 import withGoodstoreService from './with-goodstore-service';
 
-export {
+export default {
     withGoodstoreService
 };
