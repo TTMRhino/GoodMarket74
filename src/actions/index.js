@@ -19,6 +19,13 @@ const maingroupsLoaded = (newMaingroup) => {
     };
 };
 
+const subgroupsLoaded = (newSubgroup) => {
+    return {
+        type: 'FETCH_SUBGROUPS_SUCCESS',
+        payload: newSubgroup
+    };
+};
+
 const fetchMaingroups = (goodStoreService, dispatch) => () => {
 
     goodStoreService.getMaingroups()
@@ -32,5 +39,6 @@ const fetchMaingroups = (goodStoreService, dispatch) => () => {
 export {
     itemsloaded,
     fetchMaingroups,
-    maingroupsLoaded
+    maingroupsLoaded,
+    subgroupsLoaded
 };

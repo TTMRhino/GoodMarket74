@@ -3,9 +3,11 @@ import { Link} from 'react-router-dom';
 import withGoodstoreService from '../../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
 import Spiner from '../../../spinner';
-import {fetchMaingroups,maingroupsLoaded} from "../../../../actions";
+import {fetchMaingroups,maingroupsLoaded,subgroupsLoaded} from "../../../../actions";
+import SubCatalog from './sub-catalog';
 
-const MenuCatalog = ({main_groups}) => {
+const MenuCatalog = ({main_groups,sub_groups}) => {
+   
     return(
         <div className="col-xs-12 col-sm-12 col-md-3 sidebar">	
             <div className="side-menu animate-dropdown outer-bottom-xs ">
@@ -15,24 +17,40 @@ const MenuCatalog = ({main_groups}) => {
                     <nav className="yamm megamenu-horizontal" role="navigation">                    
                         {
                             main_groups.map((main_group)=>{
+
+                           /* function getListIdx(arr, id) {
+                                let listIdx = [];
+                                let lastIndex = -1;
+                                while ((lastIndex = arr.find(id, lastIndex + 1)) !== -1) {
+                                    listIdx.push(lastIndex);
+                                }
+                                return listIdx;
+                            }*/                           
+                            
+                              //const data =  sub_groups.map((sub_group)=>{
+                                  // const data =  sub_groups.find((sub_group)=>sub_group.id_maingroup === main_group.id);
+                                //});
+
+                                const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);
+                                
+
                                 return(
                                         <ul class="dropright nav" key={main_group.id}> 
                                             <li  class=" dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">                            
                                                 <Link> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
-                                            </li>        
-                                            <ul className="dropdown-menu mega-menu">
+                                            </li>  
+
+                                            <ul className="dropdown-menu mega-menu" >
                                                 <li className=" ">
                                                     <div className="row ">
-                                                        <div className="col-sm-12 col-md-3">
-                                                            <ul className="links list-unstyled ">  
-                                                                <li>
-                                                                    <Link class="" to="#">Подгруппа</Link>
-                                                                </li>
-                                                            </ul>
+                                                        <div className="col-sm-12 col-md-12">
+
+                                                        <SubCatalog sub_groups={data} />
+                                                         
                                                         </div>
                                                     </div>            
                                                 </li>	        	
-                                            </ul>                      
+                                            </ul>                                                  
                                         </ul> 
                                     );
                                 }) 
@@ -52,34 +70,38 @@ class MainGroupCategorieContainer extends Component {
 
         //this.props.fetchMaingroups();
         const {goodstoreService} = this.props;
-        const data = goodstoreService.getMaingroups();
-        //console.log(data);
-         this.props.maingroupLoaded(data);
+        goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
+        goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+       
     }
+         
 
     render() {
-        const {main_groups, loading} = this.props;
-        
+        const {main_groups, sub_groups, loading} = this.props;        
         if (loading){
             return <Spiner />
         }
         return (
 
-            <MenuCatalog main_groups={main_groups} props={this.props} />
+            <MenuCatalog main_groups={main_groups} sub_groups={sub_groups} props={this.props} />
 
         );
     }
 }
 
-const mapStateToProps = ({ main_groups }) => {
+const mapStateToProps = ({ main_groups,sub_groups }) => {
     return {
-        main_groups       
+        main_groups,
+        sub_groups       
     };
 }
 const mapDispathToProps = (dispath) =>{
     return{
         maingroupLoaded:(newMaingroup) =>{
            dispath(maingroupsLoaded(newMaingroup)) ; 
+        },
+        subgroupLoaded:(newSubgroup) =>{
+            dispath(subgroupsLoaded(newSubgroup));
         }
     };
 };

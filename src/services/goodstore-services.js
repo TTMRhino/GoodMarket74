@@ -25,8 +25,12 @@ export default class GoodstoreServices {
     };
 
     getMaingroups = async() => {
-            const data = await this.getRecourse(`maingroup`);
-            console.log(data);
+        const data = await this.getRecourse(`maingroup`);
+        return data;
+    }
+
+    getSubgroups = async() => {
+            const data = await this.getRecourse(`subgroup`);
             return data;
         }
         /*getMaingroups = () => {

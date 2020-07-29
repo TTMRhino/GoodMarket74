@@ -4,11 +4,8 @@ const initialState = {
         { id: 2, vendor: 63442, main_group: 1, sub_group: 1, item: "Аптечка 'Скорая помощь'    ПЦ3756", price: 850 },
         { id: 3, vendor: 56881, main_group: 1, sub_group: 2, item: "Бак 32л, эм. р-2829 (сереголуб.)", price: 1600 },
     ],
-    main_groups: [
-        /* { id: 1, title: 'Кухня' },
-         { id: 2, title: 'Сад' },
-         { id: 3, title: 'Разное' }*/
-    ]
+    main_groups: [],
+    sub_groups: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -25,10 +22,25 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: null,
             };
+        case 'SUBGROUP_LOADED':
+            return {
+                ...state,
+                sub_groups: action.payload,
+                loading: false,
+                error: null,
+            };
         case 'FETCH_MAINGROUPS_SUCCESS':
             return {
                 ...state,
                 main_groups: action.payload,
+                loading: false,
+                error: null,
+            };
+
+        case 'FETCH_SUBGROUPS_SUCCESS':
+            return {
+                ...state,
+                sub_groups: action.payload,
                 loading: false,
                 error: null,
             };
