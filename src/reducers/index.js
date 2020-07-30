@@ -1,9 +1,5 @@
 const initialState = {
-    items: [
-        { id: 1, vendor: 66441, main_group: 1, sub_group: 2, item: "Бак 150л пищевой с крышкой", price: 1200 },
-        { id: 2, vendor: 63442, main_group: 1, sub_group: 1, item: "Аптечка 'Скорая помощь'    ПЦ3756", price: 850 },
-        { id: 3, vendor: 56881, main_group: 1, sub_group: 2, item: "Бак 32л, эм. р-2829 (сереголуб.)", price: 1600 },
-    ],
+    items: [],
     main_groups: [],
     sub_groups: [],
 };
@@ -11,10 +7,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'ITEMS_LOADED':
+        case 'ITEM_LOADED':
             return {
-                items: action.payload
+                ...state,
+                items: action.payload,
+                loading: false,
+                error: null,
             };
+
         case 'MAINGROUP_LOADED':
             return {
                 ...state,
@@ -29,6 +29,9 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: null,
             };
+
+
+
         case 'FETCH_MAINGROUPS_SUCCESS':
             return {
                 ...state,
@@ -41,6 +44,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 sub_groups: action.payload,
+                loading: false,
+                error: null,
+            };
+        case 'FETCH_ITEMS_SUCCESS':
+            return {
+                ...state,
+                items: action.payload,
                 loading: false,
                 error: null,
             };

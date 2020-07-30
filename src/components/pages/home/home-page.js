@@ -1,13 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { CaruselPage } from '../index';
-import { Link, withRouter } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 import MenuCatalog from './menu-catalog';
+import withGoodstoreService from '../../hoc/with-goodstore-service';
+import {connect} from "react-redux";
+import {itemsLoaded,maingroupsLoaded,subgroupsLoaded} from "../../../actions";
+import Spiner from '../../spinner';
 
 import OwlCarousel from 'react-owl-carousel';
 
 
 
-const HomePage = () => {
+const HomePage = ({main_groups,sub_groups,items}) => {
+	const urlImg ="http://goodmarket74.local/images/";
+	//console.log(items);
+	/*const rndItems=[];
+
+	 for(let i=1;i<=6;i++){		
+		rndItems.push(items[Math.floor(Math.random() * items.length)]);		
+	}	*/
+	
+	  //const vendor = items.map((item)=> items[1].vendor).then(console.log);
+	 //console.log(vendor[0]);
+	 
 	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
 	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
     return (
@@ -17,7 +32,7 @@ const HomePage = () => {
         <div className="container">
             <div className="row">
 				
-		<MenuCatalog/>
+		<MenuCatalog main_groups={main_groups} sub_groups={sub_groups}/>
 		
 
 	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -132,7 +147,7 @@ const HomePage = () => {
 									<div className="product-image">
 										<div className="image">
 											<Link to="#">
-												<img src="assets/images/products/p20.jpg" alt="" />
+												<img src={urlImg + 'l' + 'ERROR'+'.jpg'} alt="" />
 											</Link>					
 										</div>				
 									</div>
@@ -399,4 +414,58 @@ const HomePage = () => {
     
 };
 
-export default withRouter(HomePage);
+
+
+class HomePageContainer extends Component {
+    constructor(props) {
+        super();
+    }
+    componentDidMount() {
+
+        //this.props.fetchMaingroups();
+        const {goodstoreService} = this.props;
+        goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
+		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+		goodstoreService.getItems().then(this.props.itemLoaded);
+       
+    }
+         
+
+    render() {
+		const {main_groups, sub_groups, items,loading} = this.props; 
+		//console.log(items);       
+        	if (loading){
+           	 return <Spiner />
+        	}
+        return (
+            <HomePage main_groups={main_groups} sub_groups={sub_groups} items={items} props={this.props} />
+
+        );
+    }
+}
+
+/*===================================================================================================================*/
+const mapStateToProps = ({ main_groups,sub_groups, items }) => {
+    return {
+        main_groups,
+		sub_groups ,
+		items      
+    };
+}
+const mapDispathToProps = (dispath) =>{
+    return{
+        maingroupLoaded:(newMaingroup) =>{
+           dispath(maingroupsLoaded(newMaingroup)) ; 
+        },
+        subgroupLoaded:(newSubgroup) =>{
+            dispath(subgroupsLoaded(newSubgroup));
+		},
+		itemLoaded:(newItem) =>{
+			dispath(itemsLoaded(newItem));
+		}
+    };
+};
+
+
+export default withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(HomePageContainer));
+

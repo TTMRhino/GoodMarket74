@@ -21,8 +21,8 @@ const MenuCatalog = ({main_groups,sub_groups}) => {
                                 const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
                                     
                                 return(
-                                        <ul class="dropright nav" key={main_group.id}> 
-                                            <li  class=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
+                                        <ul className="dropright nav" key={main_group.id}> 
+                                            <li  className=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
                                                 <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
                                                 
                                             </li>  
@@ -49,49 +49,6 @@ const MenuCatalog = ({main_groups,sub_groups}) => {
 };
 
 
-class MainGroupCategorieContainer extends Component {
-    constructor(props) {
-        super();
-    }
-    componentDidMount() {
-
-        //this.props.fetchMaingroups();
-        const {goodstoreService} = this.props;
-        goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
-        goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
-       
-    }
-         
-
-    render() {
-        const {main_groups, sub_groups, loading} = this.props;        
-        if (loading){
-            return <Spiner />
-        }
-        return (
-
-            <MenuCatalog main_groups={main_groups} sub_groups={sub_groups} props={this.props} />
-
-        );
-    }
-}
-
-const mapStateToProps = ({ main_groups,sub_groups }) => {
-    return {
-        main_groups,
-        sub_groups       
-    };
-}
-const mapDispathToProps = (dispath) =>{
-    return{
-        maingroupLoaded:(newMaingroup) =>{
-           dispath(maingroupsLoaded(newMaingroup)) ; 
-        },
-        subgroupLoaded:(newSubgroup) =>{
-            dispath(subgroupsLoaded(newSubgroup));
-        }
-    };
-};
 
 
-export default withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(MainGroupCategorieContainer));
+export default MenuCatalog;
