@@ -182,12 +182,9 @@ const HomePage = () => {
 					</div>
 		        </div>
 	        </div>
-
-
-
-	    		        <div className="item">
+		    <div className="item">
 	        	<div className="products best-product">
-		        							<div className="product">
+		        	<div className="product">
 							<div className="product-micro">
 	<div className="row product-micro-row">
 		<div className="col col-xs-5">
@@ -217,7 +214,7 @@ const HomePage = () => {
 </div>
       
 						</div>
-		        							<div className="product">
+		        	<div className="product">
 							<div className="product-micro">
 	<div className="row product-micro-row">
 		<div className="col col-xs-5">
@@ -248,11 +245,11 @@ const HomePage = () => {
 </div>
       
 						</div>
-		        		        	</div>
+		        </div>
 	        </div>
-	    		        <div className="item">
+	    	<div className="item">
 	        	<div className="products best-product">
-		        							<div className="product">
+		    		<div className="product">
 							<div className="product-micro">
 	<div className="row product-micro-row">
 		<div className="col col-xs-5">
@@ -283,7 +280,9 @@ const HomePage = () => {
 </div>
       
 						</div>
-		        							<div className="product">
+		    		<div className="product">
+
+
 							<div className="product-micro">
 	<div className="row product-micro-row">
 		<div className="col col-xs-5">

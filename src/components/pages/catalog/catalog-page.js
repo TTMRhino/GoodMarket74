@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {CaruselPage} from '../';
+import MenuCatalog from '../home/menu-catalog';
 
 const CatalogPage = () => {
     return (
@@ -9,38 +10,7 @@ const CatalogPage = () => {
         <div className="container">
             <div className="row">
 
-<div class="col-xs-12 col-sm-12 col-md-3 sidebar">
-
-<div className="side-menu animate-dropdown outer-bottom-xs">
-    <div className="head">
-        <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
-    </div>        
-        <nav className="yamm megamenu-horizontal" role="navigation">
-        <ul className="nav">
-                <li className="dropdown menu-item">
-                <Link to="#" className="dropdown-toggle" data-toggle="dropdown">
-                    <i class="icon fa fa-shopping-bag" aria-hidden="true"></i>
-                    ГРУППАОСНОВНАЯ
-                </Link>
-                     <ul className="dropdown-menu mega-menu">
-                        <li className="yamm-content">
-                            <div className="row">
-                                <div className="col-sm-12 col-md-3">
-                                    <ul className="links list-unstyled">  
-                                         <li>
-                                             <Link to="#">Подгруппа</Link>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </li>                   
-                    </ul>           
-            </li>
-        </ul>
-        </nav>
-    </div>
-</div>
+			<MenuCatalog/>
 
 
 <div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">

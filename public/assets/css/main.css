@@ -2066,7 +2066,7 @@ header {
     letter-spacing: 0.2px
 }
 
-.sidebar .side-menu nav .nav>li>a:after {
+.sidebar .side-menu nav .arrows_menu:after {
     color: #bababa;
     content: "\f105";
     float: right;
