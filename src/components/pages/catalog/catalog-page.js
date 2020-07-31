@@ -1,16 +1,22 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { Link } from 'react-router-dom';
 import {CaruselPage} from '../';
 import MenuCatalog from '../home/menu-catalog';
+import withGoodstoreService from '../../hoc/with-goodstore-service';
+import {connect} from "react-redux";
+import {itemsLoaded,maingroupsLoaded,subgroupsLoaded} from "../../../actions";
+import Spiner from '../../spinner';
 
-const CatalogPage = () => {
+
+const CatalogPage = ({props}) => {
+	const {main_groups, sub_groups,items} = props;
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
         <div className="container">
             <div className="row">
 
-			<MenuCatalog/>
+			<MenuCatalog main_groups={main_groups} sub_groups={sub_groups}/>
 
 
 <div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -155,5 +161,58 @@ const CatalogPage = () => {
    
     );
 };
+/*======================================================================*/
+class CatalogPageContainer extends Component {
+    constructor(props) {
+        super();
+    }
+    componentDidMount() {
 
-export default CatalogPage;
+        //this.props.fetchMaingroups();
+        const {goodstoreService} = this.props;
+		goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
+		goodstoreService.getItems().then(this.props.itemLoaded);
+		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+		
+       
+    }
+         
+
+    render() {
+		const {loading} = this.props; 
+		//console.log(items);       
+        	if (loading){
+           	 return <Spiner />
+        	}
+        return (
+            <CatalogPage  props={this.props} />
+
+        );
+    }
+}
+
+/*===================================================================================================================*/
+const mapStateToProps = ({ main_groups,sub_groups, items }) => {
+    return {
+        main_groups,
+		sub_groups ,
+		items      
+    };
+}
+const mapDispathToProps = (dispath) =>{
+    return{
+        maingroupLoaded:(newMaingroup) =>{
+           dispath(maingroupsLoaded(newMaingroup)) ; 
+        },
+        subgroupLoaded:(newSubgroup) =>{
+            dispath(subgroupsLoaded(newSubgroup));
+		},
+		itemLoaded:(newItem) =>{
+			dispath(itemsLoaded(newItem));
+		}
+    };
+};
+
+
+export default withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(CatalogPageContainer));
+

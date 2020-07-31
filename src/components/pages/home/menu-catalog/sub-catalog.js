@@ -2,7 +2,7 @@ import React ,{Component} from 'react';
 import { Link} from 'react-router-dom';
 
 const SubCatalog = ({sub_groups}) => {
-    //console.log(sub_groups);
+    
     return(
         sub_groups.map((sub_group)=>{
             return (

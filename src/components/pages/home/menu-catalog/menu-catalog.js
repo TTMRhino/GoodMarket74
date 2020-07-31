@@ -1,9 +1,5 @@
 import React ,{Component} from 'react';
 import { Link} from 'react-router-dom';
-import withGoodstoreService from '../../../hoc/with-goodstore-service';
-import {connect} from "react-redux";
-import Spiner from '../../../spinner';
-import {fetchMaingroups,maingroupsLoaded,subgroupsLoaded} from "../../../../actions";
 import SubCatalog from './sub-catalog';
 
 const MenuCatalog = ({main_groups,sub_groups}) => {

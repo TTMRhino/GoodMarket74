@@ -13,7 +13,8 @@ export default class GoodstoreServices {
     };
 
     getItems = async(sub_group = 0) => {
-        return await this.getRecourse(`items?sub_group=${sub_group}&per-page=1000`);
+        /*&per-page=1000*/
+        return await this.getRecourse(`items?sub_group=${sub_group}`);
     };
 
     getMaingroups = async() => {

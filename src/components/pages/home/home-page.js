@@ -7,21 +7,29 @@ import {connect} from "react-redux";
 import {itemsLoaded,maingroupsLoaded,subgroupsLoaded} from "../../../actions";
 import Spiner from '../../spinner';
 
+
 import OwlCarousel from 'react-owl-carousel';
 
 
 
-const HomePage = ({main_groups,sub_groups,items}) => {
+const HomePage = ({props}) => {
+	const {main_groups, sub_groups,items} = props;
+	let items_random=[];
 	const urlImg ="http://goodmarket74.local/images/";
-	//console.log(items);
-	/*const rndItems=[];
 
-	 for(let i=1;i<=6;i++){		
-		rndItems.push(items[Math.floor(Math.random() * items.length)]);		
-	}	*/
-	
-	  //const vendor = items.map((item)=> items[1].vendor).then(console.log);
-	 //console.log(vendor[0]);
+		 
+
+	/*const sss = async () =>{
+	const rndItem=[];
+
+	for (let i=0;i<6;++i){
+		await rndItem.push(items[Math.floor(Math.random()*(items.length-0)+0)]);
+	}
+	return await rndItem;
+}	
+	sss().then((data)=>this.items_random.concat(data));
+	console.log(items_random);*/
+
 	 
 	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
 	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
@@ -29,7 +37,7 @@ const HomePage = ({main_groups,sub_groups,items}) => {
 		<div>
 			
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
-        <div className="container">
+        	<div className="container">
             <div className="row">
 				
 		<MenuCatalog main_groups={main_groups} sub_groups={sub_groups}/>
@@ -137,9 +145,13 @@ const HomePage = ({main_groups,sub_groups,items}) => {
 
 	<OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
-
-	        <div className="item">
+		{			
+				items.map((item)=>{
+					console.log(item.id);
+					return(
+						<div className="item" key={item.id}>
 	        	<div className="products best-product">
+
 		        	<div className="product">
 						<div className="product-micro">
 							<div className="row product-micro-row">
@@ -147,254 +159,41 @@ const HomePage = ({main_groups,sub_groups,items}) => {
 									<div className="product-image">
 										<div className="image">
 											<Link to="#">
-												<img src={urlImg + 'l' + 'ERROR'+'.jpg'} alt="" />
+												<img src={urlImg + 'l'+item.vendor +'.jpg'} alt="" />
 											</Link>					
 										</div>				
 									</div>
 								</div>
 								<div className="col2 col-xs-7">
 									<div className="product-info">
-										<h3 className="name"><Link to="#">Стул детский</Link></h3>
+										<h3 className="name"><Link to="#">{item.item}</Link></h3>
 										<div className="rating rateit-small">											
 										</div>
 										<div className="product-price">	
 											<span className="price">
-												325.00 руб.
+												{item.price} руб.
 											</span>				
 										</div>			
 									</div>
 								</div>
 							</div>
-						</div>
-      
-					</div>
-		        	<div className="product">
-						<div className="product-micro">
-							<div className="row product-micro-row">
-								<div className="col col-xs-5">
-									<div className="product-image">
-										<div className="image">
-											<Link to="#">
-												<img src="assets/images/products/p21.jpg" alt=""/>
-											</Link>					
-										</div>					
-									</div>
-								</div>
-								<div className="col2 col-xs-7">
-									<div className="product-info">
-										<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-										<div className="rating rateit-small"></div>
-											<div className="product-price">	
-												<span className="price">
-													$450.99				
-												</span>
-				
-											</div>			
-										</div>
-									</div>
-								</div>
 						</div>      
 					</div>
-		        </div>
-	        </div>
-		    <div className="item">
-	        	<div className="products best-product">
-		        	<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p22.jpg" alt=""/>
-					</Link>					
 				</div>
-					
-					
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-				
-			</div>
+	        </div>
+					)
+				})
+				 
 			
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		        	<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p23.jpg" alt=""/>
-						</Link>					
-				</div>
-					
-					
-											
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-				
-			</div>
-		
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		        </div>
-	        </div>
-	    	<div className="item">
-	        	<div className="products best-product">
-		    		<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p24.jpg" alt=""/>
-					</Link>					
-				</div>
-											
-					
-					
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-				
-			</div>
-		
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		    		<div className="product">
-
-
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p25.jpg" alt=""/>
-					</Link>					
-				</div>
-					
-					
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-				
-			</div>
 			
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		        		        	</div>
-	        </div>
-	    		        <div className="item">
-	        	<div className="products best-product">
-		        							<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p26.jpg" alt=""/>
-								</Link>					
-				</div>
-											
-					
-					
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name"><Link to="#">Floral Print Buttoned</Link></h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
+		}
 				
-			</div>
+		
+		
+	        
+
 	
-			</div>
-		</div>
-	</div>
-</div>
-      
-						</div>
-		        							<div className="product">
-							<div className="product-micro">
-	<div className="row product-micro-row">
-		<div className="col col-xs-5">
-			<div className="product-image">
-				<div className="image">
-					<Link to="#">
-						<img src="assets/images/products/p27.jpg" alt=""/>
-					</Link>					
-				</div>
-					
-					
-								</div>
-		</div>
-		<div className="col2 col-xs-7">
-			<div className="product-info">
-				<h3 className="name">
-					<Link to="#">Floral Print Buttoned</Link>
-				</h3>
-				<div className="rating rateit-small"></div>
-				<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-				
-			</div>
-	
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
-</div>
+
 </OwlCarousel>
 
 </div>
@@ -424,21 +223,22 @@ class HomePageContainer extends Component {
 
         //this.props.fetchMaingroups();
         const {goodstoreService} = this.props;
-        goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
-		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+		goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
 		goodstoreService.getItems().then(this.props.itemLoaded);
+		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+		
        
     }
          
 
     render() {
-		const {main_groups, sub_groups, items,loading} = this.props; 
+		const {loading} = this.props; 
 		//console.log(items);       
         	if (loading){
            	 return <Spiner />
         	}
         return (
-            <HomePage main_groups={main_groups} sub_groups={sub_groups} items={items} props={this.props} />
+            <HomePage  props={this.props} />
 
         );
     }
