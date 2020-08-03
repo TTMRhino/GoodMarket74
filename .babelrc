@@ -1,7 +1,13 @@
 {
     "presets":[
-        "@babel/preset-env",
-        "@babel/react"
+        ["@babel/preset-env",
+        {
+            "corejs":3,
+            "useBuiltIns":"usage"
+        }],
+        "@babel/react",
+       
+       
     ],
     "plugins":[
         "@babel/plugin-proposal-class-properties"

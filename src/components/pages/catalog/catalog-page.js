@@ -4,12 +4,13 @@ import {CaruselPage} from '../';
 import MenuCatalog from '../home/menu-catalog';
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemsLoaded,maingroupsLoaded,subgroupsLoaded} from "../../../actions";
+import {itemsLoaded,maingroupsLoaded,subgroupsLoaded,pageSizeLoaded} from "../../../actions";
 import Spiner from '../../spinner';
 
 
 const CatalogPage = ({props}) => {
 	const {main_groups, sub_groups,items} = props;
+	const urlImg ="http://goodmarket74.local/images/";
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -49,20 +50,14 @@ const CatalogPage = ({props}) => {
 					<div className="fld inline">
 						<div className="dropdown dropdown-small dropdown-med dropdown-white inline">
 							<button data-toggle="dropdown" type="button" className="btn dropdown-toggle">
-								1 <span className="caret"></span>
+								9 <span className="caret"></span>
 							</button>
 
-							<ul role="menu" className="dropdown-menu">
-								<li role="presentation"><Link to="#">1</Link></li>
-								<li role="presentation"><Link to="#">2</Link></li>
-								<li role="presentation"><Link to="#">3</Link></li>
-								<li role="presentation"><Link to="#">4</Link></li>
-								<li role="presentation"><Link to="#">5</Link></li>
-								<li role="presentation"><Link to="#">6</Link></li>
-								<li role="presentation"><Link to="#">7</Link></li>
-								<li role="presentation"><Link to="#">8</Link></li>
+							<ul role="menu" className="dropdown-menu">								
+								<li role="presentation"><Link to="#">3</Link></li>								
+								<li role="presentation"><Link to="#">6</Link></li>								
 								<li role="presentation"><Link to="#">9</Link></li>
-								<li role="presentation"><Link to="#">10</Link></li>
+								<li role="presentation"><Link to="#">12</Link></li>
 							</ul>
 						</div>
 					</div>
@@ -87,45 +82,43 @@ const CatalogPage = ({props}) => {
 						<div className="tab-pane active " id="grid-container">
 							<div className="category-product">
 								<div className="row">									
-										
-		<div className="col-sm-6 col-md-4 wow fadeInUp">
-			<div className="products">
-				
-	<div className="product">		
-		<div className="product-image">
-			<div className="image">
-				<Link to="detail.html"><img  src="assets/images/products/p5.jpg" alt=""/></Link>
-			</div>			
-
-			                        		   
-		</div>
-			
-		
-		<div className="product-info text-left">
-			<h3 className="name"><a href="detail.html">Floral Print Buttoned</a></h3>
-			
-			<div className="description"></div>
-
-			<div className="product-price">	
-				<span className="price">
-					$450.99				</span>
-										     
+								{
+									items.map((item)=>{
+										return(
+											<div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
+												<div className="products">				
+													<div className="product">		
+														<div className="product-image">
+															<div className="image">
+																<Link to="detail.html"><img  src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/></Link>
+															</div>													
+														</div>
+														<div className="product-info text-left">
+															<h3 className="name"><a href="detail.html">{item.item}</a></h3>			
+															<div className="description">							
+															</div>
+															<div className="product-price">	
+																<span className="price">
+																	{item.price} руб.
+																</span>								
+															</div>			
+														</div>
+														<div className="cart clearfix animate-effect">				
+														</div>
+													</div>      
+												</div>
+											</div>
+										)
+									})
+								}	
 									
-			</div>
-			
-		</div>
-					<div className="cart clearfix animate-effect">
-				
-			</div>
-			</div>
-      
-			</div>
-		</div>
+
+									
 	
 
 	
-			</div>
-		</div>
+								</div>
+							</div>
 		
 										
 							</div>
@@ -163,15 +156,16 @@ const CatalogPage = ({props}) => {
 };
 /*======================================================================*/
 class CatalogPageContainer extends Component {
+	
     constructor(props) {
         super();
     }
     componentDidMount() {
-
+		const {pageSize} =this.props;
         //this.props.fetchMaingroups();
         const {goodstoreService} = this.props;
 		goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
-		goodstoreService.getItems().then(this.props.itemLoaded);
+		goodstoreService.getItems(1,pageSize).then(this.props.itemLoaded);
 		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
 		
        
@@ -192,11 +186,12 @@ class CatalogPageContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ main_groups,sub_groups, items }) => {
+const mapStateToProps = ({ main_groups,sub_groups, items,pageSize }) => {
     return {
         main_groups,
 		sub_groups ,
-		items      
+		items,
+		pageSize      
     };
 }
 const mapDispathToProps = (dispath) =>{
@@ -209,6 +204,9 @@ const mapDispathToProps = (dispath) =>{
 		},
 		itemLoaded:(newItem) =>{
 			dispath(itemsLoaded(newItem));
+		},
+		pageSizeLoaded:(newPageSize) =>{
+			dispath(pageSizeLoaded(newPageSize));
 		}
     };
 };

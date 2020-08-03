@@ -1,10 +1,16 @@
 import React ,{Component} from 'react';
 import { Link} from 'react-router-dom';
 import SubCatalog from './sub-catalog';
+import Spiner from '../../../spinner';
 
-const MenuCatalog = ({main_groups,sub_groups}) => {
+const MenuCatalog = ({main_groups,sub_groups,loading}) => {
   // console.log(sub_groups);
-    return(
+  if(loading){
+      return(
+          <Spiner/>
+      );
+  }
+    return(        
         <div className="col-xs-12 col-sm-12 col-md-3 sidebar">	
             <div className="side-menu animate-dropdown outer-bottom-xs ">
                 <div className="head">

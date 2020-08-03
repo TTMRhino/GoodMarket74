@@ -4,7 +4,7 @@ import { Link,} from 'react-router-dom';
 import MenuCatalog from './menu-catalog';
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemsLoaded,maingroupsLoaded,subgroupsLoaded} from "../../../actions";
+import {itemsLoaded,maingroupsLoaded,subgroupsLoaded,itemsRequsted} from "../../../actions";
 import Spiner from '../../spinner';
 
 
@@ -13,8 +13,8 @@ import OwlCarousel from 'react-owl-carousel';
 
 
 const HomePage = ({props}) => {
-	const {main_groups, sub_groups,items} = props;
-	let items_random=[];
+	const {main_groups, sub_groups,items,loading} = props;
+	//let items_random=[];
 	const urlImg ="http://goodmarket74.local/images/";
 
 		 
@@ -31,8 +31,8 @@ const HomePage = ({props}) => {
 	console.log(items_random);*/
 
 	 
-	const style1 ={'background-image': 'url(assets/images/sliders/01.jpg)'}
-	const style2 ={'background-image': 'url(assets/images/sliders/02.jpg)'}
+	const style1 ={'backgroundImage': 'url(assets/images/sliders/01.jpg)'}
+	const style2 ={'backgroundImage': 'url(assets/images/sliders/02.jpg)'}
     return (
 		<div>
 			
@@ -40,7 +40,7 @@ const HomePage = ({props}) => {
         	<div className="container">
             <div className="row">
 				
-		<MenuCatalog main_groups={main_groups} sub_groups={sub_groups}/>
+		<MenuCatalog main_groups={main_groups} sub_groups={sub_groups} loading={loading}/>
 		
 
 	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -146,8 +146,7 @@ const HomePage = ({props}) => {
 	<OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
 		{			
-				items.map((item)=>{
-					console.log(item.id);
+				items.map((item)=>{					
 					return(
 						<div className="item" key={item.id}>
 	        	<div className="products best-product">
@@ -233,8 +232,8 @@ class HomePageContainer extends Component {
 
     render() {
 		const {loading} = this.props; 
-		//console.log(items);       
-        	if (loading){
+		       
+        	if (loading){				
            	 return <Spiner />
         	}
         return (
@@ -245,25 +244,26 @@ class HomePageContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ main_groups,sub_groups, items }) => {
+const mapStateToProps = ({ main_groups,sub_groups, items,loading }) => {
     return {
         main_groups,
 		sub_groups ,
-		items      
+		items ,
+		loading     
     };
 }
-const mapDispathToProps = (dispath) =>{
-    return{
-        maingroupLoaded:(newMaingroup) =>{
-           dispath(maingroupsLoaded(newMaingroup)) ; 
-        },
-        subgroupLoaded:(newSubgroup) =>{
-            dispath(subgroupsLoaded(newSubgroup));
-		},
-		itemLoaded:(newItem) =>{
-			dispath(itemsLoaded(newItem));
-		}
-    };
+/*const mapDispathToProps = (dispath) =>{
+	return bindActionCreators({
+		maingroupsLoaded,
+		subgroupsLoaded,
+		itemsLoaded
+	},dispath);
+	
+};*/
+const mapDispathToProps ={
+		maingroupsLoaded,
+		subgroupsLoaded,
+		itemsLoaded
 };
 
 

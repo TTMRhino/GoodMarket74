@@ -33,6 +33,23 @@ const itemsLoaded = (newItem) => {
     };
 };
 
+const itemsRequsted = () => {
+    return {
+        type: 'ITEM_REQUESTED'
+    }
+};
+
+const pageSizeLoaded = (newPageSize) => {
+    return {
+        type: 'FETCH_PAGESIZE_SUCCESS',
+        payload: newPageSize
+    };
+};
+
+
+
+
+
 const fetchMaingroups = (goodStoreService, dispatch) => () => {
 
     goodStoreService.getMaingroups()
@@ -47,5 +64,7 @@ export {
     itemsLoaded,
     fetchMaingroups,
     maingroupsLoaded,
-    subgroupsLoaded
+    subgroupsLoaded,
+    pageSizeLoaded,
+    itemsRequsted
 };
