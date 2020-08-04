@@ -4,33 +4,25 @@ import { Link,} from 'react-router-dom';
 import MenuCatalog from './menu-catalog';
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemsLoaded,maingroupsLoaded,subgroupsLoaded,itemsRequsted} from "../../../actions";
+import {dataLoaded,dataRequsted,dataError} from "../../../actions";
 import Spiner from '../../spinner';
+import ErrorIndicator from '../../error-indicator';
+
 
 
 import OwlCarousel from 'react-owl-carousel';
 
 
 
-const HomePage = ({props}) => {
-	const {main_groups, sub_groups,items,loading} = props;
-	//let items_random=[];
+const HomePage = ({props}) => {	
+	
+	const { data,loading} = props;
+	
 	const urlImg ="http://goodmarket74.local/images/";
-
 		 
 
-	/*const sss = async () =>{
-	const rndItem=[];
 
-	for (let i=0;i<6;++i){
-		await rndItem.push(items[Math.floor(Math.random()*(items.length-0)+0)]);
-	}
-	return await rndItem;
-}	
-	sss().then((data)=>this.items_random.concat(data));
-	console.log(items_random);*/
-
-	 
+	 console.log(data.main_groups);
 	const style1 ={'backgroundImage': 'url(assets/images/sliders/01.jpg)'}
 	const style2 ={'backgroundImage': 'url(assets/images/sliders/02.jpg)'}
     return (
@@ -40,7 +32,7 @@ const HomePage = ({props}) => {
         	<div className="container">
             <div className="row">
 				
-		<MenuCatalog main_groups={main_groups} sub_groups={sub_groups} loading={loading}/>
+		<MenuCatalog main_groups={data.main_groups} sub_groups={data.sub_groups} loading={loading}/>
 		
 
 	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -146,7 +138,7 @@ const HomePage = ({props}) => {
 	<OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
 		{			
-				items.map((item)=>{					
+				data.items.map((item)=>{					
 					return(
 						<div className="item" key={item.id}>
 	        	<div className="products best-product">
@@ -215,27 +207,38 @@ const HomePage = ({props}) => {
 
 
 class HomePageContainer extends Component {
+	
     constructor(props) {
         super();
     }
     componentDidMount() {
-
+	
         //this.props.fetchMaingroups();
-        const {goodstoreService} = this.props;
-		goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
-		goodstoreService.getItems().then(this.props.itemLoaded);
-		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
-		
+		const {goodstoreService,dataError} = this.props;
+		dataRequsted();
+		goodstoreService.getData().then(this.props.dataLoaded).catch((err)=>dataError(err));	
        
     }
          
 
     render() {
-		const {loading} = this.props; 
+		const {loading,error} = this.props; 
 		       
         	if (loading){				
-           	 return <Spiner />
-        	}
+           	 return (
+				<div className="container">
+					<div className="row">
+						<Spiner className=" d-flex justify-content-center"/>	
+					</div>
+				</div>
+					);
+			}
+			
+			if(error){
+				return(
+					<ErrorIndicator/>
+				);
+			}
         return (
             <HomePage  props={this.props} />
 
@@ -244,26 +247,20 @@ class HomePageContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ main_groups,sub_groups, items,loading }) => {
-    return {
-        main_groups,
-		sub_groups ,
-		items ,
-		loading     
+const mapStateToProps = ({loading,data,error }) => {
+    return {      
+		data,
+		loading,
+		error		    
     };
 }
-/*const mapDispathToProps = (dispath) =>{
-	return bindActionCreators({
-		maingroupsLoaded,
-		subgroupsLoaded,
-		itemsLoaded
-	},dispath);
+
 	
-};*/
+
 const mapDispathToProps ={
-		maingroupsLoaded,
-		subgroupsLoaded,
-		itemsLoaded
+		dataLoaded,
+		dataRequsted,
+		dataError
 };
 
 

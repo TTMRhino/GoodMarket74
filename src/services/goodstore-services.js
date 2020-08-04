@@ -12,21 +12,15 @@ export default class GoodstoreServices {
         return body;
     };
 
-    async getItems(sub_group = 0, pageSize = 3) {
-        console.log(`items?pageSize=${pageSize}&sub_group=${sub_group}`);
+    async getData(sub_group = 0, pageSize = 3) {
         /*&per-page=1000*/
-        return await this.getRecourse(`items?pageSize=${pageSize}&sub_group=${sub_group}`);
+        let data = new Object();
+        data.items = await this.getRecourse(`items?pageSize=${pageSize}&sub_group=${sub_group}`);
+        data.main_groups = await this.getRecourse(`maingroup`);
+        data.sub_groups = await this.getRecourse(`subgroup`);
+
+        return data;
     };
-
-    getMaingroups = async() => {
-        const data = await this.getRecourse(`maingroup`);
-        return data;
-    }
-
-    getSubgroups = async() => {
-        const data = await this.getRecourse(`subgroup`);
-        return data;
-    }
 
 
 }

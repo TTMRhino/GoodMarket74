@@ -4,12 +4,13 @@ import {CaruselPage} from '../';
 import MenuCatalog from '../home/menu-catalog';
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemsLoaded,maingroupsLoaded,subgroupsLoaded,pageSizeLoaded} from "../../../actions";
+import {dataLoaded,pageSizeLoaded} from "../../../actions";
 import Spiner from '../../spinner';
 
 
 const CatalogPage = ({props}) => {
-	const {main_groups, sub_groups,items} = props;
+	const {data} = props;
+	console.log(data);
 	const urlImg ="http://goodmarket74.local/images/";
     return (
     <div> 
@@ -17,7 +18,7 @@ const CatalogPage = ({props}) => {
         <div className="container">
             <div className="row">
 
-			<MenuCatalog main_groups={main_groups} sub_groups={sub_groups}/>
+			<MenuCatalog main_groups={data.main_groups} sub_groups={data.sub_groups}/>
 
 
 <div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
@@ -83,7 +84,7 @@ const CatalogPage = ({props}) => {
 							<div className="category-product">
 								<div className="row">									
 								{
-									items.map((item)=>{
+									data.items.map((item)=>{
 										return(
 											<div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
 												<div className="products">				
@@ -161,12 +162,10 @@ class CatalogPageContainer extends Component {
         super();
     }
     componentDidMount() {
-		const {pageSize} =this.props;
+		
         //this.props.fetchMaingroups();
-        const {goodstoreService} = this.props;
-		goodstoreService.getMaingroups().then(this.props.maingroupLoaded);
-		goodstoreService.getItems(1,pageSize).then(this.props.itemLoaded);
-		goodstoreService.getSubgroups().then(this.props.subgroupLoaded);
+        const {goodstoreService,pageSize} = this.props;
+		goodstoreService.getData(1,pageSize).then(this.props.dataLoaded);
 		
        
     }
@@ -174,7 +173,7 @@ class CatalogPageContainer extends Component {
 
     render() {
 		const {loading} = this.props; 
-		//console.log(items);       
+		     
         	if (loading){
            	 return <Spiner />
         	}
@@ -186,30 +185,18 @@ class CatalogPageContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ main_groups,sub_groups, items,pageSize }) => {
+const mapStateToProps = ({ pageSize,data }) => {
     return {
-        main_groups,
-		sub_groups ,
-		items,
+       	data,
 		pageSize      
     };
 }
-const mapDispathToProps = (dispath) =>{
-    return{
-        maingroupLoaded:(newMaingroup) =>{
-           dispath(maingroupsLoaded(newMaingroup)) ; 
-        },
-        subgroupLoaded:(newSubgroup) =>{
-            dispath(subgroupsLoaded(newSubgroup));
-		},
-		itemLoaded:(newItem) =>{
-			dispath(itemsLoaded(newItem));
-		},
-		pageSizeLoaded:(newPageSize) =>{
-			dispath(pageSizeLoaded(newPageSize));
-		}
-    };
+
+	const mapDispathToProps ={	
+		dataLoaded,
+		pageSizeLoaded
 };
+
 
 
 export default withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(CatalogPageContainer));

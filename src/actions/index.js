@@ -1,43 +1,32 @@
-/*const itemsLoaded = (newItems) => {
-    return {
-        type: 'ITEMS_LOADED',
-        payload: newItems
-    }
+/*const fetchMaingroups = (goodStoreService, dispatch) => () => {
+
+    goodStoreService.getMaingroups()
+        .then((dataMaingroups) => dispatch(maingroupsLoaded(dataMaingroups)))
+        .catch((err) => {
+            dispatch(maingroupsError(err));
+            console.error('Could not fetch Main Group', err);
+        });
 };*/
 
-const maingroupsError = (error) => {
+const dataLoaded = (newData) => {
     return {
-        type: 'FETCH_MAINGROUPS_FAILURE',
-        payload: error
+        type: 'FETCH_DATA_SUCCESS',
+        payload: newData
     };
 };
-
-const maingroupsLoaded = (newMaingroup) => {
+const dataRequsted = () => {
     return {
-        type: 'FETCH_MAINGROUPS_SUCCESS',
-        payload: newMaingroup
-    };
-};
-
-const subgroupsLoaded = (newSubgroup) => {
-    return {
-        type: 'FETCH_SUBGROUPS_SUCCESS',
-        payload: newSubgroup
-    };
-};
-
-const itemsLoaded = (newItem) => {
-    return {
-        type: 'FETCH_ITEMS_SUCCESS',
-        payload: newItem
-    };
-};
-
-const itemsRequsted = () => {
-    return {
-        type: 'ITEM_REQUESTED'
+        type: 'DATA_REQUESTED'
     }
 };
+
+const dataError = (error) => {
+    return {
+        type: 'DATA_ERROR',
+        payload: error
+    }
+};
+
 
 const pageSizeLoaded = (newPageSize) => {
     return {
@@ -46,25 +35,9 @@ const pageSizeLoaded = (newPageSize) => {
     };
 };
 
-
-
-
-
-const fetchMaingroups = (goodStoreService, dispatch) => () => {
-
-    goodStoreService.getMaingroups()
-        .then((dataMaingroups) => dispatch(maingroupsLoaded(dataMaingroups)))
-        .catch((err) => {
-            dispatch(maingroupsError(err));
-            console.error('Could not fetch Main Group', err);
-        });
-};
-
 export {
-    itemsLoaded,
-    fetchMaingroups,
-    maingroupsLoaded,
-    subgroupsLoaded,
     pageSizeLoaded,
-    itemsRequsted
+    dataLoaded,
+    dataRequsted,
+    dataError
 };

@@ -2086,10 +2086,11 @@ header {
     margin-right: 12px;
 }
 
-.sidebar .side-menu nav .nav>li>a:hover,
+
+/*.sidebar .side-menu nav .nav>li>a:hover,
 .sidebar .side-menu nav .nav>li>a:focus {
     background: #fff;
-}
+}*/
 
 .sidebar .side-menu nav .nav>li>a:hover .icon,
 .sidebar .side-menu nav .nav>li>a:focus .icon {
