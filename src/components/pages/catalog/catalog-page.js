@@ -7,12 +7,13 @@ import {connect} from "react-redux";
 import {dataLoaded,pageSizeLoaded} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
+import Pagin from './pagination';
 
 
 const CatalogPage = ({props}) => {
 	const {data} = props;
-	//console.log(data);
-	const urlImg ="http://goodmarket74.local/images/";
+	
+	//const urlImg ="http://goodmarket74.local/images/";
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -66,18 +67,9 @@ const CatalogPage = ({props}) => {
 				</div>
 			</div>
 		</div>
-		<div className="col col-sm-6 col-md-4 text-right">
-			<div className="pagination-container">
-	<ul className="list-inline list-unstyled">
-		<li className="prev"><Link to="#"><i className="fa fa-angle-left"></i></Link></li>
-		<li><Link to="#">1</Link></li>	
-		<li className="active"><Link to="#">2</Link></li>	
-		<li><Link to="#">3</Link></li>	
-		<li><Link to="#">4</Link></li>	
-		<li className="next"><Link to="#"><i className="fa fa-angle-right"></i></Link></li>
-	</ul>
-</div>
-	</div>
+
+		
+	
 </div>
 				<div className="search-result-container ">
 					<div id="myTabContent" className="tab-content category-list">
@@ -85,33 +77,7 @@ const CatalogPage = ({props}) => {
 							<div className="category-product">
 								<div className="row">									
 								{
-									data.items.map((item)=>{
-										return(
-											<div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
-												<div className="products">				
-													<div className="product">		
-														<div className="product-image">
-															<div className="image">
-																<Link to="detail.html"><img  src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/></Link>
-															</div>													
-														</div>
-														<div className="product-info text-left">
-															<h3 className="name"><a href="detail.html">{item.item}</a></h3>			
-															<div className="description">							
-															</div>
-															<div className="product-price">	
-																<span className="price">
-																	{item.price} руб.
-																</span>								
-															</div>			
-														</div>
-														<div className="cart clearfix animate-effect">				
-														</div>
-													</div>      
-												</div>
-											</div>
-										)
-									})
+									<Pagin data={data}/>
 								}	
 									
 
@@ -165,10 +131,11 @@ class CatalogPageContainer extends Component {
     componentDidMount() {
 		const {history, match,goodstoreService,pageSize} = this.props;
         const { id } = match.params;		
-		console.log("DidMount");
+		
         //this.props.fetchMaingroups();
-       
-		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);		      
+       console.log('Page Size = '+pageSize);
+		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
+		console.log(this.props.data);	      
 	}
 	
 	

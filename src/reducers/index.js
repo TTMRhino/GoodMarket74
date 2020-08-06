@@ -6,7 +6,7 @@ const initialState = {
     },
     loading: true,
     error: null,
-    pageSize: 9
+    pageSize: 0
 };
 
 const reducer = (state = initialState, action) => {

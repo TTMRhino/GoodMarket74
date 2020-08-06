@@ -13,7 +13,7 @@ export default class GoodstoreServices {
     };
 
     async getData(sub_group = 0, pageSize = 3) {
-        /*&per-page=1000*/
+
         let data = new Object();
         data.items = await this.getRecourse(`items?pageSize=${pageSize}&sub_group=${sub_group}`);
         data.main_groups = await this.getRecourse(`maingroup`);
