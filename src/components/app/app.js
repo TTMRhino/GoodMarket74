@@ -14,8 +14,8 @@ const App = () =>{
             <Route path="/" component={ HomePage }   exact/>
 
             <Route path="/cart" component={ CartPage } />
-
-            <Route path="/catalog" component={ CatalogPage } />
+           
+            <Route path="/catalog/:id?" component={ CatalogPage } />
 
             <Route path="/contact" component={ ContactPage } />
         </Switch>

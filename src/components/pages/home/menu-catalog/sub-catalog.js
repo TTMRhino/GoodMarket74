@@ -9,7 +9,7 @@ const SubCatalog = ({sub_groups}) => {
                  
                         <ul className="links list-unstyled " key={sub_group.id}>  
                             <li>
-                                <Link className="" to="#">{sub_group.title}</Link>
+                                <Link className="" to={"/catalog/"+ sub_group.id}>{sub_group.title}</Link>
                             </li>
                         </ul> 
                     

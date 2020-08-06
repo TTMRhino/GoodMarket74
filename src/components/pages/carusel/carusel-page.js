@@ -17,42 +17,42 @@ const CaruselPage = () => {
 
             <div className="item  center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img  src="assets/images/brands/brand1.png" alt=""/>
+                    <img  src="/assets/images/brands/brand1.png" alt=""/>
                 </Link>
             </div>
            
 
             <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img src="assets/images/brands/brand2.png" alt=""/>
+                    <img src="/assets/images/brands/brand2.png" alt=""/>
                 </Link>
             </div>
           
 
             <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img  src="assets/images/brands/brand3.png" alt=""/>
+                    <img  src="/assets/images/brands/brand3.png" alt=""/>
                 </Link>
             </div>
            
 
             <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img  src="assets/images/brands/brand4.png" alt=""/>
+                    <img  src="/assets/images/brands/brand4.png" alt=""/>
                 </Link>
             </div>
           
 
             <div className="item center-block"  style={style_width}>
                 <Link to="#" className="image">
-                    <img  src="assets/images/brands/brand5.png" alt=""/>
+                    <img  src="/assets/images/brands/brand5.png" alt=""/>
                 </Link>
             </div>
           
 
             <div className="item center-block" style={style_width}>
                 <Link to="#" className="image">
-                    <img  src="assets/images/brands/brand6.png" alt=""/>
+                    <img  src="/assets/images/brands/brand6.png" alt=""/>
                 </Link>
             </div>           
             

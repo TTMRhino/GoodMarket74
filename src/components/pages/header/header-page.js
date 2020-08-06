@@ -19,7 +19,7 @@ const HeaderPage = () => {
                     <div className="col-xs-12 col-sm-12 col-md-3 logo-holder">                            
                         <div className="logo">
                             <Link to="/">                                    
-                                <img src="assets/images/logo.png" alt=""/>                            
+                                <img src="/assets/images/logo.png" alt=""/>                            
                             </Link>
                         </div>
                         </div>       

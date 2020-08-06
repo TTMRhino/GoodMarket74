@@ -6,11 +6,12 @@ import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
 import {dataLoaded,pageSizeLoaded} from "../../../actions";
 import Spiner from '../../spinner';
+import { withRouter } from 'react-router-dom';
 
 
 const CatalogPage = ({props}) => {
 	const {data} = props;
-	console.log(data);
+	//console.log(data);
 	const urlImg ="http://goodmarket74.local/images/";
     return (
     <div> 
@@ -162,17 +163,29 @@ class CatalogPageContainer extends Component {
         super();
     }
     componentDidMount() {
-		
+		const {history, match,goodstoreService,pageSize} = this.props;
+        const { id } = match.params;		
+		console.log("DidMount");
         //this.props.fetchMaingroups();
-        const {goodstoreService,pageSize} = this.props;
-		goodstoreService.getData(1,pageSize).then(this.props.dataLoaded);
-		
        
-    }
-         
+		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);		      
+	}
+	
+	
+		componentDidUpdate(prevProps, prevState, snapshot) {
+			
+			const {history, match,goodstoreService,pageSize} = this.props;
+			const { id } = match.params;
+
+			if (this.props.match.url !== prevProps.match.url) {
+				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);
+			}
+		};
+	         
 
     render() {
 		const {loading} = this.props; 
+		
 		     
         	if (loading){
            	 return <Spiner />
@@ -199,5 +212,5 @@ const mapStateToProps = ({ pageSize,data }) => {
 
 
 
-export default withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(CatalogPageContainer));
+export default withRouter(withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(CatalogPageContainer)));
 
