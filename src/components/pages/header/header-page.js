@@ -66,16 +66,6 @@ const HeaderPage = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
                                 <div className="header-nav animate-dropdown">
                                     <div className="container">
                                         <div className="yamm navbar navbar-default" role="navigation">

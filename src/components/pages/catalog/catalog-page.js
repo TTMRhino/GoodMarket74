@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import {dataLoaded,pageSizeLoaded} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
-import Pagin from './pagination';
+import Pagin from './pagination/pagin';
 
 
 const CatalogPage = ({props}) => {
@@ -76,39 +76,20 @@ const CatalogPage = ({props}) => {
 						<div className="tab-pane active " id="grid-container">
 							<div className="category-product">
 								<div className="row">									
-								{
-									<Pagin data={data}/>
-								}	
-									
-
-									
-	
-
-	
+								
+									<div className="clearfix filters-container">						
+										<div className="text-right">
+											<div className="pagination-container">
+												<Pagin data={data}/>
+											</div>
+										</div>
+									</div>								
 								</div>
-							</div>
-		
-										
-							</div>
+							</div>									
 						</div>
 					</div>
-					<div className="clearfix filters-container">
-						
-							<div className="text-right">
-						         <div className="pagination-container">
-	<ul className="list-inline list-unstyled">
-		<li className="prev"><Link to="#"><i className="fa fa-angle-left"></i></Link></li>
-		<li><Link to="#">1</Link></li>	
-		<li className="active"><Link to="#">2</Link></li>	
-		<li><Link to="#">3</Link></li>	
-		<li><Link to="#">4</Link></li>	
-		<li className="next"><Link to="#"><i className="fa fa-angle-right"></i></Link></li>
-	</ul>
-</div>
-						
-					</div>
-
 				</div>
+					
     </div>
     </div>
 
@@ -133,9 +114,9 @@ class CatalogPageContainer extends Component {
         const { id } = match.params;		
 		
         //this.props.fetchMaingroups();
-       console.log('Page Size = '+pageSize);
+       //console.log('Page Size = '+pageSize);
 		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
-		console.log(this.props.data);	      
+			      
 	}
 	
 	

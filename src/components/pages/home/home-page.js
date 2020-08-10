@@ -17,12 +17,14 @@ import OwlCarousel from 'react-owl-carousel';
 const HomePage = ({props}) => {	
 	
 	const { data,loading} = props;
-	
+
+	//оставляем для ТОП продаж 3 обьекта
+	const topItems=data.items.slice(0,3);	
+	console.log(topItems);
+
 	const urlImg ="http://goodmarket74.local/images/";
 		 
 
-
-	 console.log(data.main_groups);
 	const style1 ={'backgroundImage': 'url(assets/images/sliders/01.jpg)'}
 	const style2 ={'backgroundImage': 'url(assets/images/sliders/02.jpg)'}
     return (
@@ -138,7 +140,8 @@ const HomePage = ({props}) => {
 	<OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
 		{			
-				data.items.map((item)=>{					
+				topItems.map((item)=>{
+									
 					return(
 						<div className="item" key={item.id}>
 	        	<div className="products best-product">
@@ -178,14 +181,7 @@ const HomePage = ({props}) => {
 			
 			
 		}
-				
-		
-		
-	        
-
-	
-
-</OwlCarousel>
+		</OwlCarousel>
 
 </div>
 </div>	 
@@ -212,13 +208,14 @@ class HomePageContainer extends Component {
         super();
     }
     componentDidMount() {
-	
+		
         //this.props.fetchMaingroups();
 		const {goodstoreService,dataError} = this.props;
 		dataRequsted();
-		goodstoreService.getData().then(this.props.dataLoaded).catch((err)=>dataError(err));	
-       
-    }
+		
+		goodstoreService.getData().then(this.props.dataLoaded).catch((err)=>dataError(err));       
+	}
+	
          
 
     render() {
