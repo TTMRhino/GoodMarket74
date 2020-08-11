@@ -3,8 +3,15 @@ import { Link} from 'react-router-dom';
 import SubCatalog from './sub-catalog';
 import Spiner from '../../../spinner';
 
-const MenuCatalog = ({main_groups,sub_groups,loading}) => {
-  // console.log(sub_groups);
+import withGoodstoreService from '../../../hoc/with-goodstore-service';
+import {connect} from "react-redux";
+import {dataLoaded,pageSizeLoaded,dataError} from "../../../../actions";
+import { withRouter } from 'react-router-dom';
+
+const MenuCatalog = ({props}) => {
+    const {data} = props;
+    const  {main_groups,sub_groups,loading} = data;
+
   if(loading){
       return(
           <Spiner/>
@@ -23,7 +30,18 @@ const MenuCatalog = ({main_groups,sub_groups,loading}) => {
                                 const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
                                     
                                 return(
-                                        <ul className="dropright nav" key={main_group.id}> 
+                                        <div>
+                                            <div class="btn-group dropright">
+                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Dropright
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            
+                                                        </div>
+                                                        </div>
+                                        <ul className="dropright " key={main_group.id}>                                          
+
+
                                             <li  className=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
                                                 <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
                                                 
@@ -41,6 +59,7 @@ const MenuCatalog = ({main_groups,sub_groups,loading}) => {
                                                 </li>	        	
                                             </ul>                                                  
                                         </ul> 
+                                        </div>
                                     );
                                 }) 
                             }       			
@@ -53,4 +72,69 @@ const MenuCatalog = ({main_groups,sub_groups,loading}) => {
 
 
 
-export default MenuCatalog;
+/*======================================================================*/
+class MenuCatalogContainer extends Component {
+	
+    constructor(props) {
+        super();
+    }
+    componentDidMount() {
+		const {history, match,goodstoreService,pageSize} = this.props;
+        const { id } = match.params;		
+		
+     
+		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
+		
+			      
+	}
+	
+	
+		componentDidUpdate(prevProps, prevState, snapshot) {
+			
+			const {history, match,goodstoreService,pageSize} = this.props;
+			const { id } = match.params;
+			
+			if (this.props.match.url !== prevProps.match.url) {
+				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);
+			}
+		};
+	         
+
+    render() {
+		const {loading} = this.props; 
+		
+		     
+        if (loading){				
+            return (
+            <div className="container">
+                <div className="row">
+                    <Spiner className=" d-flex justify-content-center"/>	
+                </div>
+            </div>
+                );
+        }
+        return (
+            <MenuCatalog  props={this.props} />
+
+        );
+    }
+}
+
+/*===================================================================================================================*/
+const mapStateToProps = ({loading, pageSize,data }) => {
+    return {
+       	data,
+        pageSize,
+        loading      
+    };
+}
+
+	const mapDispathToProps ={	
+		dataLoaded,
+		pageSizeLoaded
+};
+
+
+
+export default withRouter(withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(MenuCatalogContainer)));
+

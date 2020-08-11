@@ -1,18 +1,12 @@
-import React,{ useState, Component,useEffect } from 'react';
+import React,{ useState } from 'react';
 import Pagination from 'react-paginating';
-import { Link} from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 import _ from 'lodash';
 
-import withGoodstoreService from '../../../hoc/with-goodstore-service';
-import {connect} from "react-redux";
-import {dataLoaded,pageSizeLoaded,dataError,dataRequsted} from "../../../../actions";
-import Spiner from '../../../spinner';
-import { withRouter } from 'react-router-dom';
 
+const Pagin = ({data}) => {
+  
 
-const Pagin = ({props}) => {
-    const {data} = props;
-    
   const [currentPage, setcurrentPage] = useState(1);
   
 
@@ -23,18 +17,13 @@ const Pagin = ({props}) => {
     const limit = 2;
     const pageCount = 9;    
 
-    console.log(data);
-
+    
     const items = _.chunk(data.items,pageCount); 
     const total = items.length * limit; 
    
     
 
     const urlImg ="http://goodmarket74.local/images/";
-
-    useEffect(()=>{
-        console.log("USE EFFECT");
-    });
     return (
         
       <div>     
@@ -149,79 +138,6 @@ const Pagin = ({props}) => {
   
 }
 
-/*======================================================================*/
-class PaginContainer extends Component {
-	
-    constructor(props) {
-        super();
-    }
-
-    componentDidMount() {
-		const {history, match,goodstoreService,pageSize} = this.props;
-        const { id } = match.params;
-        
-        dataRequsted();
-       
-		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
-        
-        console.log("страница Pagin DidMount!");
-      
-			      
-	}
-	
-	
-		componentDidUpdate(prevProps, prevState, snapshot) {
-			
-			const {history, match, goodstoreService, pageSize} = this.props;
-			const { id } = match.params;
-			
-			if (this.props.match.url !== prevProps.match.url) {
-				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));
-            }
-            
-            console.log("страница Pagin DidUpdate!");
-		};
-	         
-
-    render() {
-		const {loading} = this.props; 
-		
-		     
-        if (loading){				
-            return (
-            <div className="container">
-                <div className="row">
-                    <Spiner className=" d-flex justify-content-center"/>	
-                </div>
-            </div>
-                );
-        }
-        return (
-            <Pagin  props={this.props} />
-
-        );
-    }
-}
-
-/*===================================================================================================================*/
-const mapStateToProps = ({ loading,pageSize,data,error }) => {
-    return {
-       	data,
-        pageSize,
-        error ,
-        loading     
-    };
-}
-
-	const mapDispathToProps ={	
-		dataLoaded,
-        pageSizeLoaded,
-        dataError,
-        dataRequsted
-};
-
-
-
-export default withRouter(withGoodstoreService()(connect(mapStateToProps,mapDispathToProps)(PaginContainer)));
+export default Pagin;
 
 
