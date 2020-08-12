@@ -1,4 +1,4 @@
-import React,{ useState, Component,useEffect } from 'react';
+import React,{ useState, Component } from 'react';
 import Pagination from 'react-paginating';
 import { Link} from 'react-router-dom';
 import _ from 'lodash';
@@ -21,10 +21,9 @@ const Pagin = ({props}) => {
   };
 
     const limit = 2;
-    const pageCount = 9;    
+    const pageCount = 9;   
 
-    console.log(data);
-
+    
     const items = _.chunk(data.items,pageCount); 
     const total = items.length * limit; 
    
@@ -32,13 +31,86 @@ const Pagin = ({props}) => {
 
     const urlImg ="http://goodmarket74.local/images/";
 
-    useEffect(()=>{
-        console.log("USE EFFECT");
-    });
+  
     return (
         
-      <div>     
-        
+      <div>
+
+<Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
+          {({
+            pages,
+            currentPage,
+            hasNextPage,
+            hasPreviousPage,
+            previousPage,
+            nextPage,
+            totalPages,
+            getPageItemProps
+          }) => (
+            <div>
+              <button
+                {...getPageItemProps({
+                  pageValue: 1,
+                  onPageChange: handlePageChange
+                })}
+              >
+                first
+              </button>
+
+              {hasPreviousPage && (
+                <button
+                  {...getPageItemProps({
+                    pageValue: previousPage,
+                    onPageChange: handlePageChange
+                  })}
+                >
+                  {'<'}
+                </button>
+              )}
+
+              {pages.map(page => {
+                let activePage = null;
+                if (currentPage === page) {
+                  activePage = { backgroundColor: '#fdce09' };
+                }
+                return (
+                  <button
+                    key={page}
+                    style={activePage}
+                    {...getPageItemProps({
+                      pageValue: page,
+                      onPageChange: handlePageChange
+                    })}
+                  >
+                    {page}
+                  </button>
+                );
+              })}
+
+              {hasNextPage && (
+                <button
+                  {...getPageItemProps({
+                    pageValue: nextPage,
+                    onPageChange: handlePageChange
+                  })}
+                >
+                  {'>'}
+                </button>
+              )}
+
+              <button
+                {...getPageItemProps({
+                  pageValue: totalPages,
+                  onPageChange: handlePageChange
+                })}
+              >
+                last
+              </button>
+            </div>
+          )}
+        </Pagination>
+
+
         {items[currentPage - 1].map(item => 
 
               <div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
@@ -46,11 +118,11 @@ const Pagin = ({props}) => {
                 <div className="product">		
                   <div className="product-image">
                     <div className="image">
-                      <Link to="detail.html"><img  src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/></Link>
+                      <Link to={'/detail/'+ item.id}><img  src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/></Link>
                     </div>													
                   </div>
                   <div className="product-info text-left">
-                    <h3 className="name"><a href="detail.html">{item.item}</a></h3>			
+                    <h3 className="name"><Link to={'/detail/'+ item.id}>{item.item}</Link></h3>			
                     <div className="description">							
                     </div>
                     <div className="product-price">	
@@ -164,9 +236,7 @@ class PaginContainer extends Component {
        
 		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
         
-        console.log("страница Pagin DidMount!");
-      
-			      
+       
 	}
 	
 	
@@ -178,8 +248,7 @@ class PaginContainer extends Component {
 			if (this.props.match.url !== prevProps.match.url) {
 				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));
             }
-            
-            console.log("страница Pagin DidUpdate!");
+          
 		};
 	         
 

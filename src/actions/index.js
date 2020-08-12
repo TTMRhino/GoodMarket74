@@ -27,6 +27,26 @@ const dataError = (error) => {
     }
 };
 
+// Загрузка одного item`а
+const itemLoaded = (newItem) => {
+    return {
+        type: 'FETCH_ITEM_SUCCESS',
+        payload: newItem
+    };
+};
+const itemRequsted = () => {
+    return {
+        type: 'ITEM_REQUESTED'
+    }
+};
+
+const itemError = (error) => {
+    return {
+        type: 'ITEM_ERROR',
+        payload: error
+    }
+};
+
 
 const pageSizeLoaded = (newPageSize) => {
     return {
@@ -39,5 +59,9 @@ export {
     pageSizeLoaded,
     dataLoaded,
     dataRequsted,
-    dataError
+    dataError,
+    /*=======*/
+    itemLoaded,
+    itemRequsted,
+    itemError,
 };

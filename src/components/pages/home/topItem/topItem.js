@@ -14,7 +14,7 @@ const TopItem = ({ props }) => {
 
 	//оставляем для ТОП продаж 3 обьекта
 	const topItems=data.items.slice(0,3);	
-    console.log(topItems);
+    
 
     const urlImg ="http://goodmarket74.local/images/";
 

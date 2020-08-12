@@ -4,5 +4,6 @@ import CatalogPage from './catalog/catalog-page';
 import ContactPage from './contact/contact-page';
 import HeaderPage from './header/header-page';
 import CaruselPage from './carusel/carusel-page';
+import Detail from './detail/detail-page';
 
-export { HomePage, CartPage, CatalogPage, ContactPage, HeaderPage, CaruselPage }
+export { HomePage, CartPage, CatalogPage, ContactPage, HeaderPage, CaruselPage, Detail }

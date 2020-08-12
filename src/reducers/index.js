@@ -4,6 +4,7 @@ const initialState = {
         main_groups: [],
         sub_groups: [],
     },
+    item: {},
     loading: true,
     error: null,
     pageSize: 0
@@ -32,7 +33,32 @@ const reducer = (state = initialState, action) => {
                 error: action.paload,
             };
 
+            //================== ITEM ============================
 
+
+        case 'ITEM_LOADED':
+            return {
+                ...state,
+                item: action.payload,
+                loading: false,
+                error: null,
+            };
+        case 'ITEM_REQUESTED':
+            return {
+                item: [],
+                loading: true,
+                error: null,
+            };
+        case 'ITEM_ERROR':
+            return {
+                item: [],
+                loading: false,
+                error: action.paload,
+            };
+
+
+
+            /*====================================================*/
 
 
         case 'PAGESIZE_LOADED':
@@ -55,6 +81,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 data: action.payload,
+                loading: false,
+                error: null
+            };
+
+        case 'FETCH_ITEM_SUCCESS':
+            return {
+                ...state,
+                item: action.payload,
                 loading: false,
                 error: null
             };

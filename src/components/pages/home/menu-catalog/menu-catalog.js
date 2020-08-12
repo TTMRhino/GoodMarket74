@@ -18,7 +18,8 @@ const MenuCatalog = ({props}) => {
       );
   }
     return(        
-        <div className="col-xs-12 col-sm-12 col-md-3 sidebar">	
+        <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
+            
             <div className="side-menu animate-dropdown outer-bottom-xs ">
                 <div className="head">
                     <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
@@ -30,18 +31,8 @@ const MenuCatalog = ({props}) => {
                                 const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
                                     
                                 return(
-                                        <div>
-                                            <div class="btn-group dropright">
-                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                            Dropright
-                                                        </button>
-                                                        <div class="dropdown-menu">
-                                                            
-                                                        </div>
-                                                        </div>
-                                        <ul className="dropright " key={main_group.id}>                                          
-
-
+                                        <ul className="dropright nav" key={main_group.id}> 
+                                                
                                             <li  className=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
                                                 <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
                                                 
@@ -59,7 +50,6 @@ const MenuCatalog = ({props}) => {
                                                 </li>	        	
                                             </ul>                                                  
                                         </ul> 
-                                        </div>
                                     );
                                 }) 
                             }       			

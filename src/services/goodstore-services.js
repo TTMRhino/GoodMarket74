@@ -12,6 +12,11 @@ export default class GoodstoreServices {
         return body;
     };
 
+    async getItem(id = 1) {
+        const item = await this.getRecourse(`items/${id}`);
+        return item;
+    }
+
     async getData(sub_group = 0, pageSize = 3) {
 
         let data = {};
