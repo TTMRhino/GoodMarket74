@@ -31,7 +31,7 @@ const Pagin = ({props}) => {
 
     const urlImg ="http://goodmarket74.local/images/";
 
-  
+ 
     return (
         
       <div>
@@ -47,7 +47,7 @@ const Pagin = ({props}) => {
             totalPages,
             getPageItemProps
           }) => (
-            <div>
+            <div className="lbl-cnt text-center">
               <button
                 {...getPageItemProps({
                   pageValue: 1,
@@ -109,7 +109,7 @@ const Pagin = ({props}) => {
             </div>
           )}
         </Pagination>
-
+       
 
         {items[currentPage - 1].map(item => 
 
@@ -139,8 +139,7 @@ const Pagin = ({props}) => {
         
         )}
         
-
-
+                
                      
 
         <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
@@ -153,8 +152,8 @@ const Pagin = ({props}) => {
             nextPage,
             totalPages,
             getPageItemProps
-          }) => (
-            <div>
+          }) => (             
+            <div className="lbl-cnt text-center ">
               <button
                 {...getPageItemProps({
                   pageValue: 1,

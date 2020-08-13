@@ -16,7 +16,7 @@ const TopItem = ({ props }) => {
 	const topItems=data.items.slice(0,3);	
     
 
-    const urlImg ="http://goodmarket74.local/images/";
+    const url ="http://goodmarket74.local/";
 
     return (
             <div>
@@ -33,17 +33,17 @@ const TopItem = ({ props }) => {
                 <div className="product-micro">
                     <div className="row product-micro-row">
                         <div className="col col-xs-5">
-                            <div className="product-image">
+                            <div className="">
                                 <div className="image">
-                                    <Link to="#">
-                                        <img src={urlImg + 'l'+item.vendor +'.jpg'} alt="" />
+                                    <Link to={"detail/"+item.id}>
+                                        <img src={url + 'images/l'+item.vendor +'.jpg'} alt="" />
                                     </Link>					
                                 </div>				
                             </div>
                         </div>
                         <div className="col2 col-xs-7">
                             <div className="product-info">
-                                <h3 className="name"><Link to="#">{item.item}</Link></h3>
+                                <h3 className="name"><Link to={"detail/"+item.id}>{item.item}</Link></h3>
                                 <div className="rating rateit-small">											
                                 </div>
                                 <div className="product-price">	

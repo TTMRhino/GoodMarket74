@@ -19,7 +19,48 @@ const MenuCatalog = ({props}) => {
   }
     return(        
         <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
-            
+
+
+
+            <div className="side-menu animate-dropdown outer-bottom-xs ">
+                <div className="head">
+                    <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
+                </div>
+
+                <div id="accordion">
+                {
+                            main_groups.map((main_group)=>{
+                         
+                                const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
+                                    
+                                return(
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                {main_group.title}
+                                                </button>
+                                            </h5>
+                                            </div>
+
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                    субменю
+                                            </div>
+                                            </div>
+                                        </div>
+                                          );
+                                        }) 
+                                    }      
+                    
+                </div>     
+                    
+            </div>
+       
+
+
+
+
             <div className="side-menu animate-dropdown outer-bottom-xs ">
                 <div className="head">
                     <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
@@ -31,14 +72,14 @@ const MenuCatalog = ({props}) => {
                                 const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
                                     
                                 return(
-                                        <ul className="dropright nav" key={main_group.id}> 
+                                        <ul className="dropright  nav" key={main_group.id}> 
                                                 
                                             <li  className=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
                                                 <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
                                                 
                                             </li>  
 
-                                            <ul className="dropdown-menu mega-menu" >
+                                            <ul className="dropdown-menu mega-menu dropdown-small-down" >
                                                 <li className=" ">
                                                     <div className="row ">
                                                         <div className="col-sm-12 col-md-12">
