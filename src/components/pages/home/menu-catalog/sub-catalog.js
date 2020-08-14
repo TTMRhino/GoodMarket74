@@ -6,12 +6,13 @@ const SubCatalog = ({sub_groups}) => {
     return(
         sub_groups.map((sub_group)=>{
             return (
-                 
-                        <ul className="links list-unstyled " key={sub_group.id}>  
-                            <li>
-                                <Link className="" to={"/catalog/"+ sub_group.id}>{sub_group.title}</Link>
+                <Link className="" to={"/catalog/"+ sub_group.id}>
+                        <ul className="links list-unstyled sub_menu" key={sub_group.id}>  
+                            <li>                            
+                                {sub_group.title}
                             </li>
                         </ul> 
+                </Link>
                     
                     
                     ); }

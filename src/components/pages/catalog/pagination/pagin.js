@@ -29,7 +29,7 @@ const Pagin = ({props}) => {
    
     
 
-    const urlImg ="http://goodmarket74.local/images/";
+    const urlImg ="http://goodmarket74.local/api/web/images/";
 
  
     return (

@@ -16,7 +16,7 @@ const TopItem = ({ props }) => {
 	const topItems=data.items.slice(0,3);	
     
 
-    const url ="http://goodmarket74.local/";
+    const url ="http://goodmarket74.local/api/web/images/";
 
     return (
             <div>
@@ -36,7 +36,7 @@ const TopItem = ({ props }) => {
                             <div className="">
                                 <div className="image">
                                     <Link to={"detail/"+item.id}>
-                                        <img src={url + 'images/l'+item.vendor +'.jpg'} alt="" />
+                                        <img src={url + 'l'+item.vendor +'.jpg'} alt="" />
                                     </Link>					
                                 </div>				
                             </div>

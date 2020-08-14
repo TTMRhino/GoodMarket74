@@ -2068,7 +2068,7 @@ header {
 
 .sidebar .side-menu nav .arrows_menu:after {
     color: #bababa;
-    content: "\f105";
+    content: "\f107";
     float: right;
     font-size: 12px;
     height: 20px;
@@ -7030,4 +7030,22 @@ header {
 .my-20 {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.sub_menu {
+    color: #66667a;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    font-size: 1.3rem;
+    text-align: justify;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #0000001f;
+}
+
+.sub_menu:hover {
+    background-color: #0f6cb2;
+    color: white;
 }

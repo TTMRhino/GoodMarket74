@@ -1,6 +1,6 @@
 export default class GoodstoreServices {
 
-    _apiBase = "http://goodmarket74.local/";
+    _apiBase = "http://goodmarket74.local/api/web/";
 
     getRecourse = async(url) => {
         const res = await fetch(`${this._apiBase}${url}`);
