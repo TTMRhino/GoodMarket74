@@ -110,7 +110,7 @@ const Pagin = ({props}) => {
           )}
         </Pagination>
        
-
+        <div className="pagination-container">
         {items[currentPage - 1].map(item => 
 
               <div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
@@ -131,18 +131,19 @@ const Pagin = ({props}) => {
                       </span>								
                     </div>			
                   </div>
-                  <div className="cart clearfix animate-effect">				
+                  <div className="cart clearfix animate-effect ">				
                   </div>
                 </div>      
               </div>
               </div>
         
         )}
+         </div>
         
                 
                      
 
-        <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
+        <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage} className="pagin">
           {({
             pages,
             currentPage,
@@ -214,8 +215,10 @@ const Pagin = ({props}) => {
               </button>
             </div>
           )}
-        </Pagination>
+        </Pagination> 
       </div>
+      
+     
     );
   
 }
@@ -262,6 +265,7 @@ class PaginContainer extends Component {
                     <Spiner className=" d-flex justify-content-center"/>	
                 </div>
             </div>
+            
                 );
         }
         return (

@@ -69,11 +69,11 @@ const CatalogPage = () => {
 							<div className="category-product">
 								<div className="row">									
 								
-									<div className="clearfix filters-container">						
+									<div className="clearfix filters-container ">						
 										<div className="text-right">
-											<div className="pagination-container">
+											
 												<Pagin />
-											</div>
+											
 										</div>
 									</div>								
 								</div>

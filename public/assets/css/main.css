@@ -7019,7 +7019,7 @@ header {
 /*===================================================================================*/
 
 
-/*  LHS banners
+/*  МОЕ
 /*===================================================================================*/
 
 .home-banner {
@@ -7039,7 +7039,7 @@ header {
     padding-bottom: 5%;
     padding-top: 5%;
     font-size: 1.3rem;
-    text-align: justify;
+    /* text-align: justify;*/
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: #0000001f;
@@ -7048,4 +7048,23 @@ header {
 .sub_menu:hover {
     background-color: #0f6cb2;
     color: white;
+}
+
+.pagin {
+    width: 100%;
+    position: absolute;
+    left: 2%;
+    bottom: 0;
+}
+
+.products {
+    height: 300px;
+}
+
+.category-product {
+    padding-bottom: 5%;
+}
+
+.filters-container {
+    padding-bottom: 2%;
 }
