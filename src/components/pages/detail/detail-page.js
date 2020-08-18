@@ -4,14 +4,14 @@ import CaruselPage from '../carusel/carusel-page';
 
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemLoaded,pageSizeLoaded,itemError,itemRequsted} from "../../../actions";
+import {itemLoaded,itemError,itemRequsted} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
 
 
 const Detail = ({props}) => {
-    const {item} = props;
- 
+    const {item, onAddedToProps} = props;
+ console.log(props);
     const urlImg ="http://goodmarket74.local/api/web/images/";
     return (
 
@@ -78,13 +78,17 @@ const Detail = ({props}) => {
 								                  <div className="arrow plus gradient"><span className="ir"><i className="icon fa fa-sort-asc"></i></span></div>
 								                  <div className="arrow minus gradient"><span className="ir"><i className="icon fa fa-sort-desc"></i></span></div>
 								                </div>
-								                <input type="text" value="1"/>
+								                <input type="text" value={1}/>
 							              </div>
 							            </div>
 									</div>
 
 									<div className="col-sm-7">
-										<Link to="#" className="btn btn-primary"><i className="fa fa-shopping-cart inner-right-vs"></i> Добавить в Корзину</Link>
+										<Link to="#" className="btn btn-primary" onClick={()=>onAddedToProps(item.id)}>
+											<i className="fa fa-shopping-cart inner-right-vs">
+											</i> 
+											Добавить в Корзину
+										</Link>
 									</div>
 
 									
@@ -161,10 +165,14 @@ const mapStateToProps = ({ loading,item,error }) => {
     };
 }
 
-	const mapDispathToProps ={	
+	const mapDispathToProps ={
+	
 		itemLoaded,      
-        itemError,
-        //dataRequsted
+		itemError,
+		onAddedToProps:()=>console.log(`AddedToCart`),
+		
+		//dataRequsted
+	
 };
 
 

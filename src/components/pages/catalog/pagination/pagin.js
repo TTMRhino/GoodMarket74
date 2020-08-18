@@ -13,6 +13,7 @@ import { withRouter } from 'react-router-dom';
 const Pagin = ({props}) => {
     const {data} = props;
     
+    
   const [currentPage, setcurrentPage] = useState(1);
   
 
@@ -31,10 +32,13 @@ const Pagin = ({props}) => {
 
     const urlImg ="http://goodmarket74.local/api/web/images/";
 
- 
+  const onError = () =>{
+
+    return console.log('OnError');
+  }
     return (
         
-      <div>
+      <div>       
 
 <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
           {({
@@ -118,7 +122,10 @@ const Pagin = ({props}) => {
                 <div className="product">		
                   <div className="product-image">
                     <div className="image">
-                      <Link to={'/detail/'+ item.id}><img  src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/></Link>
+
+                      <Link to={'/detail/'+ item.id} >
+                        <img className="imgItem" src={urlImg + "l"+ item.vendor + ".jpg"}  alt=""/>
+                      </Link>
                     </div>													
                   </div>
                   <div className="product-info text-left">

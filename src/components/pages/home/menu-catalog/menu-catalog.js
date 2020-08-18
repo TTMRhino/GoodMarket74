@@ -40,7 +40,7 @@ const MenuCatalog = ({props}) => {
                                                 <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag " aria-hidden="true"></i> {main_group.title} </Link>
                                                 </li>                                           
                                             
-                                            <div id={"collapseOne"+main_group.id} className="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div id={"collapseOne"+main_group.id} className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
                                                 
                                                     <SubCatalog sub_groups={data} />
                                                
@@ -54,46 +54,7 @@ const MenuCatalog = ({props}) => {
                 </nav>     
                     
             </div>
-       
-
-
-
-
-            {/*<div className="side-menu animate-dropdown outer-bottom-xs ">
-                <div className="head">
-                    <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
-                </div>        
-                    <nav className="yamm megamenu-horizontal" role="navigation">                    
-                        {
-                            main_groups.map((main_group)=>{
-                         
-                                const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
-                                    
-                                return(
-                                        <ul className="dropright  nav" key={main_group.id}> 
-                                                
-                                            <li  className=" dropdown-toggle px-3 " data-toggle={data.length===0?"":"dropdown"} aria-haspopup="true"aria-expanded="false">                            
-                                                <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag" aria-hidden="true"></i> {main_group.title} </Link>                        
-                                                
-                                            </li>  
-
-                                            <ul className="dropdown-menu mega-menu dropdown-small-down" >
-                                                <li className=" ">
-                                                    <div className="row ">
-                                                        <div className="col-sm-12 col-md-12">
-
-                                                        <SubCatalog sub_groups={data} />
-                                                         
-                                                        </div>
-                                                    </div>            
-                                                </li>	        	
-                                            </ul>                                                  
-                                        </ul> 
-                                    );
-                                }) 
-                            }       			
-                    </nav>
-                        </div>*/}
+     
         </div>
     );
 };
@@ -108,11 +69,12 @@ class MenuCatalogContainer extends Component {
         super();
     }
     componentDidMount() {
+        
 		const {history, match,goodstoreService,pageSize} = this.props;
-        const { id } = match.params;		
+        const { id } = match.params;	
 		
      
-		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);	
+		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));	
 		
 			      
 	}
@@ -158,10 +120,11 @@ const mapStateToProps = ({loading, pageSize,data }) => {
     };
 }
 
-	const mapDispathToProps ={	
-		dataLoaded,
-		pageSizeLoaded
+const mapDispathToProps ={	
+	dataLoaded,
+	pageSizeLoaded
 };
+
 
 
 

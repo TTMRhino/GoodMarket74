@@ -7,7 +7,12 @@ const initialState = {
     item: {},
     loading: true,
     error: null,
-    pageSize: 0
+    pageSize: 0,
+    cartItems: [
+        { id: 1, item: "ffffffffffff", count: 3, price: 50, total: 150 },
+        { id: 2, item: "xxxxxxx", count: 1, price: 50, total: 50 }
+    ],
+    orderTotal: 220
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,28 +38,6 @@ const reducer = (state = initialState, action) => {
                 error: action.paload,
             };
 
-            //================== ITEM ============================
-
-
-        case 'ITEM_LOADED':
-            return {
-                ...state,
-                item: action.payload,
-                loading: false,
-                error: null,
-            };
-        case 'ITEM_REQUESTED':
-            return {
-                item: [],
-                loading: true,
-                error: null,
-            };
-        case 'ITEM_ERROR':
-            return {
-                item: [],
-                loading: false,
-                error: action.paload,
-            };
 
 
 

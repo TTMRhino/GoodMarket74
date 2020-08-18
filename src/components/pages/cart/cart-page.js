@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {connect} from "react-redux";
 
-const CartPage = () => {
+const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => {
     return (
         <div>
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -20,7 +21,7 @@ const CartPage = () => {
                                 <th className="cart-romove item">Удалить</th>
                                 <th className="cart-description item">Картинка</th>
                                 <th className="cart-product-name item">Наименование</th>
-                                <th className="cart-edit item">Изменить</th>
+                                
                                 <th className="cart-qty item">Количество</th>
                                 <th className="cart-sub-total item">Сумма</th>
                                 <th className="cart-total last-item">Всего</th>
@@ -31,60 +32,63 @@ const CartPage = () => {
 
                         <tbody>
 
-
-
-
-
-                        <tr>
-                            <td className="romove-item"><Link to="#" title="cancel" className="icon"><i className="fa fa-trash-o"></i></Link></td>
+						{
+							cartItems.map((item, idx)=>{
+								return (
+									<tr key={item.id}>
+                            <td className="romove-item">
+								<Link to="#" title="cancel" className="icon" onClick={() =>onDelete(item.id)}>
+									<i className="fa fa-trash-o"></i>
+								</Link>
+							</td>
                             <td className="cart-image">
                                 <Link className="entry-thumbnail" to="detail.html">
                                     <img src="assets/images/products/p1.jpg" alt=""/>
                                 </Link>
                             </td>
                             <td className="cart-product-name-info">
-                                <h4 className='cart-product-description'><a href="detail.html">Floral Print Buttoned</a></h4>
+                                <h4 className='cart-product-description'><a href="detail.html">{item.item}</a></h4>
                                 <div className="row">
                                     <div className="col-sm-4">
                                         <div className="rating rateit-small"></div>
                                     </div>
-                                    <div className="col-sm-8">
-                                        <div className="reviews">
-                                            (06 Reviews)
-                                        </div>
-                                    </div>
+                                    
                                 </div>
-                                <div className="cart-product-info">
-                                                    <span className="product-color">COLOR:<span>Blue</span></span>
-                                </div>
+                              
                             </td>
                             
-                            <td className="cart-product-edit">
-                                <Link to="#" className="product-edit">Edit</Link>
-                            </td>
+                          
 
                             <td className="cart-product-quantity">
                                 <div className="quant-input">
-                                        <div className="arrows">
-                                        <div className="arrow plus gradient">
-                                            <span className="ir"><i className="icon fa fa-sort-asc"></i></span>
+                                    <div className="arrows">
+
+                                        <div className="arrow plus gradient" onClick={() =>onIncrease(item.id)}>
+                                            <span className="ir">
+												<i className="icon fa fa-sort-asc"></i>
+											</span>
                                         </div>
-                                        <div className="arrow minus gradient"><span className="ir"><i className="icon fa fa-sort-desc"></i></span></div>
-                                        </div>
+
+                                        <div className="arrow minus gradient" onClick={() =>onDecrease(item.id)}>
+											<span className="ir">
+												<i className="icon fa fa-sort-desc">
+													</i>
+												</span>
+										</div>
+
+
+                                	</div>
                                         <input type="text" value="1"/>
                                 </div>
                             </td>
-                            <td className="cart-product-sub-total"><span className="cart-sub-total-price">$300.00</span></td>
-                            <td className="cart-product-grand-total"><span className="cart-grand-total-price">$300.00</span></td>
+								<td className="cart-product-sub-total"><span className="cart-sub-total-price">{item.price}</span></td>
+								<td className="cart-product-grand-total"><span className="cart-grand-total-price">{item.total}</span></td>
 				        </tr>
+								)
+							})
+						}
 
-
-
-
-
-
-
-
+                        
 
                         </tbody>
 			              
@@ -184,4 +188,24 @@ const CartPage = () => {
     );
 };
 
-export default CartPage;
+const mapStateToProps = ({cartItems,orderTotal}) =>{
+	return{
+		cartItems,
+		orderTotal
+	};
+}
+
+const mapDispatchToProps = () =>{
+	return{
+		onIncrease:(id) =>{
+			console.log(`Increase ${id}`);
+		},
+		onDecrease:(id) =>{
+			console.log(`Decrease ${id}`);
+		},
+		onDelete:(id) =>{
+			console.log(`Delete ${id}`);
+		}
+	}
+}
+export default connect(mapStateToProps,mapDispatchToProps)(CartPage);
