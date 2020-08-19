@@ -78,7 +78,7 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 
 
                                 	</div>
-                                        <input type="text" value="1"/>
+                                        <input type="text" value={item.count}/>
                                 </div>
                             </td>
 								<td className="cart-product-sub-total"><span className="cart-sub-total-price">{item.price}</span></td>

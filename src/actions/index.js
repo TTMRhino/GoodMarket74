@@ -48,15 +48,23 @@ const itemError = (error) => {
 };
 
 
-const pageSizeLoaded = (newPageSize) => {
+export const pageSizeLoaded = (newPageSize) => {
     return {
         type: 'FETCH_PAGESIZE_SUCCESS',
         payload: newPageSize
     };
 };
 
+/*========================== CART  OPERATIONS==================*/
+
+export const itemAddedToCart = (itemId) => {
+    return {
+        type: 'ITEM_ADDED_TO_CART',
+        payload: itemId
+    };
+};
+
 export {
-    pageSizeLoaded,
     dataLoaded,
     dataRequsted,
     dataError,

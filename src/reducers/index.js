@@ -9,8 +9,7 @@ const initialState = {
     error: null,
     pageSize: 0,
     cartItems: [
-        { id: 1, item: "ffffffffffff", count: 3, price: 50, total: 150 },
-        { id: 2, item: "xxxxxxx", count: 1, price: 50, total: 50 }
+
     ],
     orderTotal: 220
 };
@@ -76,8 +75,47 @@ const reducer = (state = initialState, action) => {
                 error: null
             };
 
+            /*============CART OPERATIONS================== */
+        case 'ITEM_ADDED_TO_CART':
+            const itemId = action.payload;
+            const item = state.data.items.find((item) => item.id === itemId);
+            const itemIndex = state.cartItems.findIndex(({ id }) => id === itemId);
+            const cartItem = state.cartItems[itemIndex];
+
+            const newItem = updateCartItem(item, cartItem);
+            return {
+                ...state,
+                cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
+            }
+
         default:
             return state;
+    }
+};
+
+const updateCartItems = (cartItems, item, idx) => {
+    if (idx === -1) {
+        return [
+            ...cartItems,
+            item
+        ]
+    }
+
+    return [
+        ...cartItems.slice(0, idx),
+        item,
+        ...cartItems.slice(idx + 1)
+    ]
+};
+
+const updateCartItem = (item, cartItem = {}) => {
+    const { id = item.id, item_ = item.item, count = 0, total = 0 } = cartItem;
+
+    return {
+        id,
+        item: item_,
+        count: count + 1,
+        total: total + item.price
     }
 };
 

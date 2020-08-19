@@ -4,14 +4,14 @@ import CaruselPage from '../carusel/carusel-page';
 
 import withGoodstoreService from '../../hoc/with-goodstore-service';
 import {connect} from "react-redux";
-import {itemLoaded,itemError,itemRequsted} from "../../../actions";
+import {itemLoaded,itemError,itemRequsted,itemAddedToCart} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
 
 
 const Detail = ({props}) => {
-    const {item, onAddedToProps} = props;
- console.log(props);
+    const {item, onAddedToCart} = props;
+
     const urlImg ="http://goodmarket74.local/api/web/images/";
     return (
 
@@ -84,11 +84,11 @@ const Detail = ({props}) => {
 									</div>
 
 									<div className="col-sm-7">
-										<Link to="#" className="btn btn-primary" onClick={()=>onAddedToProps(item.id)}>
+										<button to="#" className="btn btn-primary" onClick={()=>onAddedToCart(item.id)}>
 											<i className="fa fa-shopping-cart inner-right-vs">
 											</i> 
 											Добавить в Корзину
-										</Link>
+										</button>
 									</div>
 
 									
@@ -169,7 +169,7 @@ const mapStateToProps = ({ loading,item,error }) => {
 	
 		itemLoaded,      
 		itemError,
-		onAddedToProps:()=>console.log(`AddedToCart`),
+		onAddedToCart:(id)=>itemAddedToCart(id),	
 		
 		//dataRequsted
 	
