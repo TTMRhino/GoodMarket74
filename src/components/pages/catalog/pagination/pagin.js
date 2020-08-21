@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom';
 
 const Pagin = ({props}) => {
     const {data} = props;
-    
+ 
     
   const [currentPage, setcurrentPage] = useState(1);
   

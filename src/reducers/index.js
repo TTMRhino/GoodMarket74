@@ -4,13 +4,12 @@ const initialState = {
         main_groups: [],
         sub_groups: [],
     },
+
     item: {},
     loading: true,
     error: null,
     pageSize: 0,
-    cartItems: [
-
-    ],
+    cartItems: [],
     orderTotal: 220
 };
 
@@ -50,8 +49,6 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: null,
             };
-
-
         case 'FETCH_ITEMS_SUCCESS':
             return {
                 ...state,
@@ -76,17 +73,15 @@ const reducer = (state = initialState, action) => {
             };
 
             /*============CART OPERATIONS================== */
-        case 'ITEM_ADDED_TO_CART':
-            const itemId = action.payload;
-            const item = state.data.items.find((item) => item.id === itemId);
-            const itemIndex = state.cartItems.findIndex(({ id }) => id === itemId);
-            const cartItem = state.cartItems[itemIndex];
+        case 'ITEM_REMOVED_FROM_CART':
+            return updateOrder(state, action.payload, -1);
 
-            const newItem = updateCartItem(item, cartItem);
-            return {
-                ...state,
-                cartItems: updateCartItems(state.cartItems, newItem, itemIndex)
-            }
+        case 'ALL_ITEMS_REMOVED_FROM_CART':
+            const item = state.cartItems.find(({ id }) => id === action.payload);
+            return updateOrder(state, action.payload, -item.count);
+
+        case 'ITEM_ADDED_TO_CART':
+            return updateOrder(state, action.payload, 1);
 
         default:
             return state;
@@ -94,6 +89,14 @@ const reducer = (state = initialState, action) => {
 };
 
 const updateCartItems = (cartItems, item, idx) => {
+
+    if (item.count === 0) {
+        return [
+            ...cartItems.slice(0, idx),
+            ...cartItems.slice(idx + 1)
+        ];
+    }
+
     if (idx === -1) {
         return [
             ...cartItems,
@@ -108,15 +111,47 @@ const updateCartItems = (cartItems, item, idx) => {
     ]
 };
 
-const updateCartItem = (item, cartItem = {}) => {
-    const { id = item.id, item_ = item.item, count = 0, total = 0 } = cartItem;
+const updateCartItem = (item_, cartItem = {}, quantity) => {
+    const {
+        id = item_.id,
+            vendor = item_.vendor,
+            item = item_.item,
+            price = item_.price,
+            count = 0,
+            total = 0
+    } = cartItem;
 
     return {
         id,
-        item: item_,
-        count: count + 1,
-        total: total + item.price
+        vendor,
+        item,
+        price,
+        count: count + quantity,
+        total: total + quantity * price
     }
 };
+
+const updateOrder = (state, itemId, quantity) => {
+    const { cartItems, data } = state;
+
+
+    let item; //если товара нет в отобранных группах смотрим в корзине (он там точно должен быть)
+    if (data.items.find((item) => item.id === itemId)) {
+        item = data.items.find((item) => item.id === itemId);
+    } else {
+        item = cartItems.find((item) => item.id === itemId);
+    }
+
+    const itemIndex = cartItems.findIndex(({ id }) => id === itemId);
+    const cartItem = cartItems[itemIndex];
+    //const cartItemPrice = cartItems.price;
+
+    const newItem = updateCartItem(item, cartItem, quantity);
+
+    return {
+        ...state,
+        cartItems: updateCartItems(cartItems, newItem, itemIndex)
+    }
+}
 
 export default reducer;

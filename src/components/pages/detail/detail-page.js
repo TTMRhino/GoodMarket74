@@ -12,7 +12,8 @@ import { withRouter } from 'react-router-dom';
 const Detail = ({props}) => {
     const {item, onAddedToCart} = props;
 
-    const urlImg ="http://goodmarket74.local/api/web/images/";
+	const urlImg ="http://goodmarket74.local/api/web/images/";
+	
     return (
 
 <div className='container'>
@@ -157,7 +158,7 @@ class DetailContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ loading,item,error }) => {
+const mapStateToProps = ({loading,item,error} ) => {
     return {
        	item,        
         error ,

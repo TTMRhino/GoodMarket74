@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
+import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart } from "../../../actions";
 
 const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => {
+	const urlImg ="http://goodmarket74.local/api/web/images/";
     return (
         <div>
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -42,9 +44,9 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 								</Link>
 							</td>
                             <td className="cart-image">
-                                <Link className="entry-thumbnail" to="detail.html">
-                                    <img src="assets/images/products/p1.jpg" alt=""/>
-                                </Link>
+                                <a className="entry-thumbnail" href={urlImg + "l"+ item.vendor + ".jpg"}>
+                                    <img src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/>
+                                </a>
                             </td>
                             <td className="cart-product-name-info">
                                 <h4 className='cart-product-description'><a href="detail.html">{item.item}</a></h4>
@@ -195,17 +197,11 @@ const mapStateToProps = ({cartItems,orderTotal}) =>{
 	};
 }
 
-const mapDispatchToProps = () =>{
-	return{
-		onIncrease:(id) =>{
-			console.log(`Increase ${id}`);
-		},
-		onDecrease:(id) =>{
-			console.log(`Decrease ${id}`);
-		},
-		onDelete:(id) =>{
-			console.log(`Delete ${id}`);
-		}
-	}
+const mapDispatchToProps = {
+
+		onIncrease:itemAddedToCart,
+		onDecrease:itemRemovedFromCart,
+		onDelete:allItemRemoveFromCart 
+	
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CartPage);

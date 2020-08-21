@@ -1,13 +1,3 @@
-/*const fetchMaingroups = (goodStoreService, dispatch) => () => {
-
-    goodStoreService.getMaingroups()
-        .then((dataMaingroups) => dispatch(maingroupsLoaded(dataMaingroups)))
-        .catch((err) => {
-            dispatch(maingroupsError(err));
-            console.error('Could not fetch Main Group', err);
-        });
-};*/
-
 const dataLoaded = (newData) => {
     return {
         type: 'FETCH_DATA_SUCCESS',
@@ -63,6 +53,25 @@ export const itemAddedToCart = (itemId) => {
         payload: itemId
     };
 };
+
+//=======================Удаление 1 товара==================
+
+export const itemRemovedFromCart = (itemId) => {
+    return {
+        type: 'ITEM_REMOVED_FROM_CART',
+        payload: itemId
+    };
+};
+
+//=======================Удаление всего товара==================
+
+export const allItemRemoveFromCart = (itemId) => {
+    return {
+        type: 'ALL_ITEMS_REMOVED_FROM_CART',
+        payload: itemId
+    };
+};
+
 
 export {
     dataLoaded,
