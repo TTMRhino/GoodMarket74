@@ -113,26 +113,20 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 				<tr>
 					<td>
 						<div className="form-group">
-							<label className="info-title control-label">Country <span>*</span></label>
-							<select className="form-control unicase-form-control selectpicker">
-								<option>--Select options--</option>
-								<option>India</option>
-								<option>SriLanka</option>
-								<option>united kingdom</option>
-								<option>saudi arabia</option>
-								<option>united arab emirates</option>
-							</select>
+							<label className="info-title control-label">ФИО <span>*</span></label>
+							<input className="form-control unicase-form-control selectpicker"/>							
+						</div>
+						<div className="form-group col-md-6">
+							<label className="info-title control-label">Телефон <span>*</span></label>
+							<input className="form-control unicase-form-control selectpicker"/>																					
+						</div>
+						<div className="form-group col-md-6">
+							<label className="info-title control-label">Индекс <span>*</span></label>
+							<input className="form-control unicase-form-control selectpicker"/>																					
 						</div>
 						<div className="form-group">
-							<label className="info-title control-label">State/Province <span>*</span></label>
-							<select className="form-control unicase-form-control selectpicker">
-								<option>--Select options--</option>
-								<option>TamilNadu</option>
-								<option>Kerala</option>
-								<option>Andhra Pradesh</option>
-								<option>Karnataka</option>
-								<option>Madhya Pradesh</option>
-							</select>
+							<label className="info-title control-label">Адрес <span>*</span></label>
+							<input className="form-control unicase-form-control selectpicker"/>								
 						</div>
 						
 						
@@ -154,10 +148,10 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 			<tr>
 				<th>
 					<div className="cart-sub-total">
-						Сумма<span className="inner-left-md">$600.00</span>
+						Сумма<span className="inner-left-md">{orderTotal}</span>
 					</div>
 					<div className="cart-grand-total">
-						Всего<span className="inner-left-md">$600.00</span>
+					Всего<span className="inner-left-md">{orderTotal}</span>
 					</div>
 				</th>
 			</tr>

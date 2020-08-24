@@ -68,7 +68,7 @@ const Detail = ({props}) => {
 							<div className="quantity-container info-container">
 								<div className="row">
 									
-									<div className="col-sm-2">
+									{/*<div className="col-sm-2">
 										<span className="label">Количесво :</span>
 									</div>
 									
@@ -82,7 +82,7 @@ const Detail = ({props}) => {
 								                <input type="text" value={1}/>
 							              </div>
 							            </div>
-									</div>
+									</div>*/}
 
 									<div className="col-sm-7">
 										<button to="#" className="btn btn-primary" onClick={()=>onAddedToCart(item.id)}>

@@ -1,4 +1,4 @@
-import React,{ useState, Component } from 'react';
+import React,{ useState, Component,useEffect } from 'react';
 import Pagination from 'react-paginating';
 import { Link} from 'react-router-dom';
 import _ from 'lodash';
@@ -12,14 +12,16 @@ import { withRouter } from 'react-router-dom';
 
 const Pagin = ({props}) => {
     const {data} = props;
- 
+  console.log(props);
     
-  const [currentPage, setcurrentPage] = useState(1);
-  
+  const [currentPage, setcurrentPage] = useState(1);  
 
+  
    const handlePageChange =page =>{ 
     setcurrentPage(page);
+    
   };
+
 
     const limit = 2;
     const pageCount = 9;   
@@ -235,9 +237,11 @@ class PaginContainer extends Component {
 	
     constructor(props) {
         super();
+
     }
 
     componentDidMount() {
+     
 		const {history, match,goodstoreService,pageSize} = this.props;
         const { id } = match.params;
         
@@ -250,7 +254,7 @@ class PaginContainer extends Component {
 	
 	
 		componentDidUpdate(prevProps, prevState, snapshot) {
-			
+		
 			const {history, match, goodstoreService, pageSize} = this.props;
 			const { id } = match.params;
 			

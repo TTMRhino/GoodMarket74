@@ -10,7 +10,8 @@ const initialState = {
     error: null,
     pageSize: 0,
     cartItems: [],
-    orderTotal: 220
+    orderTotal: 0,
+    orderCount: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -144,13 +145,20 @@ const updateOrder = (state, itemId, quantity) => {
 
     const itemIndex = cartItems.findIndex(({ id }) => id === itemId);
     const cartItem = cartItems[itemIndex];
-    //const cartItemPrice = cartItems.price;
 
     const newItem = updateCartItem(item, cartItem, quantity);
 
+    //Высчитываем ИТОГО сумму    
+    const total = (newItem.price * quantity) + state.orderTotal;
+    //Итого колличества товара
+    // const count = count + quantity;
+
     return {
         ...state,
-        cartItems: updateCartItems(cartItems, newItem, itemIndex)
+        cartItems: updateCartItems(cartItems, newItem, itemIndex),
+        orderTotal: total,
+        orderCount: state.orderCount + quantity
+
     }
 }
 

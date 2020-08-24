@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link,NavLink } from 'react-router-dom';
+import {connect} from "react-redux";
+//import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart } from "../../../actions";
 
 
-const HeaderPage = () => {
+const HeaderPage = ({orderTotal, orderCount}) => {
     return (
         <header className="header-style-1">
 
@@ -44,12 +46,12 @@ const HeaderPage = () => {
                                                 <i className="glyphicon glyphicon-shopping-cart"></i>
                                             </div>
                                             <div className="basket-item-count">
-                                                <span className="count">2</span>
+                                                <span className="count">{orderCount}</span>
                                             </div>
                                             <div className="total-price-basket">
                                                 <span className="lbl">Итог: </span>
                                                 <span className="total-price">
-                                                    <span className="sign"></span><span className="value">1200.00</span>
+                                                    <span className="sign"></span><span className="value">{orderTotal}</span>
                                                 </span>
                                             </div>                   
                                         </div>
@@ -117,5 +119,18 @@ const HeaderPage = () => {
         
     );
 }
+const mapStateToProps = ({cartItems,orderTotal,orderCount}) =>{
+	return{
+		cartItems,
+        orderTotal,
+        orderCount
+	};
+}
 
-export default HeaderPage;
+const mapDispatchToProps = {
+
+	
+	
+}
+export default connect(mapStateToProps,mapDispatchToProps)(HeaderPage);
+//export default HeaderPage;

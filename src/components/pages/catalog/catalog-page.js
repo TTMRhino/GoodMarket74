@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {CaruselPage} from '../';
 import MenuCatalog from '../home/menu-catalog';
@@ -6,6 +6,10 @@ import Pagin from './pagination/pagin';
 
 
 const CatalogPage = () => {	
+	
+	useEffect(() => {    
+		console.log('ssssssssssss');
+	  });
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -72,7 +76,7 @@ const CatalogPage = () => {
 									<div className="clearfix filters-container ">						
 										<div className="text-right">
 											
-												<Pagin />
+												<Pagin currentPage={1}/>
 											
 										</div>
 									</div>								
