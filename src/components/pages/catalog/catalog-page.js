@@ -5,11 +5,9 @@ import MenuCatalog from '../home/menu-catalog';
 import Pagin from './pagination/pagin';
 
 
-const CatalogPage = () => {	
-	
-	useEffect(() => {    
-		console.log('ssssssssssss');
-	  });
+class CatalogPage extends Component {
+
+	render(){		
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -76,7 +74,7 @@ const CatalogPage = () => {
 									<div className="clearfix filters-container ">						
 										<div className="text-right">
 											
-												<Pagin currentPage={1}/>
+												<Pagin/>
 											
 										</div>
 									</div>								
@@ -97,7 +95,8 @@ const CatalogPage = () => {
 	</div>
 	</div>
    
-    );
+	);
+}
 };
 
 export default CatalogPage;

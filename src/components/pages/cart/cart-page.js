@@ -121,12 +121,25 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 							<input className="form-control unicase-form-control selectpicker"/>																					
 						</div>
 						<div className="form-group col-md-6">
-							<label className="info-title control-label">Индекс <span>*</span></label>
+							<label className="info-title control-label">Индекс </label>
 							<input className="form-control unicase-form-control selectpicker"/>																					
+						</div>
+						<div className="form-group">
+							<label className="info-title control-label">Город <span>*</span></label>
+							<select className="form-control unicase-form-control selectpicker">	
+							<option>Челябинск</option>
+							<option>Миасс</option>
+							</select>							
 						</div>
 						<div className="form-group">
 							<label className="info-title control-label">Адрес <span>*</span></label>
 							<input className="form-control unicase-form-control selectpicker"/>								
+						</div>
+						<div className="form-group">
+							<label className="info-title control-label">Коментарий </label>							
+							<textarea className="form-control unicase-form-control selectpicker" 
+							rows="7" cols="45" name="text">
+							</textarea>							
 						</div>
 						
 						
