@@ -11,7 +11,8 @@ const initialState = {
     pageSize: 0,
     cartItems: [],
     orderTotal: 0,
-    orderCount: 0
+    orderCount: 0,
+    deliver: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -84,6 +85,15 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_ADDED_TO_CART':
             return updateOrder(state, action.payload, 1);
 
+        case 'ADD_DELIVER':
+
+            return {
+                ...state,
+                console: null,
+                loading: false,
+                deliver: action.payload
+            }
+
         default:
             return state;
     }
@@ -119,7 +129,7 @@ const updateCartItem = (item_, cartItem = {}, quantity) => {
             item = item_.item,
             price = item_.price,
             count = 0,
-            total = 0
+            total = 0,
     } = cartItem;
 
     return {
@@ -151,7 +161,7 @@ const updateOrder = (state, itemId, quantity) => {
     //Высчитываем ИТОГО сумму    
     const total = (newItem.price * quantity) + state.orderTotal;
     //Итого колличества товара
-    // const count = count + quantity;
+
 
     return {
         ...state,

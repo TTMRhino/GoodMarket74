@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
-import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart } from "../../../actions";
+import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart,deliverAdd } from "../../../actions";
 
-const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => {
+import { useForm } from "react-hook-form";
+
+const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDelete,onDeliver}) => {
 	const urlImg ="http://goodmarket74.local/api/web/images/";
+console.log(`deliver = `+deliver);
+	//пердупреждение о повышенных тарифах (для определенных городов)
+	const [ displaView, setView ] = useState('none')
+	const onChangeHandler = (event) =>{
+		console.log(event.target.value);
+		if (event.target.value === 'Миасс'){
+			setView('block');
+			onDeliver(100);
+		}else{
+			setView('none');
+			onDeliver(0);
+		}
+		
+	}
+
+	//валидация формы
+	const { register, handleSubmit, watch, errors } = useForm();
+	  const onSubmit = data => console.log(data);
+	  
+
     return (
         <div>
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -112,38 +134,60 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 		<tbody>
 				<tr>
 					<td>
+					<form onSubmit={handleSubmit(onSubmit)}>
 						<div className="form-group">
+
 							<label className="info-title control-label">ФИО <span>*</span></label>
-							<input className="form-control unicase-form-control selectpicker"/>							
+							<input name="name" ref={register({ required: true, maxLength: 50,pattern: /^[A-Za-z]+$/i,minLength: 4 })} 
+							className="form-control unicase-form-control selectpicker"/>
+							{errors.name && <span className="text-danger">Введите корректное имя и фамилию!</span>}
+
 						</div>
 						<div className="form-group col-md-6">
+
 							<label className="info-title control-label">Телефон <span>*</span></label>
-							<input className="form-control unicase-form-control selectpicker"/>																					
+							<input name="phone" ref={register({ required: true, maxLength: 15,pattern: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){5,14}(\s*)?$/i,minLength: 4 })} 
+							className="form-control unicase-form-control selectpicker"/>
+							{errors.phone && <span className="text-danger">Введите корректный номер телефона!</span>}	
+
 						</div>
 						<div className="form-group col-md-6">
 							<label className="info-title control-label">Индекс </label>
-							<input className="form-control unicase-form-control selectpicker"/>																					
+							<input name="mailIndex" ref={register({maxLength:20})}
+							className="form-control unicase-form-control selectpicker"/>																					
 						</div>
 						<div className="form-group">
+
 							<label className="info-title control-label">Город <span>*</span></label>
-							<select className="form-control unicase-form-control selectpicker">	
-							<option>Челябинск</option>
-							<option>Миасс</option>
-							</select>							
+							<select name="city" ref={register({ required: true })}
+								className="form-control unicase-form-control selectpicker"
+								onChange={onChangeHandler} >
+							<option></option>	
+							<option value="Челябинск">Челябинск</option>
+							<option value="Миасс">Миасс</option>
+							</select>
+							{errors.city && <span className="text-danger">Выберети город!</span>}
+
 						</div>
 						<div className="form-group">
+
 							<label className="info-title control-label">Адрес <span>*</span></label>
-							<input className="form-control unicase-form-control selectpicker"/>								
+							<input name="adress" ref={register({ required: true,maxLength:30,minLength: 5 })}
+							className="form-control unicase-form-control selectpicker"/>
+							{errors.adress && <span className="text-danger">Введите корректный адрес!</span>}								
 						</div>
+
 						<div className="form-group">
 							<label className="info-title control-label">Коментарий </label>							
-							<textarea className="form-control unicase-form-control selectpicker" 
-							rows="7" cols="45" name="text">
-							</textarea>							
+							<textarea name="comments" ref={register({ maxLength:200 })}
+							className="form-control unicase-form-control selectpicker" 
+							rows="7" cols="45">
+							</textarea>	
+							{errors.comments && <span className="text-danger">Не больше 200 символов!</span>}						
 						</div>
 						
-						
-					</td>
+					</form>	
+					</td>				
 				</tr>
 		</tbody>
 	</table>
@@ -163,8 +207,11 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 					<div className="cart-sub-total">
 						Сумма<span className="inner-left-md">{orderTotal}</span>
 					</div>
+					<div className="cart-sub-total">
+					Доставка<span className="inner-left-md">{deliver}</span>
+					</div>
 					<div className="cart-grand-total">
-					Всего<span className="inner-left-md">{orderTotal}</span>
+					Всего<span className="inner-left-md">{orderTotal + deliver}</span>
 					</div>
 				</th>
 			</tr>
@@ -173,13 +220,30 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
 				<tr>
 					<td>
 						<div className="cart-checkout-btn pull-right">
-							<button type="submit" className="btn btn-primary checkout-btn">Оформить заказ</button>
-							
+						<form onSubmit={handleSubmit(onSubmit)}>
+							<button type="submit" className="btn btn-primary checkout-btn">Оформить заказ</button>							
+						</form>
 						</div>
 					</td>
 				</tr>
 				
 			</tbody>
+		</table>
+	</div>
+
+	<div className="col-md-4 col-sm-12 cart-shopping-total">
+	<table className="table">
+		<thead>
+			<tr style={{display: displaView}}>
+				<th>
+				 <p className="text-danger" >
+					 «Стоимость уточняйте у менеджера! Пункт выдачи товара г.Миасс, ул. Радищева, д. 18.»</p>
+				 						Доставка по городу Миасс до адреса клиента 100 рублей.
+
+				</th>
+			</tr>
+		</thead>
+		
 		</table>
 	</div>
 
@@ -197,10 +261,11 @@ const CartPage = ({cartItems, orderTotal, onIncrease, onDecrease, onDelete}) => 
     );
 };
 
-const mapStateToProps = ({cartItems,orderTotal}) =>{
+const mapStateToProps = ({cartItems,orderTotal,deliver}) =>{
 	return{
 		cartItems,
-		orderTotal
+		orderTotal,
+		deliver
 	};
 }
 
@@ -208,7 +273,8 @@ const mapDispatchToProps = {
 
 		onIncrease:itemAddedToCart,
 		onDecrease:itemRemovedFromCart,
-		onDelete:allItemRemoveFromCart 
+		onDelete:allItemRemoveFromCart,
+		onDeliver:deliverAdd, 
 	
 }
 export default connect(mapStateToProps,mapDispatchToProps)(CartPage);

@@ -73,6 +73,14 @@ export const allItemRemoveFromCart = (itemId) => {
 };
 
 
+export const deliverAdd = (priceDeliver) => {
+    return {
+        type: 'ADD_DELIVER',
+        payload: priceDeliver
+    }
+}
+
+
 export {
     dataLoaded,
     dataRequsted,
