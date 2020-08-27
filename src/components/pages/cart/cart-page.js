@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
 import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart,deliverAdd } from "../../../actions";
+import postTools from "./postTool";
 
 import { useForm } from "react-hook-form";
 
@@ -24,7 +25,7 @@ console.log(`deliver = `+deliver);
 
 	//валидация формы
 	const { register, handleSubmit, watch, errors } = useForm();
-	  const onSubmit = data => console.log(data);
+	  const onSubmit = data => postTools(data);
 	  
 
     return (
@@ -153,7 +154,7 @@ console.log(`deliver = `+deliver);
 						</div>
 						<div className="form-group col-md-6">
 							<label className="info-title control-label">Индекс </label>
-							<input name="mailIndex" ref={register({maxLength:20})}
+							<input name="mailindex" ref={register({maxLength:20})}
 							className="form-control unicase-form-control selectpicker"/>																					
 						</div>
 						<div className="form-group">

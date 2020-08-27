@@ -35,7 +35,7 @@ class PaginContainer extends Component {
 			const { id } = match.params;
 			
 			if (this.props.match.url !== prevProps.match.url) {
-                //this.setState({currentPage:1});
+                this.setState({currentPage:1});
                 
 				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));
             }   
@@ -82,7 +82,7 @@ class PaginContainer extends Component {
         return (
             <div>       
 
-            <Pagination total={total} limit={limit} pageCount={pageCount} >
+            <Pagination total={total} limit={limit} pageCount={pageCount} currentPage={currentPage}>
                       {({
                         pages,
                         currentPage,

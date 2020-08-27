@@ -85,6 +85,25 @@ const reducer = (state = initialState, action) => {
         case 'ITEM_ADDED_TO_CART':
             return updateOrder(state, action.payload, 1);
 
+        case 'ITEM_CLEAR_CART': //отчищаем всю корзину
+            console.log('CLEAR to cart');
+            return {
+                data: {
+                    items: [],
+                    main_groups: [],
+                    sub_groups: [],
+                },
+
+                item: {},
+                loading: true,
+                error: null,
+                pageSize: 0,
+                cartItems: [],
+                orderTotal: 0,
+                orderCount: 0,
+                deliver: 0,
+            }
+
         case 'ADD_DELIVER':
 
             return {
