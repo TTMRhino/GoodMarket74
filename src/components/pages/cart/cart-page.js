@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDelete,onDeliver}) => {
 	const urlImg ="http://goodmarket74.local/api/web/images/";
-console.log(`deliver = `+deliver);
+
 	//пердупреждение о повышенных тарифах (для определенных городов)
 	const [ displaView, setView ] = useState('none')
 	const onChangeHandler = (event) =>{
@@ -25,7 +25,7 @@ console.log(`deliver = `+deliver);
 
 	//валидация формы
 	const { register, handleSubmit, watch, errors } = useForm();
-	  const onSubmit = data => postTools(data);
+	  const onSubmit = data => postTools(data,cartItems);
 	  
 
     return (
@@ -139,7 +139,7 @@ console.log(`deliver = `+deliver);
 						<div className="form-group">
 
 							<label className="info-title control-label">ФИО <span>*</span></label>
-							<input name="name" ref={register({ required: true, maxLength: 50,pattern: /^[A-Za-z]+$/i,minLength: 4 })} 
+							<input name="name" ref={register({ required: true, maxLength: 50,minLength: 4 })} 
 							className="form-control unicase-form-control selectpicker"/>
 							{errors.name && <span className="text-danger">Введите корректное имя и фамилию!</span>}
 

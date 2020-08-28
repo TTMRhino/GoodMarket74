@@ -1,17 +1,18 @@
 import store from '../../../store';
 
 const postTools = (data, items) => {
+    const url = "http://goodmarket74.local/api/web/";
     data = JSON.stringify(data);
-    let id_order = xhr('http://goodmarket74.local/api/web/customers', data); //записываем заказ и получаем id клиента из бд
+    let id_customer = xhr(url + 'customers', data); //записываем заказ и получаем id клиента из бд
 
-    /*for (let i = 0; i <= items.length - 1; i++) {
+    for (let i = 0; i <= items.length - 1; i++) {
 
-        let item = `{"id_order":"${id_order}","furniture_id":"${items[i].id}","quantities":"${items[i].quantity}" }`;
+        let item = `{"customer_id":"${ id_customer }","item_id":"${items[i].id}","quantity":"${items[i].count}" }`;
 
-        console.log("Id_order = " + id_order);
-
-        xhr('http://yii2-api/booking', item);
-    }*/
+        console.log("customer_id = " + id_customer);
+        //console.log(items[i]);
+        xhr(url + 'orders', item);
+    }
 
 
     //let state = store.getState();
