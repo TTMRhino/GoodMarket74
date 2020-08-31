@@ -7,13 +7,14 @@ import {connect} from "react-redux";
 import {itemLoaded,itemError,itemRequsted,itemAddedToCart} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
+import RcViewer from '@hanyk/rc-viewer'
 
 
 const Detail = ({props}) => {
     const {item, onAddedToCart} = props;
 
 	const urlImg ="http://goodmarket74.local/api/web/images/";
-	
+	const options={}
     return (
 
 <div className='container'>
@@ -27,10 +28,13 @@ const Detail = ({props}) => {
                     <div className="product-item-holder size-big single-product-gallery small-gallery">
 
                         <div id="owl-single-product">
-                            <div className="single-product-gallery-item" id="slide1">
-                                <a data-lightbox="image-1" data-title="Gallery" href={urlImg + "l"+ item.vendor + ".jpg"}>
-                                    <img className="img-responsive" alt="" src={urlImg + "l"+ item.vendor + ".jpg"} />
-                                </a>
+                            <div className="single-product-gallery-item" id="slide1">                             
+								
+								<RcViewer   options={options}>
+        							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Picture"/>
+								</RcViewer>
+								
+								
                             </div>
                         </div>
                     </div>
