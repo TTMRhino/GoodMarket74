@@ -1,8 +1,8 @@
 const initialState = {
     data: {
-        items: [],
-        main_groups: [],
-        sub_groups: [],
+        items: (localStorage['goodMarket.data.items']) ? JSON.parse(localStorage['goodMarket.data.items']) : [],
+        main_groups: (localStorage['goodMarket.data.main_groups']) ? JSON.parse(localStorage['goodMarket.data.main_groups']) : [],
+        sub_groups: (localStorage['data.sub_groups']) ? JSON.parse(localStorage['data.sub_groups']) : [],
     },
 
     item: localStorage['goodMarket.item'] || {},
@@ -28,9 +28,9 @@ const localStoregSet = (cooks) => {
     localStorage['goodMarket.pageSize'] = cooks.pageSize;
     localStorage['goodMarket.deliver'] = Number.parseInt(cooks.deliver);
 
-    localStorage.setItem('goodMarket.data.items', cooks.data.items);
-    localStorage.setItem('goodMarket.data.main_groups', cooks.data.main_groups);
-    localStorage.setItem('data.sub_groups', cooks.data.sub_groups);
+    localStorage['goodMarket.data.items'] = JSON.stringify(cooks.data.items);
+    localStorage['goodMarket.data.main_groups'] = JSON.stringify(cooks.data.main_groups);
+    localStorage['data.sub_groups'] = JSON.stringify(cooks.data.sub_groups);
 
     console.log(localStorage.getItem('goodMarket.orderCount'));
 
