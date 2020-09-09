@@ -12,7 +12,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 	//пердупреждение о повышенных тарифах (для определенных городов)
 	const [ displaView, setView ] = useState('none')
 	const onChangeHandler = (event) =>{
-		console.log(event.target.value);
+		//console.log(event.target.value);
 		if (event.target.value === 'Миасс'){
 			setView('block');
 			onDeliver(100);
@@ -25,7 +25,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 
 	//валидация формы
 	const { register, handleSubmit, watch, errors } = useForm();
-	  const onSubmit = data => postTools(data,cartItems);
+	  const onSubmit = data => postTools(data,cartItems,orderTotal + deliver);
 	  
 
     return (
@@ -211,9 +211,13 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 					<div className="cart-sub-total">
 					Доставка<span className="inner-left-md">{deliver}</span>
 					</div>
-					<div className="cart-grand-total">
-					Всего<span className="inner-left-md">{orderTotal + deliver}</span>
+					
+						<div className="cart-grand-total">
+						<form onSubmit={handleSubmit(onSubmit)}>
+							Всего<span name="total_sum" className="inner-left-md" >{orderTotal + deliver}</span>
+						</form>
 					</div>
+					
 				</th>
 			</tr>
 		</thead>

@@ -22,15 +22,15 @@ const localStoregSet = (cooks) => {
     localStorage['goodMarket.orderTotal'] = Number.parseInt(cooks.orderTotal);
     localStorage['goodMarket.cartItems'] = JSON.stringify(cooks.cartItems);
     localStorage['goodMarket.item'] = JSON.stringify(cooks.item);
-    localStorage['goodMarket.loading'] = cooks.loading;
-    localStorage['goodMarket.error'] = cooks.error;
+    //localStorage['goodMarket.loading'] = cooks.loading;
+    //localStorage['goodMarket.error'] = cooks.error;
     localStorage['goodMarket.orderCount'] = Number.parseInt(cooks.orderCount);
     localStorage['goodMarket.pageSize'] = cooks.pageSize;
     localStorage['goodMarket.deliver'] = Number.parseInt(cooks.deliver);
 
-    localStorage['goodMarket.data.items'] = JSON.stringify(cooks.data.items);
-    localStorage['goodMarket.data.main_groups'] = JSON.stringify(cooks.data.main_groups);
-    localStorage['data.sub_groups'] = JSON.stringify(cooks.data.sub_groups);
+    //localStorage['goodMarket.data.items'] = JSON.stringify(cooks.data.items);
+    //localStorage['goodMarket.data.main_groups'] = JSON.stringify(cooks.data.main_groups);
+    //localStorage['data.sub_groups'] = JSON.stringify(cooks.data.sub_groups);
 
     console.log(localStorage.getItem('goodMarket.orderCount'));
 

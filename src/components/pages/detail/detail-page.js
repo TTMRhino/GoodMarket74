@@ -31,7 +31,7 @@ const Detail = ({props}) => {
                             <div className="single-product-gallery-item" id="slide1">                             
 								
 								<RcViewer   options={options}>
-        							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Picture"/>
+        							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Pic"/>
 								</RcViewer>
 								
 								
