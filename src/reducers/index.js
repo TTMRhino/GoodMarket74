@@ -1,19 +1,40 @@
 const initialState = {
     data: {
-        items: [],
-        main_groups: [],
-        sub_groups: [],
+        items: (localStorage['goodMarket.data.items']) ? JSON.parse(localStorage['goodMarket.data.items']) : [],
+        main_groups: (localStorage['goodMarket.data.main_groups']) ? JSON.parse(localStorage['goodMarket.data.main_groups']) : [],
+        sub_groups: (localStorage['data.sub_groups']) ? JSON.parse(localStorage['data.sub_groups']) : [],
     },
 
-    item: {},
-    loading: true,
-    error: null,
-    pageSize: 0,
-    cartItems: [],
-    orderTotal: 0,
-    orderCount: 0,
-    deliver: 0,
+    item: localStorage['goodMarket.item'] || {},
+    loading: localStorage['goodMarket.loading'] || true,
+    error: localStorage['goodMarket.error'] || null,
+    pageSize: localStorage['goodMarket.pageSize'] || 0,
+    cartItems: (localStorage['goodMarket.cartItems']) ? JSON.parse(localStorage['goodMarket.cartItems']) : [],
+    orderTotal: Number.parseInt(localStorage['goodMarket.orderTotal']) || 0,
+    orderCount: Number.parseInt(localStorage['goodMarket.orderCount']) || 0,
+    deliver: Number.parseInt(localStorage['goodMarket.deliver']) || 0,
 };
+
+
+// Запись данных сайта(корзины) в куки
+const localStoregSet = (cooks) => {
+    //localStorage.removeItem('goodMarket.orderCount');
+    localStorage['goodMarket.orderTotal'] = Number.parseInt(cooks.orderTotal);
+    localStorage['goodMarket.cartItems'] = JSON.stringify(cooks.cartItems);
+    localStorage['goodMarket.item'] = JSON.stringify(cooks.item);
+    //localStorage['goodMarket.loading'] = cooks.loading;
+    //localStorage['goodMarket.error'] = cooks.error;
+    localStorage['goodMarket.orderCount'] = Number.parseInt(cooks.orderCount);
+    localStorage['goodMarket.pageSize'] = cooks.pageSize;
+    localStorage['goodMarket.deliver'] = Number.parseInt(cooks.deliver);
+
+    //localStorage['goodMarket.data.items'] = JSON.stringify(cooks.data.items);
+    //localStorage['goodMarket.data.main_groups'] = JSON.stringify(cooks.data.main_groups);
+    //localStorage['data.sub_groups'] = JSON.stringify(cooks.data.sub_groups);
+
+    console.log(localStorage.getItem('goodMarket.orderCount'));
+
+}
 
 const reducer = (state = initialState, action) => {
 
@@ -182,13 +203,17 @@ const updateOrder = (state, itemId, quantity) => {
     //Итого колличества товара
 
 
-    return {
+    const newOrder = {
         ...state,
         cartItems: updateCartItems(cartItems, newItem, itemIndex),
         orderTotal: total,
         orderCount: state.orderCount + quantity
+    };
 
-    }
+    localStoregSet(newOrder); //записываем все данные  в куки
+
+
+    return newOrder;
 }
 
 export default reducer;

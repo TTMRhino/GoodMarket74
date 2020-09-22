@@ -90,7 +90,7 @@ class CatalogPage extends Component {
 	
 
     </div>
-	<CaruselPage />
+	{<CaruselPage />}
 	</div>
 	</div>
 	</div>

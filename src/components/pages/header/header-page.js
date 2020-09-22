@@ -51,7 +51,8 @@ const HeaderPage = ({orderTotal, orderCount}) => {
                                             <div className="total-price-basket">
                                                 <span className="lbl">Итог: </span>
                                                 <span className="total-price">
-                                                    <span className="sign"></span><span className="value">{orderTotal}</span>
+                                                    <span className="sign"></span>
+                                                    <span className="value">{orderTotal}</span>                                                    
                                                 </span>
                                             </div>                   
                                         </div>

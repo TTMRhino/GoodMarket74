@@ -66,11 +66,11 @@ const ContactPage = () => {
 	</div>
 	<div className="clearfix phone-no">
 		<span className="contact-i"><i className="fa fa-mobile"></i></span>
-		<span className="contact-span">+79000741791<br/>+79000741791</span>
+		<span className="contact-span"><a href="tel:+79000741791">+79000741791</a></span>
 	</div>
 	<div className="clearfix email">
 		<span className="contact-i"><i className="fa fa-envelope"></i></span>
-		<span className="contact-span"><Link to="#">GoodMarket74@mail.ru</Link></span>
+		<span className="contact-span"><a href="mailto:GoodMarket74@mail.ru">GoodMarket74@mail.ru</a></span>
 	</div>
 </div>			</div>
 		</div>

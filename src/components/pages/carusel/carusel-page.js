@@ -12,7 +12,7 @@ const CaruselPage = () => {
     <div className="logo-slider-inner">
 
 
-    <OwlCarousel id="brand-slider" className="owl-carousel brand-slider custom-carousel " autoplay loop>
+    {/*<OwlCarousel id="brand-slider" className="owl-carousel brand-slider custom-carousel " autoplay loop>
 
 
             <div className="item  center-block" style={style_width}>
@@ -56,7 +56,7 @@ const CaruselPage = () => {
                 </Link>
             </div>           
             
-        </OwlCarousel>
+    </OwlCarousel>*/}
         
     </div>
     

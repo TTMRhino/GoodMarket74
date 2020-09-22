@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
 import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart,deliverAdd } from "../../../actions";
+import RcViewer from '@hanyk/rc-viewer'
 import postTools from "./postTool";
 
 import { useForm } from "react-hook-form";
@@ -12,22 +13,22 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 	//пердупреждение о повышенных тарифах (для определенных городов)
 	const [ displaView, setView ] = useState('none')
 	const onChangeHandler = (event) =>{
-		console.log(event.target.value);
-		if (event.target.value === 'Миасс'){
+		//console.log(event.target.value);
+		if (event.target.value === 'Челябинск'){
+			//setView('none');
+			setView('block');
+			orderTotal>1000?onDeliver(0):onDeliver(100);
+		}else{			
 			setView('block');
 			onDeliver(100);
-		}else{
-			setView('none');
-			onDeliver(0);
-		}
-		
+		}		
 	}
 
 	//валидация формы
 	const { register, handleSubmit, watch, errors } = useForm();
-	  const onSubmit = data => postTools(data,cartItems);
+	  const onSubmit = data => postTools(data,cartItems,orderTotal + deliver);
 	  
-
+	if(cartItems.length > 0){
     return (
         <div>
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -57,7 +58,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 
                         <tbody>
 
-						{
+						{							
 							cartItems.map((item, idx)=>{
 								return (
 									<tr key={item.id}>
@@ -67,9 +68,10 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 								</Link>
 							</td>
                             <td className="cart-image">
-                                <a className="entry-thumbnail" href={urlImg + "l"+ item.vendor + ".jpg"}>
-                                    <img src={urlImg + "l"+ item.vendor + ".jpg"} alt=""/>
-                                </a>
+								<RcViewer   >
+        							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Pic"/>
+								</RcViewer>
+                                
                             </td>
                             <td className="cart-product-name-info">
                                 <h4 className='cart-product-description'><a href="detail.html">{item.item}</a></h4>
@@ -88,7 +90,9 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
                                 <div className="quant-input">
                                     <div className="arrows">
 
-                                        <div className="arrow plus gradient" onClick={() =>onIncrease(item.id)}>
+										<div className="arrow plus gradient"									
+										onClick={() =>onIncrease(item.id)}										
+										>
                                             <span className="ir">
 												<i className="icon fa fa-sort-asc"></i>
 											</span>
@@ -106,8 +110,8 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
                                         <input type="text" value={item.count}/>
                                 </div>
                             </td>
-								<td className="cart-product-sub-total"><span className="cart-sub-total-price">{item.price}</span></td>
-								<td className="cart-product-grand-total"><span className="cart-grand-total-price">{item.total}</span></td>
+								<td className="cart-product-sub-total"><span className="cart-sub-total-price">{item.price}</span>руб.</td>
+								<td className="cart-product-grand-total"><span className="cart-grand-total-price">{item.total}</span>руб.</td>
 				        </tr>
 								)
 							})
@@ -165,7 +169,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 								onChange={onChangeHandler} >
 							<option></option>	
 							<option value="Челябинск">Челябинск</option>
-							<option value="Миасс">Миасс</option>
+							{/*<option value="Миасс">Миасс</option>*/}
 							</select>
 							{errors.city && <span className="text-danger">Выберети город!</span>}
 
@@ -206,14 +210,18 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 			<tr>
 				<th>
 					<div className="cart-sub-total">
-						Сумма<span className="inner-left-md">{orderTotal}</span>
+						Сумма<span className="inner-left-md">{orderTotal}руб.</span>
 					</div>
 					<div className="cart-sub-total">
-					Доставка<span className="inner-left-md">{deliver}</span>
+					Доставка<span className="inner-left-md">{deliver}руб.</span>
 					</div>
-					<div className="cart-grand-total">
-					Всего<span className="inner-left-md">{orderTotal + deliver}</span>
+					
+						<div className="cart-grand-total">
+						<form onSubmit={handleSubmit(onSubmit)}>
+							Всего<span name="total_sum" className="inner-left-md" >{orderTotal + deliver}руб.</span>
+						</form>
 					</div>
+					
 				</th>
 			</tr>
 		</thead>
@@ -238,8 +246,8 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 			<tr style={{display: displaView}}>
 				<th>
 				 <p className="text-danger" >
-					 «Стоимость уточняйте у менеджера! Пункт выдачи товара г.Миасс, ул. Радищева, д. 18.»</p>
-				 						Доставка по городу Миасс до адреса клиента 100 рублей.
+					 «Стоимость уточняйте у менеджера! »</p>
+				 						Доставка по городу  от 100 рублей.
 
 				</th>
 			</tr>
@@ -259,7 +267,16 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 		</div>
 		</div>
     
-    );
+	);
+}else{
+	return(
+	
+		<div class="alert alert-info">
+		<h2><strong> Козина пуста!</strong></h2>
+	  </div>
+		
+	);
+}
 };
 
 const mapStateToProps = ({cartItems,orderTotal,deliver}) =>{
