@@ -1,7 +1,7 @@
 import store from '../../../store';
 
 const postTools = (data, items) => {
-    const url = "http://goodmarket74.local/api/web/";
+    const url = "https://goodmarket74.ru/api/web/";
     data = JSON.stringify(data);
     let id_customer = xhr(url + 'customers', data); //записываем заказ и получаем id клиента из бд
 
