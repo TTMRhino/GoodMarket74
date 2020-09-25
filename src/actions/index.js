@@ -17,6 +17,13 @@ const dataError = (error) => {
     }
 };
 
+const dataPurchase = (purchase) => {
+    return {
+        type: 'DATA_PURCHASE',
+        payload: purchase
+    }
+};
+
 // Загрузка одного item`а
 const itemLoaded = (newItem) => {
     return {
@@ -85,6 +92,7 @@ export {
     dataLoaded,
     dataRequsted,
     dataError,
+    dataPurchase,
     /*=======*/
     itemLoaded,
     itemRequsted,

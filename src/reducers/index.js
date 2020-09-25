@@ -13,6 +13,8 @@ const initialState = {
     orderTotal: Number.parseInt(localStorage['goodMarket.orderTotal']) || 0,
     orderCount: Number.parseInt(localStorage['goodMarket.orderCount']) || 0,
     deliver: Number.parseInt(localStorage['goodMarket.deliver']) || 0,
+    //индикатор успешной заявки
+    purchase: localStorage['goodMarket.purchase'] || false,
 };
 
 
@@ -57,6 +59,13 @@ const reducer = (state = initialState, action) => {
                 data: [],
                 loading: false,
                 error: action.paload,
+            };
+        case 'DATA_PURCHASE':
+            return {
+                data: [],
+                loading: false,
+                error: null,
+                purchase: true,
             };
 
 
@@ -107,15 +116,29 @@ const reducer = (state = initialState, action) => {
             return updateOrder(state, action.payload, 1);
 
         case 'ITEM_CLEAR_CART': //отчищаем всю корзину
-            console.log('CLEAR to cart');
-            return {
-                data: {
-                    items: [],
-                    main_groups: [],
-                    sub_groups: [],
-                },
+            localStorage.setItem('goodMarket.item', {});
+            localStorage.setItem('goodMarket.loading', true);
+            localStorage.setItem('goodMarket.error', null);
+            localStorage.setItem('goodMarket.pageSize', 0);
+            localStorage.setItem('goodMarket.cartItems', []);
+            localStorage.setItem('goodMarket.orderTotal', 0);
+            localStorage.setItem('goodMarket.orderCount', 0);
+            localStorage.setItem('goodMarket.deliver', 0);
+            localStorage.setItem('goodMarket.purchase', true);
 
+            /* отчищаем корзину и данные о покупке и инициализируем ее по новой загружая 
+            данные из локального хранилища (что бы по новой не загружать с сервера)*/
+            console.log('CLEAR to cart');
+
+            return {
+                ...state,
+                data: {
+                    items: (localStorage['goodMarket.data.items']) ? JSON.parse(localStorage['goodMarket.data.items']) : [],
+                    main_groups: (localStorage['goodMarket.data.main_groups']) ? JSON.parse(localStorage['goodMarket.data.main_groups']) : [],
+                    sub_groups: (localStorage['data.sub_groups']) ? JSON.parse(localStorage['data.sub_groups']) : [],
+                },
                 item: {},
+                console: null,
                 loading: true,
                 error: null,
                 pageSize: 0,
@@ -123,6 +146,8 @@ const reducer = (state = initialState, action) => {
                 orderTotal: 0,
                 orderCount: 0,
                 deliver: 0,
+                purchase: true
+
             }
 
         case 'ADD_DELIVER':

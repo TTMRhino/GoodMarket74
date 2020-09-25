@@ -7,7 +7,7 @@ import postTools from "./postTool";
 
 import { useForm } from "react-hook-form";
 
-const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDelete,onDeliver}) => {
+const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDelete,onDeliver,purchase}) => {
 	const urlImg ="http://goodmarket74.local/api/web/images/";
 
 	//пердупреждение о повышенных тарифах (для определенных городов)
@@ -28,7 +28,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 	const { register, handleSubmit, watch, errors } = useForm();
 	  const onSubmit = data => postTools(data,cartItems,orderTotal + deliver);
 	  
-	if(cartItems.length > 0){
+	if(typeof cartItems !=='undefined' && cartItems.length > 0  ){
     return (
         <div>
 			<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -255,35 +255,37 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 		
 		</table>
 	</div>
-
-
-    
-
-
-
-            </div> 
+        </div> 
         </div> 
 		</div>
 		</div>
 		</div>
     
 	);
+}else if (purchase){
+	return (
+		<div className="alert alert-info">
+			<h2><strong> Ваш заказ успешно принят! Ожидайте звонка от оператора.</strong></h2>
+	  	</div>
+	);
 }else{
+	console.log('ПОКУПКА = ' + purchase);
 	return(
 	
-		<div class="alert alert-info">
-		<h2><strong> Козина пуста!</strong></h2>
-	  </div>
+		<div className="alert alert-info">
+			<h2><strong> Козина пуста!</strong></h2>
+	  	</div>
 		
 	);
 }
 };
 
-const mapStateToProps = ({cartItems,orderTotal,deliver}) =>{
+const mapStateToProps = ({cartItems,orderTotal,deliver,purchase}) =>{
 	return{
 		cartItems,
 		orderTotal,
-		deliver
+		deliver,
+		purchase,
 	};
 }
 

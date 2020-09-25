@@ -24,6 +24,9 @@ const postTools = (data, items, total_sum) => {
     //console.log(state);
     let action = { type: 'ITEM_CLEAR_CART' };
     store.dispatch(action); //изменяем state на прямую
+    console.log();
+    //let action_purchase = { type: 'DATA_PURCHASE' };
+    // store.dispatch(action_purchase); //изменяем state на прямую
     //console.log(store.getState());
 
 }
