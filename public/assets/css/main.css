@@ -7069,4 +7069,17 @@ header {
     padding-bottom: 2%;
 }
 
-.imgItem {}
+.menuBurger {
+    display: block;
+}
+
+@media screen and (max-width: 530px) {
+    .menu {
+        display: none;
+        /* пункты меню скрыты */
+    }
+    .menuBurger {
+        display: inline-block;
+        /* иконка гамбургер видна */
+    }
+}

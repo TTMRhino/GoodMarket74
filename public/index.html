@@ -185,6 +185,24 @@
     <!--<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.5.1/popper.es5.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function() {
+
+            $('.menuBurger').on('click', function() {
+
+                $('.menu').slideToggle(300, function() {
+
+                    if ($(this).css('display') === 'none') {
+                        $(this).removeAttr('style');
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
     <!-- <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>-->
 
 
