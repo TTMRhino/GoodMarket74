@@ -41,6 +41,7 @@ class CatalogPage extends Component {
 					</div>
 				</div>
 			</div>
+			{/*
 			<div className="col col-sm-3 col-md-6 no-padding">
 				<div className="lbl-cnt">
 					<span className="lbl">Показывать</span>
@@ -60,6 +61,7 @@ class CatalogPage extends Component {
 					</div>
 				</div>
 			</div>
+			*/}
 		</div>
 
 		

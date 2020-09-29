@@ -28,6 +28,7 @@ const Detail = ({props}) => {
                     <div className="product-item-holder size-big single-product-gallery small-gallery">
 
                         <div id="owl-single-product">
+							<Link>
                             <div className="single-product-gallery-item" id="slide1">                             
 								
 								<RcViewer   options={options}>
@@ -35,14 +36,17 @@ const Detail = ({props}) => {
 								</RcViewer>
 								
 								
+								
                             </div>
+							</Link>
                         </div>
                     </div>
                 </div> 
 
 					<div className='col-sm-6 col-md-7 product-info-block'>
 						<div className="product-info">
-							<h3 className="name">{item.item}</h3>					
+							<h3 className="name">{item.item}</h3>
+							<span> Артикул: {item.vendor}</span>					
 
 							<div className="stock-container info-container m-t-10">
 								

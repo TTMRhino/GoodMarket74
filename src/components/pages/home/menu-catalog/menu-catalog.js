@@ -8,7 +8,7 @@ import {connect} from "react-redux";
 import {dataLoaded,pageSizeLoaded,dataError} from "../../../../actions";
 import { withRouter } from 'react-router-dom';
 
-
+import { slide as Menu } from 'react-burger-menu'
 
 const MenuCatalog = ({props}) => {
     const {data} = props;
@@ -25,11 +25,12 @@ const MenuCatalog = ({props}) => {
         <div className="col-xs-12 col-sm-12 col-md-3 sidebar">
 
 
-            <div className="side-menu animate-dropdown outer-bottom-xs menuBurger">
+
+            <div className="side-menu animate-dropdown outer-bottom-xs ">
                 <div className="head">
                     <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
                 </div>
-                <nav className="yamm megamenu-horizontal menu" role="navigation">
+                <nav className="yamm megamenu-horizontal" role="navigation">
                 <div id="accordion">
                 {
                             main_groups.map((main_group)=>{
@@ -94,7 +95,24 @@ class MenuCatalogContainer extends Component {
 				this.props.goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);
 			}
 		};
-      
+          /*=============== TEST =============*/   
+          
+                state = {
+                    collapse1: false,
+                    collapseID: ''
+                }
+                
+                toggleCollapse = collapseID => () => {
+                    this.setState(prevState => ({ collapseID: (prevState.collapseID !== collapseID ? collapseID : '') }));
+                }
+                
+                toggleSingleCollapse = collapseId => {
+                    this.setState({
+                    ...this.state,
+                    [collapseId]: !this.state[collapseId]
+                    });
+                }
+          /*=============== TEST =============*/ 
 
     render() {
 		const {loading} = this.props; 
@@ -111,8 +129,8 @@ class MenuCatalogContainer extends Component {
         }
         return (
             <div>
-             <MenuCatalog  props={this.props} />
-             
+             <MenuCatalog id="menu" className="menu-item"  props={this.props} />
+            
              </div>
 
         );

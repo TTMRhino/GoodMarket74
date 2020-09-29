@@ -100,7 +100,7 @@ class PaginContainer extends Component {
                               onPageChange: handlePageChange
                             })}
                           >
-                            first
+                            начало
                           </button>
             
                           {hasPreviousPage && (
@@ -150,7 +150,7 @@ class PaginContainer extends Component {
                               onPageChange: handlePageChange
                             })}
                           >
-                            last
+                            конец
                           </button>
                         </div>
                       )}
@@ -163,14 +163,17 @@ class PaginContainer extends Component {
                           <div className="products">				
                             <div className="product">		
                               <div className="product-image">
+                              <span>Артикул: {item.vendor}</span>
                                 <div className="image">
             
                                   <Link to={'/detail/'+ item.id} >
                                     <img className="imgItem" src={urlImg + "l"+ item.vendor + ".jpg"}  alt=""/>
                                   </Link>
+                                  
                                 </div>													
                               </div>
                               <div className="product-info text-left">
+                                
                                 <h3 className="name"><Link to={'/detail/'+ item.id}>{item.item}</Link></h3>			
                                 <div className="description">							
                                 </div>
@@ -210,7 +213,7 @@ class PaginContainer extends Component {
                               onPageChange: handlePageChange
                             })}
                           >
-                            first
+                            начало
                           </button>
             
                           {hasPreviousPage && (
@@ -260,7 +263,7 @@ class PaginContainer extends Component {
                               onPageChange: handlePageChange
                             })}
                           >
-                            last
+                            конец
                           </button>
                         </div>
                       )}

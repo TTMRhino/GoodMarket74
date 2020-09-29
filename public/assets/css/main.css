@@ -89,7 +89,9 @@ body {
 }
 
 .cnt-home {
-    background-color: #f3f3f3;
+    /*background-color: #f3f3f3;*/
+    background: url("images/background_goodmarket74.jpg") repeat;
+    /*background-size: cover;*/
 }
 
 ul {
@@ -1474,7 +1476,7 @@ header {
 
 .main-header {
     padding: 5px 0px 12px 0px;
-    background: #fff;
+    background: #0f6cb2;
 }
 
 .main-header .logo-holder {
@@ -1706,7 +1708,7 @@ header {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
-    background: #0f6cb2;
+    background: #144e79;
     margin: 0;
     min-height: auto;
     border-radius: 5px 5px 0px 0px
@@ -7058,7 +7060,7 @@ header {
 }
 
 .products {
-    height: 300px;
+    height: 350px;
 }
 
 .category-product {
@@ -7082,4 +7084,39 @@ header {
         display: inline-block;
         /* иконка гамбургер видна */
     }
+    .best-deal {
+        visibility: hidden;
+    }
+    .products {
+        border: 1px solid gainsboro;
+        margin-bottom: 2px;
+    }
+}
+
+
+/* картинки в каталоге*/
+
+.imgItem {
+    background-image: url("../images/no_image.png");
+}
+
+
+/*FOOOter STICK DOWN*/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
 }

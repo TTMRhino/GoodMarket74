@@ -28,12 +28,12 @@ const HeaderPage = ({orderTotal, orderCount}) => {
         
                         <div className="col-xs-12 col-sm-12 col-md-7 top-search-holder">       
                             <div className="search-area">
-                                <form>
+                               { /*<form>
                                     <div className="control-group">                               
                                         <input className="search-field" placeholder="Введите наименование товара..." />                                
                                         <Link className="search-button" to="#" ></Link>                                    
                                     </div>
-                                </form>
+                               </form>*/}
                             </div>
                             </div>
             
