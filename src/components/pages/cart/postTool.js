@@ -14,26 +14,22 @@ const postTools = (data, items, total_sum) => {
 
         let item = `{"customer_id":"${ id_customer }","item_id":"${items[i].id}","quantity":"${items[i].count}" }`;
 
-        //console.log("customer_id = " + id_customer);
-        //console.log(items[i]);
+
         xhr(url + 'orders', item);
     }
 
 
-    //let state = store.getState();
-    //console.log(state);
+    //let state = store.getState();    
     let action = { type: 'ITEM_CLEAR_CART' };
-    store.dispatch(action); //изменяем state на прямую
-    console.log();
+    store.dispatch(action); //изменяем state на прямую  
     //let action_purchase = { type: 'DATA_PURCHASE' };
     // store.dispatch(action_purchase); //изменяем state на прямую
-    //console.log(store.getState());
+
 
 }
 
 const xhr = (url, data) => {
-    // console.log('data : ');
-    //  console.log(data);
+
     let xhrs = new XMLHttpRequest();
     xhrs.open('POST', url, false);
     xhrs.setRequestHeader('Content-Type', "application/json");

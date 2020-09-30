@@ -7091,6 +7091,8 @@ header {
         border: 1px solid gainsboro;
         margin-bottom: 2px;
     }
+    /*каотинка подробно в мобил.*/
+    .single-product-gallery-item {}
 }
 
 
@@ -7098,6 +7100,15 @@ header {
 
 .imgItem {
     background-image: url("../images/no_image.png");
+}
+
+
+/*каотинка подробно*/
+
+.single-product-gallery-item {
+    background-image: url("../images/no_image.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 

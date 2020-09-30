@@ -15,6 +15,7 @@ const initialState = {
     deliver: Number.parseInt(localStorage['goodMarket.deliver']) || 0,
     //индикатор успешной заявки
     purchase: localStorage['goodMarket.purchase'] || false,
+    sort: localStorage['goodMarket.sort'] || 'Asc',
 };
 
 
@@ -158,6 +159,17 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 deliver: action.payload
             }
+
+            /* =======Сортировка переключатель=====*/
+        case 'SWITCH_ITEM_SORT':
+            console.log("Это редюсор action.paload =" + action.payload);
+            return {
+                ...state,
+                sort: action.payload,
+                console: null,
+                loading: false,
+                error: null
+            };
 
         default:
             return state;

@@ -44,7 +44,7 @@ class PaginContainer extends Component {
              
 
     render() {
-        const {loading,data} = this.props; 	
+        const {loading,data,sort} = this.props; 	
         
 
    const handlePageChange =page =>{ 
@@ -56,8 +56,16 @@ class PaginContainer extends Component {
     const limit = 2;
     const pageCount = 9;   
 
-    
-    const items = _.chunk(data.items,pageCount); 
+    if(sort ==='Asc'){
+      console.log("Sort = "+ sort);
+    data.items.sort((a,b)=> a.price > b.price ? 1: -1);//сортируем по возрастающей цене
+    }else{
+      console.log("Sort = "+ sort);
+      data.items.sort((a,b)=> a.price < b.price ? 1: -1);//сортируем по возрастающей цене
+    }
+
+    const items = _.chunk(data.items,pageCount);
+  
     const total = items.length * limit; 
     const {currentPage} =this.state;
    
@@ -276,12 +284,13 @@ class PaginContainer extends Component {
 }
 
 /*===================================================================================================================*/
-const mapStateToProps = ({ loading,pageSize,data,error }) => {
+const mapStateToProps = ({ loading,pageSize,data,error,sort }) => {
     return {
        	data,
         pageSize,
         error ,
-        loading     
+        loading ,
+        sort    
     };
 }
 

@@ -52,6 +52,14 @@ export const pageSizeLoaded = (newPageSize) => {
     };
 };
 
+/*========Сортировка переключатель===========*/
+export const sort = (sort) => {
+    return {
+        type: 'SWITCH_ITEM_SORT',
+        payload: sort
+    };
+};
+
 /*========================== CART  OPERATIONS==================*/
 
 export const itemAddedToCart = (itemId) => {

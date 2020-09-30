@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import {CaruselPage} from '../';
 import MenuCatalog from '../home/menu-catalog';
 import Pagin from './pagination/pagin';
+import store from '../../../store';
 
 
 class CatalogPage extends Component {
+
+	 sortChange(event){//отправляем занчение для сортиовки (sort)
+		console.log(event.target.value);
+		let action = { type: 'SWITCH_ITEM_SORT',payload:event.target.value };
+    	store.dispatch(action); //изменяем state на прямую  
+	}
 
 	render(){		
     return (
@@ -26,17 +33,13 @@ class CatalogPage extends Component {
 				<div className="lbl-cnt">
 					<span className="lbl">Сортировка</span>
 					<div className="fld inline">
-						<div className="dropdown dropdown-small dropdown-med dropdown-white inline">
-							<button data-toggle="dropdown" type="button" className="btn dropdown-toggle">
-								Товар <span className="caret"></span>
-							</button>
+						<div className="dropdown dropdown-small dropdown-med dropdown-white inline">						
 
-							<ul role="menu" className="dropdown-menu">
-								<li role="presentation"><Link to="#">Товар</Link></li>
-								<li role="presentation"><Link to="#">Цена:Сначала дешевые</Link></li>
-								<li role="presentation"><Link to="#">Цена:Сначала дорогие</Link></li>
-								<li role="presentation"><Link to="#">Алфавит</Link></li>
-							</ul>
+							<select onChange={this.sortChange}>								
+								<option  value='Desc'>Цена:Сначала дорогие</option>
+								<option selected value='Asc'>Цена:Сначала дешевые</option>								
+							</select>
+
 						</div>
 					</div>
 				</div>
