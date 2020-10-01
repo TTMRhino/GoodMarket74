@@ -43,28 +43,7 @@ class CatalogPage extends Component {
 						</div>
 					</div>
 				</div>
-			</div>
-			{/*
-			<div className="col col-sm-3 col-md-6 no-padding">
-				<div className="lbl-cnt">
-					<span className="lbl">Показывать</span>
-					<div className="fld inline">
-						<div className="dropdown dropdown-small dropdown-med dropdown-white inline">
-							<button data-toggle="dropdown" type="button" className="btn dropdown-toggle">
-								9 <span className="caret"></span>
-							</button>
-
-							<ul role="menu" className="dropdown-menu">								
-								<li role="presentation"><Link to="#">3</Link></li>								
-								<li role="presentation"><Link to="#">6</Link></li>								
-								<li role="presentation"><Link to="#">9</Link></li>
-								<li role="presentation"><Link to="#">12</Link></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			*/}
+			</div>			
 		</div>
 
 		

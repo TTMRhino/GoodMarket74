@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import { Link} from 'react-router-dom';
+import { Link,NavLink} from 'react-router-dom';
 import SubCatalog from './sub-catalog';
 import Spiner from '../../../spinner';
 
@@ -26,11 +26,12 @@ const MenuCatalog = ({props}) => {
 
 
 
-            <div className="side-menu animate-dropdown outer-bottom-xs ">
+           {/* <div className="side-menu animate-dropdown outer-bottom-xs ">
                 <div className="head">
                     <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
                 </div>
                 <nav className="yamm megamenu-horizontal" role="navigation">
+                    
                 <div id="accordion">
                 {
                             main_groups.map((main_group)=>{
@@ -57,9 +58,55 @@ const MenuCatalog = ({props}) => {
                 </div>
                 </nav>     
                     
-            </div>
+                                </div>*/}
      
-     
+     {/**=======================MENU==================================== */}
+                                                
+                                             <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
+                                             
+                                             <div className="head">
+                                                 <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
+                                             </div> 
+
+                                                <div className="navbar-header ">                                                
+                                                    <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
+                                                        <i className="icon fa fa-arrow-down fa-2x"></i>                                                       
+                                                    </button>
+                                                </div>
+
+                                                <div className="navbar-collapse collapse" id="mc-horizontal-menu-collapse1">
+                                                    <div className="nav-outer">
+                                                        <ul className="nav navbar-nav">
+                                                        <nav className="yamm megamenu-horizontal" role="navigation">
+                    
+                                                            <div id="accordion"> 
+                                                            {
+                                                                main_groups.map((main_group)=>{                            
+                                                                    const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                                                                                              
+                                                                    return(
+                                                                            <ul className="dropright  nav" key={main_group.id}>                                         
+                                                                                
+                                                                                    <li className="px-3" data-toggle="collapse" data-target={"#collapseOne"+main_group.id} aria-expanded="true" aria-controls={"collapseOne"+main_group.id}>
+                                                                                    <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag " aria-hidden="true"></i> {main_group.title} </Link>
+                                                                                    </li>                                           
+                                                                                
+                                                                                <div id={"collapseOne"+main_group.id} className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
+                                                                                    
+                                                                                        <SubCatalog sub_groups={data} />
+                                                                                
+                                                                                </div>
+                                                                            </ul>
+                                                                        );
+                                                                }) 
+                                                             }      
+                                                            </div>
+                                                        </nav>                                                      
+                                                            
+                                                        </ul>
+                                                        <div className="clearfix"></div>				
+                                                    </div>
+                                                </div>                                
+                                            </div>
 
         </div>
     );
