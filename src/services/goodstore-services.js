@@ -1,6 +1,7 @@
+import { URL } from '../const';
 export default class GoodstoreServices {
 
-    _apiBase = "http://goodmarket74.local/api/web/";
+    _apiBase = URL + "/api/web/";
 
     getRecourse = async(url) => {
         const res = await fetch(`${this._apiBase}${url}`);

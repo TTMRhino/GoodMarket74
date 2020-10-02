@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {dataLoaded,pageSizeLoaded,dataError,dataRequsted} from "../../../../actions";
 import Spiner from '../../../spinner';
 import { withRouter } from 'react-router-dom';
+import { URL } from '../../../../const';
 
 
 
@@ -71,7 +72,7 @@ class PaginContainer extends Component {
    
     
 
-    const urlImg ="http://goodmarket74.local/api/web/images/";
+    const urlImg =URL + "/api/web/images/";
 
         //=================================
 

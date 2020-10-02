@@ -8,6 +8,7 @@ import { dataLoaded, dataError, dataRequsted } from "../../../../actions";
 import { withRouter } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import ErrorIndicator from '../../../error-indicator';
+import { URL } from '../../../../const';
 
 const TopItem = ({ props }) => {
     const { data} = props;
@@ -16,7 +17,7 @@ const TopItem = ({ props }) => {
 	const topItems=data.items.slice(0,3);	
     
 
-    const url ="http://goodmarket74.local/api/web/images/";
+    const url =URL+"/api/web/images/";
 
     return (
             <div>

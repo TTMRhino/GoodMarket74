@@ -1,11 +1,12 @@
 import store from '../../../store';
+import { URL } from '../../../const';
 
 
 const postTools = (data, items, total_sum) => {
     data.total_sum = total_sum;
     console.log("total sum test!");
     console.log(data);
-    const url = "http://goodmarket74.local/api/web/";
+    const url = URL + "/api/web/";
 
     data = JSON.stringify(data);
     let id_customer = xhr(url + 'customers', data); //записываем заказ и получаем id клиента из бд

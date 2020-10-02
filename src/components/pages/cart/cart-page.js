@@ -4,11 +4,12 @@ import {connect} from "react-redux";
 import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart,deliverAdd } from "../../../actions";
 import RcViewer from '@hanyk/rc-viewer'
 import postTools from "./postTool";
+import { URL } from '../../../const';
 
 import { useForm } from "react-hook-form";
 
 const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDelete,onDeliver,purchase}) => {
-	const urlImg ="http://goodmarket74.local/api/web/images/";
+	const urlImg =URL + "/api/web/images/";
 
 	//пердупреждение о повышенных тарифах (для определенных городов)
 	const [ displaView, setView ] = useState('none')
@@ -68,9 +69,11 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 								</Link>
 							</td>
                             <td className="cart-image">
+								<Link>
 								<RcViewer   >
         							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Pic"/>
 								</RcViewer>
+								</Link>
                                 
                             </td>
                             <td className="cart-product-name-info">

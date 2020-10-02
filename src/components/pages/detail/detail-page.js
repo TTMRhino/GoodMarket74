@@ -7,13 +7,14 @@ import {connect} from "react-redux";
 import {itemLoaded,itemError,itemRequsted,itemAddedToCart} from "../../../actions";
 import Spiner from '../../spinner';
 import { withRouter } from 'react-router-dom';
-import RcViewer from '@hanyk/rc-viewer'
+import RcViewer from '@hanyk/rc-viewer';
+import { URL } from '../../../const';
 
 
 const Detail = ({props}) => {
     const {item, onAddedToCart} = props;
 
-	const urlImg ="http://goodmarket74.local/api/web/images/";
+	const urlImg =URL + "/api/web/images/";
 	const options={}
     return (
 
@@ -32,6 +33,7 @@ const Detail = ({props}) => {
                             <div className="single-product-gallery-item" id="slide1">                             
 								
 								<RcViewer   options={options}>
+									
         							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Pic"/>
 								</RcViewer>
 								
