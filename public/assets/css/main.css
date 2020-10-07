@@ -7131,3 +7131,11 @@ footer {
     /* Set the fixed height of the footer here */
     height: 60px;
 }
+
+
+/*цвет ИП и фамилии в футоре*/
+
+.first,
+.last {
+    color: #666;
+}

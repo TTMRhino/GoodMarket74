@@ -12,8 +12,9 @@ import { URL } from '../../../const';
 
 
 const Detail = ({props}) => {
-    const {item, onAddedToCart} = props;
-
+	const {item, onAddedToCart,history,match} = props;	
+	const { catalogNum,currentPage } = match.params;
+	
 	const urlImg =URL + "/api/web/images/";
 	const options={}
     return (
@@ -94,7 +95,15 @@ const Detail = ({props}) => {
 							            </div>
 									</div>*/}
 
-									<div className="col-sm-7">
+									<div className="col-sm-2">
+										<Link to={"/catalog/"+catalogNum + "/"+ currentPage} className="btn btn-primary" >
+											<i className="fa fa-angle-left inner-right-vs">
+											</i> 
+											Назад
+										</Link>
+									</div>
+
+									<div className="col-sm-5">
 										<button to="#" className="btn btn-primary" onClick={()=>onAddedToCart(item.id)}>
 											<i className="fa fa-shopping-cart inner-right-vs">
 											</i> 
@@ -126,7 +135,7 @@ class DetailContainer extends Component {
 
     componentDidMount() {
 		const {history, match,goodstoreService} = this.props;
-        const { id } = match.params;
+        const { id, } = match.params;
         
         //dataRequsted();
        
@@ -148,7 +157,8 @@ class DetailContainer extends Component {
 	         
         
     render() {
-		const {loading} = this.props; 		
+		const {loading,match} = this.props; 
+				
 		     
         if (loading){				
             return (

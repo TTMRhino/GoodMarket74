@@ -15,9 +15,9 @@ const App = () =>{
 
             <Route path="/cart" component={ CartPage } />
            
-            <Route path="/catalog/:id?" component={ CatalogPage } />
+            <Route path="/catalog/:id?/:currentPage?" component={ CatalogPage } />
 
-            <Route path="/detail/:id?" component={Detail} />
+            <Route path="/detail/:id?/:catalogNum?/:currentPage?" component={Detail} />
 
             <Route path="/contact" component={ ContactPage } />
         </Switch>

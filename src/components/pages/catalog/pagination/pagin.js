@@ -17,15 +17,18 @@ class PaginContainer extends Component {
 	
     constructor(props) {
         super();
+      
         this.state={
-            currentPage:1
+            currentPage:parseInt(props.match.currentPage, 10) || 1
         }      
     }
     
     componentDidMount() {        
 		const {history, match,goodstoreService,pageSize} = this.props;
-        const { id } = match.params;
-        
+        const { id,currentPage } = match.params;
+        this.setState({currentPage:parseInt(currentPage, 10) || 1});
+       
+
         dataRequsted();       
 		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded);       
 	}
@@ -33,7 +36,9 @@ class PaginContainer extends Component {
 	componentDidUpdate(prevProps, prevState, snapshot) {    
             
 			const {history, match, goodstoreService, pageSize} = this.props;
-			const { id } = match.params;
+      const { id,currentPage } = match.params;//id из URL пути
+      
+     
 			
 			if (this.props.match.url !== prevProps.match.url) {
                 this.setState({currentPage:1});
@@ -45,7 +50,8 @@ class PaginContainer extends Component {
              
 
     render() {
-        const {loading,data,sort} = this.props; 	
+        const {loading,data,sort,match} = this.props; 
+        const {id}= match.params;	
         
 
    const handlePageChange =page =>{ 
@@ -175,7 +181,7 @@ class PaginContainer extends Component {
                               <span>Артикул: {item.vendor}</span>
                                 <div className="image">
             
-                                  <Link to={'/detail/'+ item.id} >
+                                  <Link to={'/detail/'+ item.id + '/'+ id + '/' + this.state.currentPage} >
                                     <img className="imgItem" src={urlImg + "l"+ item.vendor + ".jpg"}  alt=""/>
                                   </Link>
                                   

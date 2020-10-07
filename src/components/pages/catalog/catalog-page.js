@@ -7,6 +7,10 @@ import store from '../../../store';
 
 
 class CatalogPage extends Component {
+	constructor(props) {		
+		super();
+		
+	}
 
 	 sortChange(event){//отправляем занчение для сортиовки (sort)
 		console.log(event.target.value);
@@ -14,7 +18,8 @@ class CatalogPage extends Component {
     	store.dispatch(action); //изменяем state на прямую  
 	}
 
-	render(){		
+	render(){	
+		
     return (
     <div> 
 	<div className="body-content outer-top-xs" id="top-banner-and-menu">
@@ -58,7 +63,7 @@ class CatalogPage extends Component {
 									<div className="clearfix filters-container ">						
 										<div className="text-right">
 											
-												<Pagin/>
+												<Pagin  />
 											
 										</div>
 									</div>								
