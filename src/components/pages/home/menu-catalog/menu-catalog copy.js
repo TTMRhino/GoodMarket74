@@ -26,11 +26,43 @@ const MenuCatalog = ({props}) => {
 
 
 
-           
+           {/* <div className="side-menu animate-dropdown outer-bottom-xs ">
+                <div className="head">
+                    <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
+                </div>
+                <nav className="yamm megamenu-horizontal" role="navigation">
+                    
+                <div id="accordion">
+                {
+                            main_groups.map((main_group)=>{
+                         
+                                const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                      
+                                    
+                                return(
+                                        <ul className="dropright  nav" key={main_group.id}>                                         
+                                            
+                                                <li className="px-3" data-toggle="collapse" data-target={"#collapseOne"+main_group.id} aria-expanded="true" aria-controls={"collapseOne"+main_group.id}>
+                                                <Link to="#" className={data.length===0?"":"arrows_menu"}> <i className="icon fa fa-shopping-bag " aria-hidden="true"></i> {main_group.title} </Link>
+                                                </li>                                           
+                                            
+                                            <div id={"collapseOne"+main_group.id} className="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
+                                                
+                                                    <SubCatalog sub_groups={data} />
+                                               
+                                            </div>
+                                        </ul>
+                                          );
+                                        }) 
+                                    }      
+                    
+                </div>
+                </nav>     
+                    
+                                </div>*/}
      
      {/**=======================MENU==================================== */}
                                                 
-                                             {/*<div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
+                                             <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
                                              
                                              <div className="head">
                                                  <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
@@ -74,57 +106,28 @@ const MenuCatalog = ({props}) => {
                                                         <div className="clearfix"></div>				
                                                     </div>
                                                 </div>                                
-                                            </div>*/}
+                                            </div>
 
-    <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
-        <div className="head">
-            <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
-        </div> 
-
-        <div className="navbar-header ">                                                
-            <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
-                <i className="icon fa fa-arrow-down fa-2x"></i>                                                       
-            </button>
-        </div>
-
-        <div className="navbar-collapse collapse" id="mc-horizontal-menu-collapse1">                                    
-
-            {
-                 main_groups.map((main_group)=>{                            
-                    const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                                                                                              
-                    return(
-                        <div>
-                            <div className="dropdown dropright nonMobileMenu" key={main_group.id}>
-                        
-                                <button type="button" className="btn btn-light dropdown-toggle btn-menu" data-toggle="dropdown">
-                                    <i className="icon fa fa-shopping-bag " ></i> 
-                                   <span className="spanMenu"> {main_group.title}</span>
-                                </button>
-                                <div className="dropdown-menu ">
-                                    <SubCatalog sub_groups={data} />
-                                </div>
-                            </div>
-
-                                        {/*Мобильная версия меню */}
-                            <div className="dropdown  MobileMenu">
-                                <button type="button" className="btn btn-light dropdown-toggle btn-menu" data-toggle="dropdown">
-                                    <i className="icon fa fa-shopping-bag " ></i> 
-                                    <span className="spanMenu"> {main_group.title}</span>
-                                </button>
-                                <div className="dropdown-menu">
-                                    <SubCatalog sub_groups={data} />
-                                </div>
-                            </div>
-                        </div>
-
-                            
-                        );
-                }) 
-            }
-        </div>            
-
-    </div>  
-
+                                            <div class="dropdown dropright">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                <i className="icon fa fa-shopping-bag " aria-hidden="true"></i>  Dropright button
+                                                </button>
+                                                <div className="dropdown-menu">
+                                                    <Link className="dropdown-item" href="#">Link 1</Link>
+                                                    <Link className="dropdown-item" href="#">Link 2</Link>
+                                                    <Link className="dropdown-item" href="#">Link 3</Link>
+                                                </div>
+                                            </div>
+                                            <div class="dropdown dropright">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                <i className="icon fa fa-shopping-bag " aria-hidden="true"></i>  Dropright button2
+                                                </button>
+                                                <div className="dropdown-menu">
+                                                    <Link className="dropdown-item" href="#">Link 1</Link>
+                                                    <Link className="dropdown-item" href="#">Link 2</Link>
+                                                    <Link className="dropdown-item" href="#">Link 3</Link>
+                                                </div>
+                                            </div>
 </div>
         
     );

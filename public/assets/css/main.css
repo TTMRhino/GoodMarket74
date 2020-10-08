@@ -7038,9 +7038,9 @@ header {
     color: #66667a;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 5%;
-    padding-top: 5%;
-    font-size: 1.3rem;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    font-size: 1.2rem;
     /* text-align: justify;*/
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -7071,8 +7071,36 @@ header {
     padding-bottom: 2%;
 }
 
+
+/*=============меню======*/
+
 .menuBurger {
     display: block;
+}
+
+.btn-menu {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    margin-bottom: 1px;
+    hyphens: auto;
+    white-space: normal;
+}
+
+.btn-menu:hover {
+    background-color: #0f6cb2;
+    color: white;
+}
+
+.spanMenu {
+    margin-left: 8px;
+    hyphens: auto;
+}
+
+.navbar-collapse {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 @media screen and (max-width: 530px) {
@@ -7093,6 +7121,16 @@ header {
     }
     /*каотинка подробно в мобил.*/
     .single-product-gallery-item {}
+    /*повидение выпадающего меню в мобильной версии*/
+    .nonMobileMenu {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .MobileMenu {
+        display: none;
+    }
 }
 
 
