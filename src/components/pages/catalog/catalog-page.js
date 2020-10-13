@@ -29,7 +29,7 @@ class CatalogPage extends Component {
 			<MenuCatalog />
 
 
-<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
+<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder mobile-padding">
             <div className="clearfix filters-container m-t-10">
 	<div className="row">
 		

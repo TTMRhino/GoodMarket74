@@ -13,7 +13,21 @@ import { URL } from '../../../const';
 
 const Detail = ({props}) => {
 	const {item, onAddedToCart,history,match} = props;	
-	const { catalogNum,currentPage } = match.params;
+	let { catalogNum,currentPage } = match.params;
+
+	console.log('CATALOG NUm = '+ catalogNum);
+
+	/* Костыль для кнопки назад (в деталях)  иначе не возвращается из каталога и топа продаж*/
+	if (typeof catalogNum == 'undefined' || catalogNum ===	 'undefined'){
+		catalogNum = '';
+	}
+	if ( typeof currentPage == 'undefined'){		
+		catalogNum = '';
+		currentPage = '';
+	}
+	
+
+	console.log('CATALOG NUm rest = '+ catalogNum);
 	
 	const urlImg =URL + "/api/web/images/";
 	const options={}

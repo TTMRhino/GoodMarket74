@@ -19,7 +19,7 @@ const HomePage = ({props}) => {
 		<MenuCatalog />
 		
 
-	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
+	<div className="col-xs-12 col-sm-12 col-md-9 homebanner-holder ">
 
 		
 	<div id="hero">	

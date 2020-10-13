@@ -83,29 +83,11 @@ const HeaderPage = ({orderTotal, orderCount}) => {
                                             <div className="nav-bg-class">
                                                 <div className="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
                                                     <div className="nav-outer">
-                                                        <ul className="nav navbar-nav">
-                                                            <li className="active dropdown yamm-fw">
-                                                                <Link to="home.html" data-hover="dropdown" className="dropdown-toggle" data-toggle="dropdown">GoodMarket74</Link>
-                                                                </li>
-                                                                <li className="dropdown">
-                                                                    <Link to="#" className="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Меню сайта</Link>
-                                                                    <ul className="dropdown-menu pages">
-                                                                        <li>
-                                                                            <div className="yamm-content">
-                                                                                <div className="row">                                                                
-                                                                                    <div className="col-xs-12 col-menu">
-                                                                                        < ul className="links">
-                                                                                            <li><NavLink to="/">GoodMarket74</NavLink></li>
-                                                                                            <li><NavLink to="/catalog">Каталог</NavLink></li>
-                                                                                            <li><NavLink to="/cart">Корзина</NavLink></li>
-                                                                                            <li><NavLink to="/contact">Контакты</NavLink></li>                                                                        
-                                                                                        </ul>
-                                                                                    </div>                                                                    
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>                                                    
-                                                                    </ul>
-                                                                </li>
+                                                        <ul className="nav navbar-nav">                                                           
+                                                                <li><Link to="/">GoodMarket74</Link></li>
+                                                                <li><Link to="/catalog">Каталог</Link></li>
+                                                                <li><Link to="/cart">Корзина</Link></li>
+                                                                <li><NavLink to="/contact">Контакты</NavLink></li>  
                                                             
                                                         </ul>
                                                         <div className="clearfix"></div>				

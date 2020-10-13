@@ -57,7 +57,7 @@ const TopItem = ({ props }) => {
                     </div>
                 </div>      
             </div>
-        </div>
+        </div>        
     </div>
             )
         })
@@ -66,6 +66,10 @@ const TopItem = ({ props }) => {
     
 }
 </OwlCarousel>
+
+<div>
+  <h2>O НАС</h2>
+</div>
             </div>
     );
 }

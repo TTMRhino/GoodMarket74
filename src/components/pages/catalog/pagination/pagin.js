@@ -174,7 +174,7 @@ class PaginContainer extends Component {
                     <div className="pagination-container">
                     {items[currentPage - 1].map(item => 
             
-                          <div className="col-sm-6 col-md-4 wow fadeInUp" key={item.id}>
+                          <div className="col-sm-6 col-md-4 wow fadeInUp mobile-padding" key={item.id}>
                           <div className="products">				
                             <div className="product">		
                               <div className="product-image">
@@ -187,7 +187,7 @@ class PaginContainer extends Component {
                                   
                                 </div>													
                               </div>
-                              <div className="product-info text-left">
+                              <div className="product-info text-position">
                                 
                                 <h3 className="name"><Link to={'/detail/'+ item.id}>{item.item}</Link></h3>			
                                 <div className="description">							

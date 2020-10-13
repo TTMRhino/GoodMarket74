@@ -29,8 +29,8 @@ const MenuCatalog = ({props}) => {
            
      
      {/**=======================MENU==================================== */}
-                                                
-                                             {/*<div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
+                                               {/* меню гармошка для мобильного размера ===начало===*/} 
+                                             <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs MobileMenu-2">
                                              
                                              <div className="head">
                                                  <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
@@ -74,12 +74,22 @@ const MenuCatalog = ({props}) => {
                                                         <div className="clearfix"></div>				
                                                     </div>
                                                 </div>                                
-                                            </div>*/}
+                                            </div>
+                                            {/* меню гармошка для мобильного размера ===клонец===*/} 
 
-    <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs">
+    <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs Full-size-Menu-2">
         <div className="head">
             <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
         </div> 
+
+        <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168">
+        </script>
+        
+        <div id="vk_groups"></div>
+            <script type="text/javascript">
+                {/*VK.Widgets.Group("vk_groups", { mode: 3 }, 193409870);*/}
+            </script>
+
 
         <div className="navbar-header ">                                                
             <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        

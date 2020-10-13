@@ -89,8 +89,8 @@ body {
 }
 
 .cnt-home {
-    /*background-color: #f3f3f3;*/
-    background: url("images/background_goodmarket74.jpg") repeat;
+    background-color: #144e79;
+    /*background: url("images/background_goodmarket74.jpg") repeat;*/
     /*background-size: cover;*/
 }
 
@@ -7056,7 +7056,7 @@ header {
     width: 100%;
     position: absolute;
     left: 2%;
-    bottom: 0;
+    bottom: 60px;
 }
 
 .products {
@@ -7103,6 +7103,9 @@ header {
     padding-right: 0px;
 }
 
+
+/*============Мобильные настройки=========*/
+
 @media screen and (max-width: 530px) {
     .menu {
         display: none;
@@ -7125,11 +7128,45 @@ header {
     .nonMobileMenu {
         display: none;
     }
+    MobileMenu-2 {
+        display: inline;
+    }
+    .Full-size-Menu-2 {
+        display: none;
+    }
+    /*текст и цены товара в мобилке*/
+    .text-position {
+        text-align: center;
+    }
+    .products {
+        height: auto;
+    }
+    .mobile-padding {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    /*пагинация*/
+    .pagin {
+        position: static;
+    }
 }
+
+
+/* Настройки полнойразмерной версии*/
 
 @media screen and (min-width: 900px) {
     .MobileMenu {
         display: none;
+    }
+    .MobileMenu-2 {
+        display: none;
+    }
+    /*.Full-size-Menu-2 {
+        display: inline;
+    }*/
+    /*текст и цены товара в полноразмерной версии*/
+    .text-position {
+        text-align: left;
     }
 }
 
