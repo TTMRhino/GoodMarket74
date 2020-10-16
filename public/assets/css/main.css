@@ -7060,7 +7060,7 @@ header {
 }
 
 .products {
-    height: 350px;
+    height: auto;
 }
 
 .category-product {
@@ -7197,6 +7197,19 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 80px;
+}
+
+
+/* top продаж*/
+
+.top-img {
+    height: 90px;
+    width: 50%;
+}
+
+.top-sales {
+    margin-left: 15%;
+    margin-bottom: 2%;
 }
 
 footer {

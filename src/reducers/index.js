@@ -3,6 +3,7 @@ const initialState = {
         items: (localStorage['goodMarket.data.items']) ? JSON.parse(localStorage['goodMarket.data.items']) : [],
         main_groups: (localStorage['goodMarket.data.main_groups']) ? JSON.parse(localStorage['goodMarket.data.main_groups']) : [],
         sub_groups: (localStorage['data.sub_groups']) ? JSON.parse(localStorage['data.sub_groups']) : [],
+        topitems: (localStorage['goodMarket.data.topitems']) ? JSON.parse(localStorage['goodMarket.data.topitems']) : [],
     },
 
     item: localStorage['goodMarket.item'] || {},

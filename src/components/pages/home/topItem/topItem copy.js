@@ -9,65 +9,69 @@ import { withRouter } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import ErrorIndicator from '../../../error-indicator';
 import { URL } from '../../../../const';
-import _ from 'lodash';
 
 const TopItem = ({ props }) => {
     const { data} = props;
 
 	//оставляем для ТОП продаж 6 обьекта
     const topItems=data.topitems;
-    //let items = data.items;
-   
-  const items = _.orderBy(data.items,['id'],['asc']);
-   
-    //console.log(items[0]);
+    const items = data.items;
+
+    //const topItems=data.items.slice(0,3);	
+    
 
     const url =URL+"/api/web/images/";
 
     return (
             <div>
-               <div className="pagination-container top-sales">
+                <OwlCarousel className="owl-carousel best-seller custom-carousel  outer-top-xs">
 
 {			
         topItems.map((item)=>{
-          const id =item.item_id-1;
-         // console.log( items) ;
+                const id =item.item_id;
+                console.log('id  = '+ id);
             return(
-                <div className="col-sm-6 col-md-4 wow fadeInUp mobile-padding" key={item.id}>
-                          <div className="products">				
-                            <div className="product">		
-                              <div className="">
-                              <span>Артикул: {items[id].vendor}</span>
+                
+                <div className="item" key={item.id}>
+        <div className="products best-product">
+
+            <div className="product">
+                <div className="product-micro">
+                    <div className="row product-micro-row">
+                        <div className="col col-xs-5">
+                            <div className="">
                                 <div className="image">
-            
-                                <Link to={"detail/"+items[id].id}>
-                                  <img className="top-img" src={url + 'l'+items[id].vendor +'.jpg'} alt="" />
-                                  </Link>
-                                  
-                                </div>													
-                              </div>
-                              <div className="product-info text-position">
-                                
-                                
+                                    <Link to={"detail/"+item.id}>
+                                        <img src={url + 'l'+items[id].vendor +'.jpg'} alt="" />
+                                    </Link>					
+                                </div>				
+                            </div>
+                        </div>
+                        <div className="col2 col-xs-7">
+                            <div className="product-info">
+                                <h3 className="name"><Link to={"detail/"+items[id].id}>{items[id].item}</Link></h3>
+                                <div className="rating rateit-small">											
+                                </div>
                                 <div className="product-price">	
-                                  <span className="price">
-                                    {items[id].price} руб.
-                                  </span>								
+                                    <span className="price">
+                                        {items[id].price} руб.
+                                    </span>				
                                 </div>			
-                              </div>
-                              <div className="cart clearfix animate-effect ">				
-                              </div>
-                            </div>      
-                          </div>
-                          </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>        
+    </div>
             )
         })
          
     
     
 }
+</OwlCarousel>
 
-</div>
 <div>
   <h2>O НАС</h2>
 </div>

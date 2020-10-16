@@ -22,15 +22,17 @@ export default class GoodstoreServices {
         let data = {};
         if (localStorage['goodMarket.data.items']) {
 
-            console.log('Данные есть в хранилище!');
+            //console.log('Данные есть в хранилище!');
             const items = JSON.parse(localStorage['goodMarket.data.items']);
             //отбираем нужные группы товаров
-            console.log('под группа = ' + sub_group);
+            //console.log('под группа = ' + sub_group);
             (sub_group !== 0) ? data.items = items.filter((item) => { return item.sub_group === sub_group }): data.items = items;
-            console.info(data.items);
+
+            //console.info(data.items);
 
             data.main_groups = JSON.parse(localStorage['goodMarket.data.main_groups']);
             data.sub_groups = JSON.parse(localStorage['goodMarket.data.sub_groups']);
+            data.topitems = await this.getRecourse(`topsales`); //JSON.parse(localStorage['goodMarket.data.topitems']);
 
             return data;
         }
@@ -40,10 +42,13 @@ export default class GoodstoreServices {
         data.main_groups = await this.getRecourse(`maingroup`);
         data.sub_groups = await this.getRecourse(`subgroup`);
 
+        data.topitems = await this.getRecourse(`topsales`);
+
         //помещаем данные о группах и товарах ВСЕ ВСЕ в локалное хранилище (что бы не лазить на сервер)
         localStorage['goodMarket.data.main_groups'] = JSON.stringify(data.main_groups);
         localStorage['goodMarket.data.sub_groups'] = JSON.stringify(data.sub_groups);
         localStorage['goodMarket.data.items'] = JSON.stringify(data.items);
+        //localStorage['goodMarket.data.topitems'] = JSON.stringify(data.topitems);
 
         return data;
     };
