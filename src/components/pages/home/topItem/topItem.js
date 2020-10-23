@@ -18,40 +18,40 @@ const TopItem = ({ props }) => {
     const topItems=data.topitems;
     //let items = data.items;
    
-  const items = _.orderBy(data.items,['id'],['asc']);
+  //const items = _.orderBy(data.items,['id'],['asc']);
    
-    //console.log(items[0]);
-
+   
     const url =URL+"/api/web/images/";
 
     return (
             <div>
-               <div className="pagination-container top-sales">
+               <div className="pagination-container ">
 
 {			
         topItems.map((item)=>{
           const id =item.item_id-1;
-         // console.log( items) ;
+        
             return(
                 <div className="col-sm-6 col-md-4 wow fadeInUp mobile-padding" key={item.id}>
                           <div className="products">				
                             <div className="product">		
-                              <div className="">
-                              <span>Артикул: {items[id].vendor}</span>
+                              
+                              <div className="product-image">
+                              <span>Артикул: {item.vendor}</span>
                                 <div className="image">
             
-                                <Link to={"detail/"+items[id].id}>
-                                  <img className="top-img" src={url + 'l'+items[id].vendor +'.jpg'} alt="" />
+                                  <Link to={'/detail/'+ item.id } >
+                                    <img className="imgItem" src={url + "l"+ item.vendor + ".jpg"}  alt=""/>
                                   </Link>
                                   
                                 </div>													
                               </div>
                               <div className="product-info text-position">
-                                
+                              <h3 className="name"><Link to={'/detail/'+ item.id}>{item.item}</Link></h3>
                                 
                                 <div className="product-price">	
                                   <span className="price">
-                                    {items[id].price} руб.
+                                    {item.price} руб.
                                   </span>								
                                 </div>			
                               </div>
@@ -69,9 +69,9 @@ const TopItem = ({ props }) => {
 
 </div>
 <div>
-  <h2>O НАС</h2>
+  .
 </div>
-            </div>
+</div>
     );
 }
 
@@ -90,7 +90,8 @@ class TopItemContainer extends Component {
 		
 		goodstoreService.getData().then(this.props.dataLoaded).catch((err)=>dataError(err));  
 
-	}
+  }
+  
 	
          
 

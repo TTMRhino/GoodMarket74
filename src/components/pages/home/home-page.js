@@ -29,17 +29,15 @@ const HomePage = ({props}) => {
     	<div className="item" style = {style1} >
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
-					<div className="slider-header fadeInDown-1">Новинка</div>
+					<div className="slider-header fadeInDown-1"></div>
 						<div className="big-text fadeInDown-1">
-							Гладильная Доска Ника 3+
+							
 						</div>
 
 						<div className="excerpt fadeInDown-2 hidden-xs">					
-							<span>Гладить одно удовольствие</span>
+							<span></span>
 						</div>
-						<div className="button-holder fadeInDown-3">
-							<Link to="index.php?page=single-product" className="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -48,19 +46,17 @@ const HomePage = ({props}) => {
 		<div className="item" style = {style2}>
 			<div className="container-fluid">
 				<div className="caption bg-color vertical-center text-left">
-                 <div className="slider-header fadeInDown-1">Акция</div>
+                 <div className="slider-header fadeInDown-1"></div>
 					<div className="big-text fadeInDown-1">
-						Лестница <span className="highlight">Залеська </span>
+						 <span className="highlight"> </span>
 					</div>
 
 					<div className="excerpt fadeInDown-2 hidden-xs">
 						 
-					<span>Высшее качество исполнения</span>
+					<span></span>
 					
 					</div>
-					<div className="button-holder fadeInDown-3">
-						<Link to="index.php?page=single-product" className="btn-lg btn btn-uppercase btn-primary shop-now-button">Купить</Link>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -117,12 +113,41 @@ const HomePage = ({props}) => {
 
 <div className="best-deal wow fadeInUp outer-bottom-xs">
 	<h3 className="section-title">ТОП продаж</h3>
-	<div className="sidebar-widget-body outer-top-xs">
+	<div className="sidebar-widget-body outer-top-xs ">
 
 	<TopItem/>
 
 </div>
+</div>
+
+
+<div className="best-deal about">
+	<h3 className="section-title">О нас</h3>
+	<div className="sidebar-widget-body outer-top-xs ">
+
+<p className=" about-p">
+GoodMarket74 была образованна в 2019 году и начинала свою деятельность как фирма торгующая товарами для дома, сада, детскими товарами, электроинструментом. В настоящее время в GoodMarket74 работает дружный, сплочённый коллектив со дня основания фирмы. Стратегия развития компании строится на стремлении максимально удовлетворить существующий спрос на товары, предлагаемые нами.
+GoodMarket74  —  реализует товары на Урале таких фирм как: 
+ООО «Вилина» (г. С-Петербург), ООО «Ника» (г. Ижевск), ЗМИ (г. Соликамск), Сарай-лы (Турция), Тюмрай (Турция) и предлагает следующую продукцию: самоклеющаяся пленка,  клеенка, акваматы, доски гладильные, карнизы потолочные, стремянки, вешалки напольные и настенные.
+Мы с радостью поможем Вам подобрать необходимый товар. Наши  квалифицированные специалисты проконсультируют Вас по каждой группе товаров, дадут свои рекомендации по их использованию. По вашему желанию доставим выбранные Вами товары в удобное время по указанному адресу бесплатно от 1000 рублей в чеке или 100 рублей по городу Челябинск до 1000 рублей в чеке. Так же мы успешно работаем по всей Челябинской области, доставляя товар транспортными компаниям по максимально приемлемым ценам.
+</p>
+ 
+<span>В нашей компании действуют три основополагающих принципа работы:</span>
+	<ul>
+		<li>высокое качество всех товаров и услуг;</li>
+		<li>разумная ценовая политика;</li>
+		<li>внимательное отношение к каждому клиенту.
+				Индивидуальный подход к каждому покупателю позволяет нам находить наиболее эффективные схемы сотрудничества. Мы не стремимся совершить одну-две выгодные для нас сделки, не учитывающие интересы наших покупателей. Наша цель — долгосрочное и взаимовыгодное сотрудничество. Благодаря нашим постоянным покупателям мы достигли сегодняшнего успеха и надеемся его развивать в будущем.</li>
+	</ul>
+
+<p className="about-p">Если Вы станете нашим постоянным покупателем, Вы приобретете максимально выгодные условия поставки наших товаров, получив дополнительные скидки.
+Мы заинтересованы в долгосрочном и плодотворном сотрудничестве!</p>
+
+
+
+</div>
 </div>	 
+
 	</div>
 	</div>
 	

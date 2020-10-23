@@ -32,9 +32,7 @@ const localStoregSet = (cooks) => {
     localStorage['goodMarket.pageSize'] = cooks.pageSize;
     localStorage['goodMarket.deliver'] = Number.parseInt(cooks.deliver);
 
-    //localStorage['goodMarket.data.items'] = JSON.stringify(cooks.data.items);
-    //localStorage['goodMarket.data.main_groups'] = JSON.stringify(cooks.data.main_groups);
-    //localStorage['data.sub_groups'] = JSON.stringify(cooks.data.sub_groups);
+
 
     console.log(localStorage.getItem('goodMarket.orderCount'));
 

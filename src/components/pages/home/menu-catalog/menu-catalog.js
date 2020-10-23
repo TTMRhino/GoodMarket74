@@ -14,7 +14,7 @@ const MenuCatalog = ({props}) => {
     const {data} = props;
     const  {main_groups,sub_groups,loading} = data;
 
-    
+    console.log(data);
 
   if(loading){
       return(

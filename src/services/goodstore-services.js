@@ -32,7 +32,8 @@ export default class GoodstoreServices {
 
             data.main_groups = JSON.parse(localStorage['goodMarket.data.main_groups']);
             data.sub_groups = JSON.parse(localStorage['goodMarket.data.sub_groups']);
-            data.topitems = await this.getRecourse(`topsales`); //JSON.parse(localStorage['goodMarket.data.topitems']);
+            data.topitems = JSON.parse(localStorage['goodMarket.data.topitems']); //await this.getRecourse(`topsales`); 
+            //data.topitems = await this.getRecourse(`topsales`);
 
             return data;
         }
@@ -43,12 +44,12 @@ export default class GoodstoreServices {
         data.sub_groups = await this.getRecourse(`subgroup`);
 
         data.topitems = await this.getRecourse(`topsales`);
-
+        console.log("Обновляли данные!");
         //помещаем данные о группах и товарах ВСЕ ВСЕ в локалное хранилище (что бы не лазить на сервер)
         localStorage['goodMarket.data.main_groups'] = JSON.stringify(data.main_groups);
         localStorage['goodMarket.data.sub_groups'] = JSON.stringify(data.sub_groups);
         localStorage['goodMarket.data.items'] = JSON.stringify(data.items);
-        //localStorage['goodMarket.data.topitems'] = JSON.stringify(data.topitems);
+        localStorage['goodMarket.data.topitems'] = JSON.stringify(data.topitems);
 
         return data;
     };

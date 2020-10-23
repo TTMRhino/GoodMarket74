@@ -34,6 +34,7 @@ const HeaderPage = ({orderTotal, orderCount}) => {
                                         <Link className="search-button" to="#" ></Link>                                    
                                     </div>
                                </form>*/}
+                               <img className="" src="/assets/images/sliders/plug.png" />
                             </div>
                             </div>
             

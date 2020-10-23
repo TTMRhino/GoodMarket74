@@ -7208,8 +7208,7 @@ body {
 }
 
 .top-sales {
-    margin-left: 15%;
-    margin-bottom: 2%;
+    background-color: white;
 }
 
 footer {
@@ -7226,4 +7225,26 @@ footer {
 .first,
 .last {
     color: #666;
+}
+
+
+/* О нас*/
+
+.about {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3%;
+}
+
+.about span {
+    font-weight: bold;
+}
+
+.about ul {
+    list-style-type: circle;
+}
+
+.about-p {
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
