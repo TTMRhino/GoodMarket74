@@ -3270,6 +3270,7 @@ header {
 .product .product-info .name {
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
+    height: 50px;
 }
 
 .product .product-info .name a {

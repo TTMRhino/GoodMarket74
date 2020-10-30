@@ -20,9 +20,15 @@ export default class GoodstoreServices {
 
     async getData(sub_group = 0, pageSize = 3) {
         let data = {};
-        if (localStorage['goodMarket.data.items']) {
+        let timestamp = 0;
 
-            //console.log('Данные есть в хранилище!');
+
+        timestamp = parseInt(localStorage['goodMarket.data.timestamp'], 10);
+
+
+
+        if (localStorage['goodMarket.data.items'] && (timestamp + 30000 > Date.now())) {
+
             const items = JSON.parse(localStorage['goodMarket.data.items']);
             //отбираем нужные группы товаров
             //console.log('под группа = ' + sub_group);
@@ -42,10 +48,11 @@ export default class GoodstoreServices {
         data.items = await this.getRecourse(`items?pageSize=7000`);
         data.main_groups = await this.getRecourse(`maingroup`);
         data.sub_groups = await this.getRecourse(`subgroup`);
-
         data.topitems = await this.getRecourse(`topsales`);
+
         console.log("Обновляли данные!");
         //помещаем данные о группах и товарах ВСЕ ВСЕ в локалное хранилище (что бы не лазить на сервер)
+        localStorage['goodMarket.data.timestamp'] = Date.now() + 300;
         localStorage['goodMarket.data.main_groups'] = JSON.stringify(data.main_groups);
         localStorage['goodMarket.data.sub_groups'] = JSON.stringify(data.sub_groups);
         localStorage['goodMarket.data.items'] = JSON.stringify(data.items);

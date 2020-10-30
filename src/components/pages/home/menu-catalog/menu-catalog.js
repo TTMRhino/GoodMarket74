@@ -134,7 +134,9 @@ const MenuCatalog = ({props}) => {
         </div>            
 
     </div>  
-
+    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168">
+        </script>
+        <div id="vk_groups"></div>
 </div>
         
     );
