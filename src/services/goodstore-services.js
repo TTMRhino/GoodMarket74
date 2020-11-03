@@ -1,3 +1,4 @@
+import { times } from 'lodash';
 import { URL } from '../const';
 export default class GoodstoreServices {
 
@@ -25,9 +26,9 @@ export default class GoodstoreServices {
 
         timestamp = parseInt(localStorage['goodMarket.data.timestamp'], 10);
 
+        const newdate = new Date(timestamp).setDate(new Date(timestamp).getDate() + 1); //+1 день к текущей дате
 
-
-        if (localStorage['goodMarket.data.items'] && (timestamp + 30000 > Date.now())) {
+        if (localStorage['goodMarket.data.items'] && (newdate > Date.now())) {
 
             const items = JSON.parse(localStorage['goodMarket.data.items']);
             //отбираем нужные группы товаров

@@ -103,8 +103,8 @@ const MenuCatalog = ({props}) => {
                  main_groups.map((main_group)=>{                            
                     const data = sub_groups.filter( sub_group => sub_group.id_maingroup === main_group.id);                                                                                                                              
                     return(
-                        <div>
-                            <div className="dropdown dropright nonMobileMenu" key={main_group.id}>
+                        <div key={main_group.id}>
+                            <div className="dropdown dropright nonMobileMenu" >
                         
                                 <button type="button" className="btn btn-light dropdown-toggle btn-menu" data-toggle="dropdown">
                                     <i className="icon fa fa-shopping-bag " ></i> 
