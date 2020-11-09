@@ -1,1 +1,1 @@
-export const URL = "http://goodmarket74.local";
+export const URL = "https://goodmarket74.ru";

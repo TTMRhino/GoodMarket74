@@ -189,7 +189,7 @@ class PaginContainer extends Component {
                               </div>
                               <div className="product-info text-position">
                                 
-                                <h3 className="name"><Link to={'/detail/'+ item.id}>{item.item}</Link></h3>			
+                                <h3 className="name"><Link to={'/detail/'+ item.id + '/'+ id + '/' + this.state.currentPage}>{item.item}</Link></h3>			
                                 <div className="description">							
                                 </div>
                                 <div className="product-price">	
