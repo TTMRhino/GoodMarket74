@@ -16,7 +16,7 @@ const Detail = ({props}) => {
 	let { catalogNum,currentPage } = match.params;
 
 	console.log('CATALOG NUm = '+ catalogNum);
-
+	let catalogURL = '';
 	/* Костыль для кнопки назад (в деталях)  иначе не возвращается из каталога и топа продаж*/
 	if (typeof catalogNum == 'undefined' || catalogNum ===	 'undefined'){
 		catalogNum = '';
@@ -26,8 +26,16 @@ const Detail = ({props}) => {
 		currentPage = '';
 	}
 	
-
-	console.log('CATALOG NUm rest = '+ catalogNum);
+	/*if ( catalogNum === '' & currentPage !=='' ){
+		catalogURL="/catalog/" + catalogNum + "/"+ currentPage ;
+	}
+	else*/ if (currentPage ==='' & catalogNum===''){
+		catalogURL="/";
+	} else{
+		catalogURL="/catalog/"+ catalogNum + "/"+ currentPage;
+	}
+	
+	
 	
 	const urlImg =URL + "/api/web/images/";
 	const options={}
@@ -110,7 +118,7 @@ const Detail = ({props}) => {
 									</div>*/}
 
 									<div className="col-sm-2">
-										<Link to={"/catalog/"+catalogNum + "/"+ currentPage} className="btn btn-primary" >
+										<Link to={catalogURL} className="btn btn-primary" >
 											<i className="fa fa-angle-left inner-right-vs">
 											</i> 
 											Назад
