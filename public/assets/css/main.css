@@ -7117,7 +7117,7 @@ header {
         /* иконка гамбургер видна */
     }
     .best-deal {
-        visibility: hidden;
+        display: none;
     }
     .products {
         border: 1px solid gainsboro;

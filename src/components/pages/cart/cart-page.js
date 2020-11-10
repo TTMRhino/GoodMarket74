@@ -12,7 +12,8 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 	const urlImg =URL + "/api/web/images/";
 
 	//пердупреждение о повышенных тарифах (для определенных городов)
-	const [ displaView, setView ] = useState('none')
+	const [ displaView, setView ] = useState('none');
+	const [warningCity, setWarning] = useState('none');
 	const onChangeHandler = (event) =>{
 		//console.log(event.target.value);
 		if (event.target.value === 'Челябинск'){
@@ -22,7 +23,13 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 		}else{			
 			setView('block');
 			onDeliver(100);
-		}		
+		}	
+		
+		if (event.target.value === 'Другой город'){
+			setWarning('block');
+		}else {
+			setWarning('none');	
+		}
 	}
 
 	//валидация формы
@@ -69,7 +76,7 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 								</Link>
 							</td>
                             <td className="cart-image">
-								<Link>
+								<Link to="#">
 								<RcViewer   >
         							<img className="img-responsive" src={urlImg + "l"+ item.vendor + ".jpg"} alt="Pic"/>
 								</RcViewer>
@@ -172,11 +179,17 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 								onChange={onChangeHandler} >
 							<option></option>	
 							<option value="Челябинск">Челябинск</option>
+							<option value="Другой город">Другой город</option>
 							{/*<option value="Миасс">Миасс</option>*/}
 							</select>
 							{errors.city && <span className="text-danger">Выберети город!</span>}
 
 						</div>
+
+						<div className="alert alert-warning" role="alert" style={{display: warningCity}}>
+  							Не забудте указать город в адресе (ниже)!
+						</div>
+
 						<div className="form-group">
 
 							<label className="info-title control-label">Адрес <span>*</span></label>

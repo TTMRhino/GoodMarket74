@@ -14,7 +14,7 @@ const MenuCatalog = ({props}) => {
     const {data} = props;
     const  {main_groups,sub_groups,loading} = data;
 
-    console.log(data);
+    //console.log(data);
 
   if(loading){
       return(
@@ -33,13 +33,14 @@ const MenuCatalog = ({props}) => {
                                              <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs MobileMenu-2">
                                              
                                              <div className="head">
-                                                 <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ
+                                                    <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
+                                                    <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ                                                    
+                                                    </button>
+                                                 
                                              </div> 
 
                                                 <div className="navbar-header ">                                                
-                                                    <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
-                                                        <i className="icon fa fa-arrow-down fa-2x"></i>                                                       
-                                                    </button>
+                                                    
                                                 </div>
 
                                                 <div className="navbar-collapse collapse" id="mc-horizontal-menu-collapse1">
