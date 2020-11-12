@@ -15,7 +15,7 @@ const initialState = {
     orderCount: Number.parseInt(localStorage['goodMarket.orderCount']) || 0,
     deliver: Number.parseInt(localStorage['goodMarket.deliver']) || 0,
     //индикатор успешной заявки
-    purchase: localStorage['goodMarket.purchase'] || false,
+    purchase: /*localStorage['goodMarket.purchase'] || */false,
     sort: localStorage['goodMarket.sort'] || 'Asc',
 };
 
@@ -66,6 +66,15 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: null,
                 purchase: true,
+            };
+
+        case 'CLEAR_PURCHASE':
+            return {
+                //data: [],
+                ...state,
+                loading: false,
+                error: null,
+                purchase: false,
             };
 
 

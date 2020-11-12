@@ -27,6 +27,7 @@ const postTools = (data, items, total_sum) => {
     // store.dispatch(action_purchase); //изменяем state на прямую
 
 
+
 }
 
 const xhr = (url, data) => {

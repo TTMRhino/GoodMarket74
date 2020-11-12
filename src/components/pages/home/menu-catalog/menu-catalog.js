@@ -33,7 +33,7 @@ const MenuCatalog = ({props}) => {
                                              <div className="nav-bg-class side-menu animate-dropdown outer-bottom-xs MobileMenu-2">
                                              
                                              <div className="head">
-                                                    <button data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
+                                                    <button id="menu_collaps_mobill" data-target="#mc-horizontal-menu-collapse1 " data-toggle="collapse" className="navbar-toggle collapsed" type="button">                                                        
                                                     <i className="icon fa fa-align-justify fa-fw"></i> КАТАЛОГ                                                    
                                                     </button>
                                                  
@@ -158,7 +158,14 @@ class MenuCatalogContainer extends Component {
         const { id } = match.params;	
 		
      
-		goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));	
+        goodstoreService.getData(id,pageSize).then(this.props.dataLoaded).catch((err)=>dataError(err));	
+        
+        const script = document.createElement("script");
+
+        script.src = "assets/js/my.js";
+        script.async = true;
+
+        document.body.appendChild(script);
 		
 			      
 	}

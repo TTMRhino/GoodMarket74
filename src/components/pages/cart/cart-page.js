@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from "react-redux";
 import {itemAddedToCart,itemRemovedFromCart,allItemRemoveFromCart,deliverAdd } from "../../../actions";
 import RcViewer from '@hanyk/rc-viewer'
 import postTools from "./postTool";
 import { URL } from '../../../const';
+import store from '../../../store';
 
 import { useForm } from "react-hook-form";
 
@@ -31,6 +32,8 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 			setWarning('none');	
 		}
 	}
+
+
 
 	//валидация формы
 	const { register, handleSubmit, watch, errors } = useForm();
@@ -198,6 +201,16 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 							{errors.adress && <span className="text-danger">Введите корректный адрес!</span>}								
 						</div>
 
+						
+						<div class="form-group">						
+							<input name="agree" ref={register({ required: true })}
+							className="form-check-input" type="checkbox" value="" id="defaultCheck1"/>							
+							<label class="info-title control-label" >
+								Даю согласие на обработку персональных данных<span>*</span>
+							</label>
+							{errors.agree && <span className="text-danger">Вы не дали согласия!</span>}
+						</div>
+
 						<div className="form-group">
 							<label className="info-title control-label">Коментарий </label>							
 							<textarea name="comments" ref={register({ maxLength:200 })}
@@ -278,18 +291,18 @@ const CartPage = ({cartItems, orderTotal,deliver, onIncrease, onDecrease, onDele
 		</div>
     
 	);
-}else if (purchase){
+}else if (purchase){	
 	return (
 		<div className="alert alert-info">
 			<h2><strong> Ваш заказ успешно принят! Ожидайте звонка от оператора.</strong></h2>
-	  	</div>
+	  	</div>		  
 	);
 }else{
 	console.log('ПОКУПКА = ' + purchase);
 	return(
 	
 		<div className="alert alert-info">
-			<h2><strong> Козина пуста!</strong></h2>
+			<h2><strong> Корзина пуста!</strong></h2>
 	  	</div>
 		
 	);
